@@ -15,11 +15,11 @@ More in-depth instructions and explanations will be provided shortly, but in the
    * This may not be a trivial step, depending on platform/OS, but the linked documentation is very complete and helpful
 2. Download the image
    * `sudo docker pull dapperstats/salvage:0.1.0`
-3. Run the containter
+3. Run the container
    * `sudo docker container run -ti --name salvage_0.1.0 dapperstats/salvage:0.1.0`
 
-The script in the [`Dockerfile`](https://github.com/dapperstats/salvage/blob/master/Dockerfile) functionally sets the build environment, downloading the necessary libraries and including the [`scripts/containter_start.bash`](https://github.com/dapperstats/salvage/blob/master/scripts/containter_start.bash) script, which is where all of the specific code to get the data exists.
-The code in [`scripts/containter_start.bash`](https://github.com/dapperstats/salvage/blob/master/scripts/containter_start.bash) could be run on its own outside of a container, as long as the dependencies are available.
+The script in the [`Dockerfile`](https://github.com/dapperstats/salvage/blob/master/Dockerfile) functionally sets the build environment, downloading the necessary libraries and including the [`scripts/container_start.bash`](https://github.com/dapperstats/salvage/blob/master/scripts/container_start.bash) script, which is where all of the specific code to get the data exists.
+The code in [`scripts/container_start.bash`](https://github.com/dapperstats/salvage/blob/master/scripts/container_start.bash) could be run on its own outside of a container, as long as the dependencies are available.
 
 ## Authors and Contributions
 
