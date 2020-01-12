@@ -2,8 +2,8 @@
 
 Version numbers follow [Semantic Versioning](https://semver.org/).
 
-# v0.2.0
-*In progress*
+# [v0.2.0](https://github.com/dapperstats/salvage/releases/tag/v0.2.0) 
+*2020-01-12*
 
 ## Bug fixing of `R` functionality
 * Now fully integrated into `Dockerfile` such that created containers now have a `list` of `data.frame`s
