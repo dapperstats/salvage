@@ -5,7 +5,7 @@
 
 Code and tools for smooth interactions with the [California Delta](https://en.wikipedia.org/wiki/Sacramento%E2%80%93San_Joaquin_River_Delta) [fish salvage monitoring database](https://wildlife.ca.gov/Conservation/Delta/Salvage-Monitoring).
 
-v0.2.0 in *active development*
+This is v0.2.0 and code is in *active development*.
 
 ## Data Conversion 
 
