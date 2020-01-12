@@ -20,8 +20,7 @@
 #   which points to the directory where the data are. By default it is set
 #   to "./data", but it can be pointed elsewhere if needed.
 
-load_message <- "loading functions for database access"
-message(load_message)
+message("loading functions for database access")
 
 db_table_names <- function(tables_in = NULL){
   if(is.null(tables_in)){
@@ -37,7 +36,10 @@ db_table_names <- function(tables_in = NULL){
 }
 
 read_database <- function(table_names = db_table_names(), 
-                          data_dir = "./data"){
+                          data_dir = "./data", quiet = FALSE){
+  if(!quiet){
+    message("reading in database .csv files")
+  }
   out <- lapply(table_names, read_table, data_dir = data_dir)
   names(out) <- table_names
   out
@@ -98,10 +100,10 @@ read_variable_codes <- function(data_dir = "./data"){
 
 read_csv <- function(file_name = "Sample", data_dir = "./data"){
   file_name <- paste0(file_name, ".csv")
-  file_name <- tolower(file_name)
+  file_namel <- tolower(file_name)
   fopts <- list.files(data_dir)
-  fopts <- tolower(fopts)
-  fopts_in <- which(fopts %in% file_name)
+  foptsl <- tolower(fopts)
+  fopts_in <- which(foptsl %in% file_namel)
   nfopts_in <- length(fopts_in)
   if(nfopts_in == 0){
     return_msg <- paste0(file_name, " does not exist")

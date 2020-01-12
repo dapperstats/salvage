@@ -1,4 +1,5 @@
 #!/bin/bash
+# requirements: curl, mdbtools, unixodbc-dev
 
 # Default values
 REMOTE_DB_FILE=ftp://ftp.wildlife.ca.gov/salvage/Salvage_data_FTP.accdb 
@@ -18,8 +19,11 @@ while getopts ":r:l:d:" option
     esac
 done
 
-bash scripts/remote_mdb_to_local_csvs.bash -r $REMOTE_DB_FILE -l $LOCAL_DB_FILE -d $DATA_DIR
+# Create the data subdirectory
+mkdir $DATA_DIR -p
 
-# Open an instance of R
-R < scripts/r_script.R --save
-R --silent
+# Download the database
+curl $REMOTE_DB_FILE --output $DATA_DIR/$LOCAL_DB_FILE
+
+# Convert the database tables to csv files
+mdb-tables -1 $DATA_DIR/$LOCAL_DB_FILE | xargs -L1 -d '\n' -I{} bash -c 'mdb-export "$1" "$2" > "$3"' -- $DATA_DIR/$LOCAL_DB_FILE {} $DATA_DIR/{}.csv

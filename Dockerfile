@@ -8,14 +8,13 @@ RUN apt-get update \
        mdbtools \
        unixodbc-dev
 
-# Move the container initialization instructions file into the image
-COPY scripts/container_start.bash scripts/container_start.bash
+# Move the scripts folder into the container
+COPY scripts scripts
 
-# When the container is created, run the initialization instructions file
-# Default setting is to use R with the salvage ftp
-ARG LANG=R
-ARG DBFILE="ftp://ftp.wildlife.ca.gov/salvage/Salvage_data_FTP.accdb"
-ENV CONTAINER_LANG=LANG
-ENV CONTAINER_DBFILE=DBFILE
+# Set environmental variables to pass to container_start.bash
+ENV REMOTE_DB_FILE="ftp://ftp.wildlife.ca.gov/salvage/Salvage_data_FTP.accdb" \
+    LOCAL_DB_FILE=local.accdb \
+    DATA_DIR=data
 
-CMD ["bash", "scripts/container_start.bash"]#, "$CONTAINER_LANG", "$CONTAINER_DBFILE"]
+# When the container is built, execute container_start.bash
+CMD bash scripts/container_start.bash -r $REMOTE_DB_FILE -l $LOCAL_DB_FILE -d $DATA_DIR
