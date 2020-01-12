@@ -3,7 +3,7 @@
 
 # Default values
 REMOTE_DB_FILE=ftp://ftp.wildlife.ca.gov/salvage/Salvage_data_FTP.accdb 
-LOCAL_DB_FILE=Salvage_data_FTP.accdb
+LOCAL_DB_FILE=local.accdb
 DATA_DIR=data
 
 # Pull values from options
