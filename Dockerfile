@@ -12,4 +12,10 @@ RUN apt-get update \
 COPY scripts/container_start.bash scripts/container_start.bash
 
 # When the container is created, run the initialization instructions file
-CMD ["bash", "scripts/container_start.bash"]
+# Default setting is to use R with the salvage ftp
+ARG LANG=R
+ARG DBFILE="ftp://ftp.wildlife.ca.gov/salvage/Salvage_data_FTP.accdb"
+ENV CONTAINER_LANG=LANG
+ENV CONTAINER_DBFILE=DBFILE
+
+CMD ["bash", "scripts/container_start.bash"]#, "$CONTAINER_LANG", "$CONTAINER_DBFILE"]
