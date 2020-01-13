@@ -8,6 +8,8 @@ install:
 
 script:
   - ls data
+  - echo `date -I | head -c 10` > data/data_date.txt
+
 
 after_success:
   - test $TRAVIS_EVENT_TYPE = "pull_request" &&
