@@ -2,8 +2,8 @@
 
 Version numbers follow [Semantic Versioning](https://semver.org/).
 
-# v0.3.0
-*In progress*
+# [v0.3.0](https://github.com/dapperstats/salvage/releases/tag/v0.3.0) 
+*2020-01-13*
 
 ## Updated `Dockerfile`
 * Now allows for `--build-arg` options for all of the environment variables used in the `bash` scripts.
