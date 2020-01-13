@@ -4,6 +4,8 @@
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/dapperstats/salvage/master/LICENSE)
 [![Lifecycle:experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 
+<img src="imgs/hex.png" width="200px" align="right">
+
 Code and tools for smooth interactions with the [California Delta](https://en.wikipedia.org/wiki/Sacramento%E2%80%93San_Joaquin_River_Delta) [fish salvage monitoring database](https://wildlife.ca.gov/Conservation/Delta/Salvage-Monitoring).
 
 This is v0.3.0 and code is in *active development*.
@@ -12,7 +14,9 @@ This is v0.3.0 and code is in *active development*.
 
 A major focus of the present work is reliably generating data products that are more broadly accessible. 
 
-To that end, each day, a [`cron`](https://docs.travis-ci.com/user/cron-jobs/) job is run on [`travis-ci`](https://travis-ci.org/dapperstats/salvage) that populates the [`/data` directory](https://github.com/dapperstats/salvage/blob/master/data) here with up-to-date versions of the `.csv` files of the database tables.
+To that end, each day, the [`/data` directory](https://github.com/dapperstats/salvage/blob/master/data) is populated with up-to-date "current" (1993 - Present) salvage data in the form of `.csv`s of the tables from the `Salvage_data_FTP.accdb` file. 
+
+Updates are executed via [`cron` jobs](https://docs.travis-ci.com/user/cron-jobs/) on [`travis-ci`](https://travis-ci.org/dapperstats/salvage).
 
 Read more details on the methods, including how to run your own data conversions, [here](https://github.com/dapperstats/salvage/blob/master/CONVERSION.md).
 
