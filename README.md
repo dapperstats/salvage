@@ -6,13 +6,15 @@
 
 Code and tools for smooth interactions with the [California Delta](https://en.wikipedia.org/wiki/Sacramento%E2%80%93San_Joaquin_River_Delta) [fish salvage monitoring database](https://wildlife.ca.gov/Conservation/Delta/Salvage-Monitoring).
 
-This is v0.2.0 and code is in *active development*.
+This is v0.3.0 and code is in *active development*.
 
 ## Data Conversion 
 
 A major focus of the present work is reliably generating data products that are more broadly accessible. 
 
-[Read more details here](https://github.com/dapperstats/salvage/blob/master/CONVERSION.md).
+To that end, each day, a [`cron`](https://docs.travis-ci.com/user/cron-jobs/) job is run on [`travis-ci`](https://travis-ci.org/dapperstats/salvage) that populates the [`/data` directory](https://github.com/dapperstats/salvage/blob/master/data) here with up-to-date versions of the `.csv` files of the database tables.
+
+Read more details on the methods, including how to run your own data conversions, [here](https://github.com/dapperstats/salvage/blob/master/CONVERSION.md).
 
 ## Authors
 
