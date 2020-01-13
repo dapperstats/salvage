@@ -1,11 +1,6 @@
 language: bash
 sudo: required
 
-stages:
-  - name: after_success
-    # require the branch name to be master (note for PRs this is the base branch name)
-    if: type = pull_request
-
 before_install:
   - docker pull dapperstats/salvage_nonint
   - docker run --name salvage_container -t dapperstats/salvage_nonint
@@ -13,6 +8,8 @@ before_install:
   - ls data
 
 after_success:
-  - bash scripts/update_github_data.bash
-    
+  if [TRAVIS_EVENT_TYPE == pull_request] 
+    then
+      - bash scripts/update_github_data.bash
+  fi
 
