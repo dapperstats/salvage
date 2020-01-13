@@ -1,5 +1,6 @@
 # Tools for the fish salvage facility data 
 
+[![Build Status](https://travis-ci.org/dapperstats/salvage.svg?branch=master)](https://travis-ci.org/dapperstats/salvage)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/dapperstats/salvage/master/LICENSE)
 [![Lifecycle:experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 
