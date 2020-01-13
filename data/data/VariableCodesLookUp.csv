@@ -1,6 +1,0 @@
-CodeRowID,CodeListName,ValueCode,CodeDescription
-1,"SampleMethodList","1","State"
-2,"SexList","F","Female"
-3,"SexList","M","Male"
-4,"SampleMethodList","2","Federal"
-5,"SexList","n/p","Not Provided"

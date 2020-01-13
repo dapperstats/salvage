@@ -2,8 +2,8 @@
 
 Version numbers follow [Semantic Versioning](https://semver.org/).
 
-# v0.3.0
-*In progress*
+# [v0.3.0](https://github.com/dapperstats/salvage/releases/tag/v0.3.0) 
+*2020-01-13*
 
 ## Updated `Dockerfile`
 * Now allows for `--build-arg` options for all of the environment variables used in the `bash` scripts.
@@ -13,6 +13,15 @@ Version numbers follow [Semantic Versioning](https://semver.org/).
 * Standard existing image is now generalized: [dapperstats/salvage:v0.3.0](https://hub.docker.com/layers/dapperstats/salvage/0.3.0/images/sha256-3d68b02010770ebb5414851fffcd913b26a38c7c72a26217a8d491560e63a86b)
 * New standard image for non-interactive session is created: [dapperstats/salvage_nonint:v0.3.0](https://hub.docker.com/layers/dapperstats/salvage_nonint/0.3.0/images/sha256-b4825ef5fd47e3e4e391e66050786b65ba18c8c4a8328acbf90464c809968698) 
   * This is a new [image repository on dockerhub](https://hub.docker.com/repository/docker/dapperstats/salvage_nonint)
+
+## Integration with [Travis-CI](https://travis-ci.org/dapperstats/salvage)
+* Daily `cron` job retrieves, converts, uploads, and tags the data
+  * `.travis.yml` leverages the non-interactive image to build only the `.csv` files (no `R` session is started)
+  * `update_github_data.bash` is what's run `after_success` for `cron` jobs only
+    * Uses @dapperdeploy as the user bpt
+    * Updates the master branch with the `.csv`s and `.txt` date log
+    * Creates a tag based on the date, and deploys the tag as a release
+
 
 # [v0.2.0](https://github.com/dapperstats/salvage/releases/tag/v0.2.0) 
 *2020-01-12*

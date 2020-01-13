@@ -1,18 +1,33 @@
 #!/bin/bash
 
-# Set up git on dapperdeploy user
+# Set environment variables
+CURRENT_DATE=`date -I | head -c 10`
 
+# Set up dapperdeploy as user
 git config --global user.email "deploy@dapperstats.com"
 git config --global user.name "DAPPER Deploy Bot"
 
-
+# Checkout the master branch
 git checkout master
-git add data/*.csv
-git commit -m "updating_data Travis job: $TRAVIS_JOB_NUMBER"
 
+# Add .csv (data) files and the .txt date log
+git add data/*.csv
+git add data/*.txt
+
+# Commit the files with a message tracking the job number and date
+git commit -m "updating_data Travis job: $TRAVIS_JOB_NUMBER date: $CURRENT_DATE"
+
+# Remote add the committed files to the deploy branch
 git remote add deploy https://${GITHUB_DEPLOY_PAT}@github.com/dapperstats/salvage.git > /dev/null 2>&1
 
-git tag $TRAVIS_JOB_NUMBER
+# Create a tag based on the date
+git tag $CURRENT_DATE
+
+# Push the deploy branch to update the master
 git push --quiet --set-upstream deploy master
+
+# Push the tag to the branch
 git push --quiet deploy --tags > /dev/null 2>&1
-curl -v -i -X POST -H "Content-Type:application/json" -H "Authorization: token $GITHUB_RELEASE_PAT" https://api.github.com/repos/dapperstats/salvage/releases -d "{\"tag_name\":\"$TRAVIS_JOB_NUMBER\"}"
+
+# POST the tag as a release
+curl -v -i -X POST -H "Content-Type:application/json" -H "Authorization: token $GITHUB_RELEASE_PAT" https://api.github.com/repos/dapperstats/salvage/releases -d "{\"tag_name\":\"$CURRENT_DATE\"}"
