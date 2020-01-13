@@ -1,0 +1,9 @@
+language: bash
+sudo: required
+
+before_install:
+  - docker pull dapperstats/salvage_nonint
+  - docker run --name salv -t -d dapperstats/salvage /bin/bash
+  - docker cp ../salvage salv:/
+  - docker exec -i salv ls salvage
+

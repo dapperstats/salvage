@@ -2,6 +2,18 @@
 
 Version numbers follow [Semantic Versioning](https://semver.org/).
 
+# v0.3.0
+*In progress*
+
+## Updated `Dockerfile`
+* Now allows for `--build-arg` options for all of the environment variables used in the `bash` scripts.
+  * Most notable is `i` which allows for the toggling on or off of the interactive `R` session
+
+## Updated `Docker` images
+* Standard existing image is now generalized: [dapperstats/salvage:v0.3.0](https://hub.docker.com/layers/dapperstats/salvage/0.3.0/images/sha256-3d68b02010770ebb5414851fffcd913b26a38c7c72a26217a8d491560e63a86b)
+* New standard image for non-interactive session is created: [dapperstats/salvage_nonint:v0.3.0](https://hub.docker.com/layers/dapperstats/salvage_nonint/0.3.0/images/sha256-b4825ef5fd47e3e4e391e66050786b65ba18c8c4a8328acbf90464c809968698) 
+  * This is a new [image repository on dockerhub](https://hub.docker.com/repository/docker/dapperstats/salvage_nonint)
+
 # [v0.2.0](https://github.com/dapperstats/salvage/releases/tag/v0.2.0) 
 *2020-01-12*
 

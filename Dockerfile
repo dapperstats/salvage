@@ -11,10 +11,17 @@ RUN apt-get update \
 # Move the scripts folder into the container
 COPY scripts scripts
 
-# Set environmental variables to pass to container_start.bash
-ENV REMOTE_DB_FILE="ftp://ftp.wildlife.ca.gov/salvage/Salvage_data_FTP.accdb" \
-    LOCAL_DB_FILE=local.accdb \
-    DATA_DIR=data
+# Default values for arguments passed to environment variables
+ARG r="ftp://ftp.wildlife.ca.gov/salvage/Salvage_data_FTP.accdb" 
+ARG l=local.accdb 
+ARG d=data 
+ARG i=TRUE
+
+# Set environment variables to pass to container_start.bash
+ENV REMOTE_DB_FILE=$r \
+    LOCAL_DB_FILE=$l \
+    DATA_DIR=$d \
+    INTERACTIVE_R=$i
 
 # When the container is built, execute container_start.bash
-CMD bash scripts/container_start.bash -r $REMOTE_DB_FILE -l $LOCAL_DB_FILE -d $DATA_DIR
+CMD bash scripts/container_start.bash -r $REMOTE_DB_FILE -l $LOCAL_DB_FILE -d $DATA_DIR -i $INTERACTIVE_R
