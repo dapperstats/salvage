@@ -3,7 +3,7 @@
 # Set up git on dapperdeploy user
 
 git config --global user.email "deploy@dapperstats.com"
-git config --global user.name "Deploy Bot"
+git config --global user.name "DAPPER Deploy Bot"
 
 git checkout master
 git add data/* 
