@@ -1,0 +1,70 @@
+VariableRowID,VariableName,Active,Description,VariableType
+1,"AcreFeet",1,"AcreFeet",1
+2,"Active",1,,1
+3,"AdiposeClip",1,"AdiposeClip",4
+4,"BayPump1",1,"BayPump1",4
+5,"BayPump2",1,"BayPump2",4
+6,"BayPump3",1,"BayPump3",4
+7,"BayPump4",1,"BayPump4",4
+8,"BayPump5",1,"BayPump5",4
+9,"BuildingCode",1,"Describe in which building fish are processed",4
+10,"BuildingDescription",1,,1
+11,"BuildingRowID",1,"Unique record identifier for Building table",4
+12,"CatchRowID",1,"Unique record identifier",4
+13,"Class",1,,
+14,"CodeDescription",1,,1
+15,"CodeListName",1,,
+16,"CodeRowID",1,"Unique record identifier",4
+17,"Comments",1,"Comments",4
+18,"CommonName",1,,1
+19,"CoordinateUnits",1,,
+20,"Count",1,"Count of fish (or other organisms) of a given species",1
+21,"CWTRowID",0,"CWTRowID",4
+22,"Description",1,,1
+23,"Easting",1,,1
+24,"FacilityCode",1,,
+25,"Family",1,,
+26,"ForkLength",1,"Basic catch variable: Length of fish(es) measured from tip of head to fork of tail",1
+27,"FromDate",1,,1
+28,"Genus",1,,
+29,"GroupingCode",1,,1
+30,"HoldingTankFlow",1,"HoldingTankFlow",4
+31,"LengthFrequency",1,"LengthFrequency",4
+32,"LengthRowID",1,"Unique record identifier",4
+33,"Location",1,,1
+34,"MinutesPumping",1,"MinutesPumping",1
+35,"NormalizedCode",1,,
+36,"Northing",1,,1
+37,"Order",1,,
+38,"OrganismCode",1,"Alphanumeric code for a species of fish present in the catch.",3
+39,"OrganismRowID",1,"Unique record identifier",4
+40,"Phylum",1,,
+41,"PrimaryBypass",0,"Number of primary bypass open",1
+42,"PrimaryDepth",1,"PrimaryDepth",1
+43,"PrimaryFlow",1,"PrimaryFlow",1
+44,"s_Generation",1,,
+45,"s_Lineage",1,,
+46,"SampleDate",1,"Date of the sampling event.",4
+47,"SampleMethod",1,"SampleMethod",2
+48,"Sampler",1,"Sampler",4
+49,"SampleRowID",1,"Unique record identifier for table Sample",4
+50,"SampleTime",1,"Time of sampling event.",1
+51,"SampleTimeLength",1,"SampleTimeLength",1
+52,"SecondaryDepth",0,"Water depth in secondary bypass",1
+53,"SecondaryFlow",1,"SecondaryFlow",4
+54,"Sex",1,"Sex of a given organism",2
+55,"SignificantDecimal",1,,1
+56,"Species",1,,
+57,"StationRowID",1,"Unique record identifier",4
+58,"StudyCode",1,"Alpha code to distinguish among special sudies",3
+59,"StudyRowID",1,"Unique record identifier",4
+60,"TagCode",1,"TagCode",4
+61,"ToDate",1,,1
+62,"UnitRowID",1,"Unique record identifier",4
+63,"Units",1,,
+64,"UserName",1,"Logon name of user who entered or edited the data",2
+65,"ValueCode",1,,1
+66,"VariableName",1,,1
+67,"VariableRowID",1,"Unique record identifier",2
+68,"VariableType",1,,4
+69,"WaterTemperature",1,"WaterTemperature",1
