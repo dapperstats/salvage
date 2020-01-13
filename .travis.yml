@@ -1,12 +1,13 @@
 language: bash
 sudo: required
 
-before_install:
+install:
   - docker pull dapperstats/salvage_nonint
   - docker run --name salvage_container -t dapperstats/salvage_nonint
   - docker cp salvage_container:/data ./data
-  - ls data
 
+script:
+  - ls data
 
 after_success:
   - test $TRAVIS_EVENT_TYPE = "pull_request" &&
