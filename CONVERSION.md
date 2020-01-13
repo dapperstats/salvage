@@ -1,5 +1,7 @@
 ## Data Conversion
 
+This document outlines the process by which the remote database is converted into local files and data objects.
+
 ### `bash` script: remote `.accdb` to local `.csv`s 
 
 The main conversion is from the `.accdb` file on the remote [ftp](ftp://ftp.dfg.ca.gov/salvage/) to a local set of `.csv` files named by the tables in the database. 
