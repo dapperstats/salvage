@@ -6,7 +6,7 @@ git config --global user.email "deploy@dapperstats.com"
 git config --global user.name "DAPPER Deploy Bot"
 
 git checkout master
-git add data/* 
+git add data/*.csv
 git commit -m "updating_data Travis build: $TRAVIS_BUILD_BUMBER"
 
 git remote add deploy https://${GITHUB_DEPLOY_PAT}@github.com/dapperstats/salvage.git > /dev/null 2>&1
