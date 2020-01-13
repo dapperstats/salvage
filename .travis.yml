@@ -7,5 +7,8 @@ before_install:
   - docker cp salvage_container:/data ./data
   - ls data
 
+
 after_success:
-  - bash scripts/update_github_data.bash
+  - test $TRAVIS_EVENT_TYPE = "pull_request" &&
+    bash scripts/update_github_data.bash
+
