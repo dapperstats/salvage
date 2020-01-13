@@ -1,6 +1,6 @@
 ## Data Conversion
 
-### `bash` script remote `.accdb` to local `.csv`s 
+### `bash` script: remote `.accdb` to local `.csv`s 
 
 The main conversion is from the `.accdb` file on the remote [ftp](ftp://ftp.dfg.ca.gov/salvage/) to a local set of `.csv` files named by the tables in the database. 
 We accomplish this through a [`bash`](https://www.gnu.org/software/bash/) script [`remote_mdb_to_local_csvs.bash`](https://github.com/dapperstats/salvage/blob/master/scripts/remote_mdb_to_local_csvs.bash).
