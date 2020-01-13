@@ -15,4 +15,4 @@ git remote add deploy https://${GITHUB_DEPLOY_PAT}@github.com/dapperstats/salvag
 git tag $TRAVIS_BUILD_NUMBER
 git push --quiet --set-upstream deploy master
 git push --quiet deploy --tags > /dev/null 2>&1
-#  curl -v -i -X POST -H "Content-Type:application/json" -H "Authorization: token $GITHUB_RELEASE_PAT" https://api.github.com/repos/dapperstats/salvage/releases -d "{\"tag_name\":\"$TRAVIS_BUILD_NUMBER\"}"
+# curl -v -i -X POST -H "Content-Type:application/json" -H "Authorization: token $GITHUB_RELEASE_PAT" https://api.github.com/repos/dapperstats/salvage/releases -d "{\"tag_name\":\"$TRAVIS_BUILD_NUMBER\"}"
