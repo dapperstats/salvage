@@ -16,7 +16,12 @@ Version numbers follow [Semantic Versioning](https://semver.org/).
 
 ## Integration with [Travis-CI](https://travis-ci.org/dapperstats/salvage)
 * Daily `cron` job retrieves, converts, uploads, and tags the data
-* `.travis.yml` leverages the non-interactive image to build the `.csv`s only
+  * `.travis.yml` leverages the non-interactive image to build only the `.csv` files (no `R` session is started)
+  * `update_github_data.bash` is what's run `after_success` for `cron` jobs only
+    * Uses @dapperdeploy as the user bpt
+    * Updates the master branch with the `.csv`s and `.txt` date log
+    * Creates a tag based on the date, and deploys the tag as a release
+
 
 # [v0.2.0](https://github.com/dapperstats/salvage/releases/tag/v0.2.0) 
 *2020-01-12*
