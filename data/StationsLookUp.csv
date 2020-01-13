@@ -1,0 +1,4 @@
+FacilityCode,Active,Location,Northing,Easting,BuildingDescription,CoordinateUnits,GroupingCode,Comments
+"F",1,"Federal Facility",,,,,2,"CVP"
+"NS",1,"New State Facility",,,,,1,"SWP"
+"OS",1,"Old State Facility",,,,,1,"SWP"
