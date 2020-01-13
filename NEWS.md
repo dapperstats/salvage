@@ -14,6 +14,10 @@ Version numbers follow [Semantic Versioning](https://semver.org/).
 * New standard image for non-interactive session is created: [dapperstats/salvage_nonint:v0.3.0](https://hub.docker.com/layers/dapperstats/salvage_nonint/0.3.0/images/sha256-b4825ef5fd47e3e4e391e66050786b65ba18c8c4a8328acbf90464c809968698) 
   * This is a new [image repository on dockerhub](https://hub.docker.com/repository/docker/dapperstats/salvage_nonint)
 
+## Integration with [Travis-CI](https://travis-ci.org/dapperstats/salvage)
+* Daily `cron` job retrieves, converts, uploads, and tags the data
+* `.travis.yml` leverages the non-interactive image to build the `.csv`s only
+
 # [v0.2.0](https://github.com/dapperstats/salvage/releases/tag/v0.2.0) 
 *2020-01-12*
 
