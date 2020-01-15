@@ -4,7 +4,7 @@ sudo: required
 install:
   - docker pull dapperstats/salvage_nonint
   - docker run --name salvage_container -t dapperstats/salvage_nonint
-  - docker cp salvage_container:/data ./data
+  - docker cp salvage_container:/data .
 
 script:
   - ls data
