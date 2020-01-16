@@ -16,7 +16,7 @@ To that end, each day, the [`/data` directory](https://github.com/dapperstats/sa
 
 Updates are executed via [`cron` jobs](https://docs.travis-ci.com/user/cron-jobs/) on [`travis-ci`](https://travis-ci.org/dapperstats/salvage).
 
-Read more details on the methods, including how to run your own data conversions, [here](https://github.com/dapperstats/salvage/blob/master/CONVERSION.md).
+Read more details on the methods, including how to run your own data conversions, [here](https://github.com/dapperstats/salvage/blob/master/documents/conversion.md).
 
 ## Authors
 

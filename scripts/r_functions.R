@@ -36,7 +36,8 @@ db_table_names <- function(tables_in = NULL){
 }
 
 read_database <- function(table_names = db_table_names(), 
-                          data_dir = "./data", quiet = FALSE){
+                          data_dir = "./data/Salvage_data_FTP", 
+                          quiet = FALSE){
   if(!quiet){
     message("reading in database .csv files")
   }
@@ -45,60 +46,62 @@ read_database <- function(table_names = db_table_names(),
   out
 } 
 
-read_table <- function(table_name = "building", data_dir = "./data"){
+read_table <- function(table_name = "building", 
+                       data_dir = "./data/Salvage_data_FTP"){
   function_name <- paste0("read_", table_name)
   do.call(function_name, args = list(data_dir = data_dir))
 }
 
-read_building <- function(data_dir = "./data"){
+read_building <- function(data_dir = "./data/Salvage_data_FTP"){
   read_csv("Building", data_dir = data_dir)
 }
 
-read_catch <- function(data_dir = "./data"){
+read_catch <- function(data_dir = "./data/Salvage_data_FTP"){
   read_csv("Catch", data_dir = data_dir)
 }
 
-read_dna_cwt <- function(data_dir = "./data"){
+read_dna_cwt <- function(data_dir = "./data/Salvage_data_FTP"){
   read_csv("DNAandCWTRace", data_dir = data_dir)
 }
 
-read_larval_length <- function(data_dir = "./data"){
+read_larval_length <- function(data_dir = "./data/Salvage_data_FTP"){
   read_csv("LarvalFishLength", data_dir = data_dir)
 }
 
-read_length <- function(data_dir = "./data"){
+read_length <- function(data_dir = "./data/Salvage_data_FTP"){
   read_csv("Length", data_dir = data_dir)
 }
 
-read_organisms <- function(data_dir = "./data"){
+read_organisms <- function(data_dir = "./data/Salvage_data_FTP"){
   read_csv("OrganismsLookUp", data_dir = data_dir)
 }
 
-read_sample <- function(data_dir = "./data"){
+read_sample <- function(data_dir = "./data/Salvage_data_FTP"){
   read_csv("Sample", data_dir = data_dir)
 }
 
-read_stations <- function(data_dir = "./data"){
+read_stations <- function(data_dir = "./data/Salvage_data_FTP"){
   read_csv("StationsLookUp", data_dir = data_dir)
 }
 
-read_studies <- function(data_dir = "./data"){
+read_studies <- function(data_dir = "./data/Salvage_data_FTP"){
   read_csv("StudiesLookUp", data_dir = data_dir)
 }
 
-read_units <- function(data_dir = "./data"){
+read_units <- function(data_dir = "./data/Salvage_data_FTP"){
   read_csv("UnitsLookUp", data_dir = data_dir)
 }
 
-read_variables <- function(data_dir = "./data"){
+read_variables <- function(data_dir = "./data/Salvage_data_FTP"){
   read_csv("VariablesLookUp", data_dir = data_dir)
 }
 
-read_variable_codes <- function(data_dir = "./data"){
+read_variable_codes <- function(data_dir = "./data/Salvage_data_FTP"){
   read_csv("VariableCodesLookUp", data_dir = data_dir)
 }
 
-read_csv <- function(file_name = "Sample", data_dir = "./data"){
+read_csv <- function(file_name = "Sample", 
+                     data_dir = "./data/Salvage_data_FTP"){
   file_name <- paste0(file_name, ".csv")
   file_namel <- tolower(file_name)
   fopts <- list.files(data_dir)
