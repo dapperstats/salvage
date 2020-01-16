@@ -10,7 +10,7 @@ script:
   - ls data
   - echo `date -I | head -c 10` > data/data_date.txt
   - cat data/data_date.txt
-  - wget ftp://ftp.wildlife.ca.gov/salvage/Salvage_data_FTP.accdb -o lol.accdb
+  - wget ftp://ftp.wildlife.ca.gov/salvage/Salvage_data_FTP.accdb -o data/lol.accdb
   - ls data
 
 after_success:
