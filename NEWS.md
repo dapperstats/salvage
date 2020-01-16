@@ -2,6 +2,11 @@
 
 Version numbers follow [Semantic Versioning](https://semver.org/).
 
+# [v0.4.0](https://github.com/dapperstats/salvage/releases/tag/v0.4.0) 
+*2020-01-16*
+
+## Removal of docker image building code to accessor repo
+
 # [v0.3.0](https://github.com/dapperstats/salvage/releases/tag/v0.3.0) 
 *2020-01-13*
 

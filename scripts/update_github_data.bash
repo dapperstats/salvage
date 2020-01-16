@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Set environment variables
-CURRENT_DATE=`date -I | head -c 10`
+CURRENT_DATE=`date +%Y-%m-%d_%H-%M | head -c 20`
 
 # Set up dapperdeploy as user
 git config --global user.email "deploy@dapperstats.com"
@@ -10,12 +10,11 @@ git config --global user.name "DAPPER Deploy Bot"
 # Checkout the master branch
 git checkout master
 
-# Add .csv (data) files and the .txt date log
+# Add .csv (data) files 
 git add data/*.csv
-git add data/*.txt
 
 # Commit the files with a message tracking the job number and date
-git commit -m "updating_data Travis job: $TRAVIS_JOB_NUMBER date: $CURRENT_DATE"
+git commit -m "updating data cron job: $CURRENT_DATE"
 
 # Remote add the committed files to the deploy branch
 git remote add deploy https://${GITHUB_DEPLOY_PAT}@github.com/dapperstats/salvage.git > /dev/null 2>&1
@@ -31,3 +30,4 @@ git push --quiet deploy --tags > /dev/null 2>&1
 
 # POST the tag as a release
 curl -v -i -X POST -H "Content-Type:application/json" -H "Authorization: token $GITHUB_RELEASE_PAT" https://api.github.com/repos/dapperstats/salvage/releases -d "{\"tag_name\":\"$CURRENT_DATE\"}"
+
