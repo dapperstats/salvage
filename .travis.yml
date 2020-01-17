@@ -2,16 +2,13 @@ language: bash
 sudo: required
 
 install:
-  - docker pull dapperstats/salvage_nonint
-  - docker run --name salvage_container -t dapperstats/salvage_nonint
-  - docker cp salvage_container:/data .
+  - docker pull dapperstats/accessor
+  - docker run --name acc -t dapperstats/accessor
+  - docker cp acc:/data .
 
 script:
   - ls data
-  - echo `date -I | head -c 10` > data/data_date.txt
-  - cat data/data_date.txt
 
 after_success:
   - test $TRAVIS_EVENT_TYPE = "cron" &&
-    bash scripts/update_github_data.bash
-
+    bash scripts/update_github_data.bash 
