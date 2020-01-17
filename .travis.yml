@@ -10,5 +10,5 @@ script:
   - ls data
 
 after_success:
-  - test $TRAVIS_EVENT_TYPE = "cron" &&
+  - test $TRAVIS_EVENT_TYPE = "push" &&
     bash scripts/update_github_data.bash 
