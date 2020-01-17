@@ -6,8 +6,8 @@ This document outlines the process by which the remote database is converted int
 
 The main conversion is from the `.accdb` file on the remote [ftp](ftp://ftp.dfg.ca.gov/salvage/) to a local set of `.csv` files named by the tables in the database. 
 We accomplish this through a stable [`Docker`](https://www.docker.com) [software container](https://www.docker.com/resources/what-container).
-The [accessor image](https://hub.docker.com/r/dapperstats/accessor) is freely available on [Docker Hub](https://hub.docker.com/) and its default setting are configured for the contemporary salvage database.
-Code for the construction of the accessor image is available in a [separate repo](https://www.github.com/dapperstats/accessor).
+The [`accessor` image](https://hub.docker.com/r/dapperstats/accessor) is freely available on [Docker Hub](https://hub.docker.com/) and its default setting are configured for the contemporary salvage database.
+Code for the construction of the `accessor` image is available in a [separate repo](https://www.github.com/dapperstats/accessor).
 
 For ease, we provide a [daily-made version of the salvage data](https://github.com/dapperstats/salvage/blob/master/data) with `.csv`s from an up-to-date "current" (1993 - Present) salvage database file (`Salvage_data_FTP.accdb`).
 Updates are pushed to GitHub as [tagged Releases](https://github.com/dapperstats/salvage/releases).

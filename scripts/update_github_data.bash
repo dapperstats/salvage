@@ -1,5 +1,6 @@
 #!/bin/bash
 
+echo "Updating files on GitHub..."
 # Set environment variables
 CURRENT_DATE=`date +%Y-%m-%d_%H-%M | head -c 20`
 
