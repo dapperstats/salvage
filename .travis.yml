@@ -2,9 +2,9 @@ language: bash
 sudo: required
 
 install:
-  - docker pull dapperstats/salvage_nonint
-  - docker run --name salvage_container -t dapperstats/salvage_nonint
-  - docker cp salvage_container:/data .
+  - docker pull dapperstats/accessor
+  - docker run --name acc -t dapperstats/accessor
+  - docker cp acc:/data .
 
 script:
   - ls data
