@@ -6,11 +6,10 @@ install:
   - docker pull dapperstats/accessor
   - docker run --name acc --restart=always -t dapperstats/accessor
   - docker cp acc:/data .
-  - docker cp acc:/scripts .
+  - docker cp scripts acc
 
 script:
   - ls data
-  - ls scripts
   - docker exec -i acc bash -c "Rscript scripts/r_script.R"
 
 after_success:
