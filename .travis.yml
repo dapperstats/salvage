@@ -11,6 +11,7 @@ install:
 script:
   - ls data
   - ls scripts
+  - Rscript scripts/r_script.R
 
 after_success:
   - test $TRAVIS_EVENT_TYPE = "cron" &&
