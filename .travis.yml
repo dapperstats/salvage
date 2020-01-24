@@ -4,13 +4,14 @@ sudo: required
 
 install:
   - docker pull dapperstats/accessor
-  - docker run --name acc -d -t dapperstats/accessor
+  - docker run --name acc -t dapperstats/accessor
   - docker cp acc:/data .
   - docker cp acc:/scripts .
 
 script:
   - ls data
   - ls scripts
+  - docker restart acc
   - docker exec -i acc bash -c "cd acc && Rscript scripts/r_script.R"
 
 after_success:
