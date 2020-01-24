@@ -1,4 +1,5 @@
 language: bash
+language: r
 sudo: required
 
 install:
