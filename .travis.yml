@@ -6,7 +6,7 @@ install:
   - docker pull dapperstats/accessor
   - docker run --name acc --restart=always -t dapperstats/accessor
   - docker cp acc:/data .
-  - docker cp scripts acc
+  - docker cp scripts acc:/
 
 script:
   - ls data
