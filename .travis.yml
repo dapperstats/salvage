@@ -12,7 +12,7 @@ script:
   - ls data
   - ls scripts
   - docker restart acc
-  - docker exec -i acc bash -c "cd acc && Rscript scripts/r_script.R"
+  - docker exec -i acc bash -c "Rscript scripts/r_script.R"
 
 after_success:
   - test $TRAVIS_EVENT_TYPE = "cron" &&
