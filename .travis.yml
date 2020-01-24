@@ -5,9 +5,11 @@ install:
   - docker pull dapperstats/accessor
   - docker run --name acc -t dapperstats/accessor
   - docker cp acc:/data .
+  - docker cp acc:/scripts .
 
 script:
   - ls data
+  - ls scripts
 
 after_success:
   - test $TRAVIS_EVENT_TYPE = "cron" &&
