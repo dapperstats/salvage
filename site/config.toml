@@ -1,10 +1,10 @@
 languageCode = "en-us"
-title = "Crab"
+title = "salvage.fish"
 theme = "crab"
 baseurl = "https://salvage.fish/"
 
 [params]
-description = "A clean Hugo theme for websites"
+description = "Data from the California Delta fish salvage facilities"
 # logoimage = "images/logo.jpg"
 # copyright = "foo"
 

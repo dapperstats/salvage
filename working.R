@@ -11,3 +11,4 @@ daily_volume(salvage, dates)
 site_dir <- "site"
 dir.create(site_dir, showWarnings = FALSE)
 blogdown::new_site(dir = site_dir, theme = "thomasheller/crab")
+blogdown::serve_site()
