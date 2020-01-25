@@ -18,7 +18,7 @@ Each day, the [`/data` directory](https://github.com/dapperstats/salvage/blob/ma
 Updates are executed via [`cron` jobs](https://docs.travis-ci.com/user/cron-jobs/) on [`travis-ci`](https://travis-ci.org/dapperstats/salvage) using the `accessor` [`Docker`](https://www.docker.com) [software container](https://www.docker.com/resources/what-container).
 Code for the construction of the [`accessor` image](https://hub.docker.com/r/dapperstats/accessor) is available in a [separate repo](https://www.github.com/dapperstats/accessor).
  
-Read more details on the methods, including how to run your own data conversions, [here](https://github.com/dapperstats/salvage/blob/master/documents/conversion.md).
+Read more details on the [methods](https://github.com/dapperstats/salvage/blob/master/documents/methods.md), including how to run your own data [conversions](https://github.com/dapperstats/salvage/blob/master/documents/conversion.md).
 
 ## Authors
 
