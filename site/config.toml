@@ -1,7 +1,7 @@
 languageCode = "en-us"
 title = "Crab"
 theme = "crab"
-baseurl = "https://salvage.fish"
+baseurl = "https://salvage.fish/"
 
 [params]
 description = "A clean Hugo theme for websites"
