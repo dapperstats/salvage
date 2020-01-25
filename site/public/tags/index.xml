@@ -1,105 +1,16 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tags on California Delta Fish Salvage</title>
+    <title>Tags | salvage.fish</title>
     <link>/tags/</link>
-    <description>Recent content in Tags on California Delta Fish Salvage</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Tue, 19 Mar 2019 13:21:00 +0100</lastBuildDate>
-    
-	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
-    
-    
-    <item>
-      <title>has</title>
-      <link>/tags/has/</link>
-      <pubDate>Tue, 19 Mar 2019 13:21:00 +0100</pubDate>
-      
-      <guid>/tags/has/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>page</title>
-      <link>/tags/page/</link>
-      <pubDate>Tue, 19 Mar 2019 13:21:00 +0100</pubDate>
-      
-      <guid>/tags/page/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>some</title>
-      <link>/tags/some/</link>
-      <pubDate>Tue, 19 Mar 2019 13:21:00 +0100</pubDate>
-      
-      <guid>/tags/some/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>tags</title>
-      <link>/tags/tags/</link>
-      <pubDate>Tue, 19 Mar 2019 13:21:00 +0100</pubDate>
-      
-      <guid>/tags/tags/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>this</title>
-      <link>/tags/this/</link>
-      <pubDate>Tue, 19 Mar 2019 13:21:00 +0100</pubDate>
-      
-      <guid>/tags/this/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>also</title>
-      <link>/tags/also/</link>
-      <pubDate>Wed, 27 Feb 2019 21:30:00 +0100</pubDate>
-      
-      <guid>/tags/also/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>post</title>
-      <link>/tags/post/</link>
-      <pubDate>Wed, 27 Feb 2019 21:30:00 +0100</pubDate>
-      
-      <guid>/tags/post/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>R Markdown</title>
-      <link>/tags/r-markdown/</link>
-      <pubDate>Thu, 23 Jul 2015 21:13:14 -0500</pubDate>
-      
-      <guid>/tags/r-markdown/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>plot</title>
-      <link>/tags/plot/</link>
-      <pubDate>Thu, 23 Jul 2015 21:13:14 -0500</pubDate>
-      
-      <guid>/tags/plot/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>regression</title>
-      <link>/tags/regression/</link>
-      <pubDate>Thu, 23 Jul 2015 21:13:14 -0500</pubDate>
-      
-      <guid>/tags/regression/</guid>
-      <description></description>
-    </item>
+      <atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    <description>Tags</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language>
+    <image>
+      <url>img/map[gravatar:%!s(bool=false) shape:circle]</url>
+      <title>Tags</title>
+      <link>/tags/</link>
+    </image>
     
   </channel>
 </rss>

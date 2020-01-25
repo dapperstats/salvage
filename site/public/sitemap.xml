@@ -1,179 +1,29 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>/blog/</loc>
-    <lastmod>2019-03-27T21:30:00+01:00</lastmod>
-    <priority>0</priority>
+    <loc>/authors/admin/</loc>
   </url>
   
   <url>
-    <loc>/blog/2019/03/welcome-to-my-blog/</loc>
-    <lastmod>2019-03-27T21:30:00+01:00</lastmod>
+    <loc>/authors/</loc>
   </url>
   
   <url>
-    <loc>/features/</loc>
-    <lastmod>2019-03-19T13:21:00+01:00</lastmod>
-    <priority>0</priority>
+    <loc>/categories/</loc>
   </url>
   
   <url>
-    <loc>/more/</loc>
-    <lastmod>2019-03-19T13:21:00+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/</loc>
-    <lastmod>2019-03-19T13:21:00+01:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/features/tags/</loc>
-    <lastmod>2019-03-19T13:21:00+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/has/</loc>
-    <lastmod>2019-03-19T13:21:00+01:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/tags/page/</loc>
-    <lastmod>2019-03-19T13:21:00+01:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/tags/some/</loc>
-    <lastmod>2019-03-19T13:21:00+01:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/tags/tags/</loc>
-    <lastmod>2019-03-19T13:21:00+01:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/tags/this/</loc>
-    <lastmod>2019-03-19T13:21:00+01:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/features/two-column-layout/</loc>
-    <lastmod>2019-03-18T11:14:41+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/features/nested-menus/</loc>
-    <lastmod>2019-03-18T11:14:35+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/features/responsive-design/</loc>
-    <lastmod>2019-03-18T11:14:30+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/contact/</loc>
-    <lastmod>2019-03-18T10:59:56+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/blog/2019/02/more-blogging/</loc>
-    <lastmod>2019-02-27T21:30:00+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/also/</loc>
-    <lastmod>2019-02-27T21:30:00+01:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/tags/post/</loc>
-    <lastmod>2019-02-27T21:30:00+01:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/more/items-to-show/</loc>
-    <lastmod>2019-02-05T07:51:49+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/more/the-nested-menus-feature/</loc>
-    <lastmod>2019-02-05T07:51:49+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/another/</loc>
-    <lastmod>2019-02-05T07:51:49+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/features/</loc>
-    <lastmod>2019-02-05T07:51:49+01:00</lastmod>
+    <loc>/publication_types/</loc>
   </url>
   
   <url>
     <loc>/</loc>
-    <lastmod>2019-02-05T07:51:49+01:00</lastmod>
   </url>
   
   <url>
-    <loc>/more/</loc>
-    <lastmod>2019-02-05T07:51:49+01:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/more/some-more-menu/</loc>
-    <lastmod>2019-02-05T07:51:49+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/features/nested-menus/third-level-1/</loc>
-    <lastmod>2019-02-05T07:51:49+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/features/nested-menus/third-level-2/</loc>
-    <lastmod>2019-02-05T07:51:49+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/features/nested-menus/third-level-3/</loc>
-    <lastmod>2019-02-05T07:51:49+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/blog/2015/07/hello-r-markdown/</loc>
-    <lastmod>2015-07-23T21:13:14-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/r-markdown/</loc>
-    <lastmod>2015-07-23T21:13:14-05:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/tags/plot/</loc>
-    <lastmod>2015-07-23T21:13:14-05:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/tags/regression/</loc>
-    <lastmod>2015-07-23T21:13:14-05:00</lastmod>
-    <priority>0</priority>
+    <loc>/tags/</loc>
   </url>
   
 </urlset>
