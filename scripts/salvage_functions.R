@@ -14,6 +14,20 @@ most_recent_samples <- function(salvage){
 
 daily_counts <- function(salvage, dates = NULL, organism = 26, 
                          facility = c("SWP", "CVP"), study = 0){
+
+  pumping_times <- salvage$Sample$MinutesPumping
+  sample_times <- salvage$Sample$SampleTimeLength
+  flows <- salvage$Sample$PrimaryFlow # cubic feet per second
+  flows <- flows * 60 # cubic feet per minute
+  flows <- flows * 0.0283168 # cubic meters per minute
+  flows <- flows * 1/1000 # 1000 cubic meters per minute
+
+  pumping_vols <- pumping_times * flows
+  sample_vols <- sample_times * flows
+
+  salvage$Sample$PumpingVol <- pumping_vols
+  salvage$Sample$SampleVol <- sample_vols
+
   sample_method <- as.numeric(factor(facility, levels = c("SWP", "CVP")))
   sample_method <- 1:2
   if(is.null(dates)){
@@ -27,6 +41,9 @@ daily_counts <- function(salvage, dates = NULL, organism = 26,
   catch <- rep(NA, nrows)
   pumping_time <- rep(NA, nrows)
   sample_time <- rep(NA, nrows)
+  pumping_vol <- rep(NA, nrows)
+  sample_vol <- rep(NA, nrows)
+  vol <- rep(NA, nrows)
   nsamples <- rep(NA, nrows)
 
   for(i in 1:nrows){
@@ -42,6 +59,14 @@ daily_counts <- function(salvage, dates = NULL, organism = 26,
     pumping_time[i] <- sum(pumping_times, na.rm = TRUE)
     sample_time[i] <- sum(sample_times, na.rm = TRUE)
 
+    pumping_vols <- salvage$Sample$PumpingVol[all_in]
+    sample_vols <- salvage$Sample$SampleVol[all_in]
+    pumping_vol[i] <- sum(pumping_vols, na.rm = TRUE)
+    sample_vol[i] <- sum(sample_vols, na.rm = TRUE)
+
+    vols <- salvage$Sample$AcreFeet[all_in]
+    vol[i] <- mean(vols, na.rm = TRUE)
+
     sample_ids <- salvage$Sample$SampleRowID[all_in]
     sample_in <- salvage$Building$SampleRowID %in% sample_ids
 
@@ -53,11 +78,15 @@ daily_counts <- function(salvage, dates = NULL, organism = 26,
     catch[i] <- sum(catches, na.rm = TRUE)
 
   }
-  out <- data.frame(tab, catch, nsamples, pumping_time, sample_time) 
+  vol <- convert_volume_units(vol, "AF", "thousand_m3")
+
+  out <- data.frame(tab, catch, nsamples, pumping_time, sample_time,
+                    pumping_vol, sample_vol, vol) 
   out$SampleMethod[out$SampleMethod == 1] <- "SWP"
   out$SampleMethod[out$SampleMethod == 2] <- "CVP"
   colnames(out) <- c("Building", "Date", "Species", "Count", "Samples",
-                     "Pumping_Time", "Sample_Time")
+                     "Pumping_Time", "Sample_Time", "Pumping_Volume",
+                     "Sample_Volume", "Exported_Volume")
   out
 }
 
