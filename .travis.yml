@@ -10,6 +10,8 @@ install:
 script:
   - ls data
   - docker exec -i acc bash -c "Rscript scripts/r_script.R"
+  - docker exec -i acc bash -c "Rscript scripts/salvage_functions.R"
+  - docker exec -i acc bash -c "Rscript scripts/salvage_script.R"
 
 after_success:
   - test $TRAVIS_EVENT_TYPE = "cron" &&
