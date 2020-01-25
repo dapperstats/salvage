@@ -1,0 +1,7 @@
+{{ partial "header.html" . }}
+<p class="timestamp">{{ .Date.Format "January 2, 2006" }}</p>
+{{ .Content }}
+{{ if .Params.tags }}
+  {{ partial "tags" .Params.tags }}
+{{ end }}
+{{ partial "footer.html" . }}

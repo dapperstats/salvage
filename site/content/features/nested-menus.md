@@ -1,0 +1,10 @@
+---
+date: "2019-03-18T11:14:35+01:00"
+draft: false
+title: Nested menus
+---
+
+Crab supports nested menus up to three levels deep.
+
+This is especially helpful for websites that focus on content with
+a fixed, pre-defined strucure.

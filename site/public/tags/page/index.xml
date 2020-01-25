@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>page on Crab</title>
+    <link>/tags/page/</link>
+    <description>Recent content in page on Crab</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 19 Mar 2019 13:21:00 +0100</lastBuildDate>
+    
+	<atom:link href="/tags/page/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Tags</title>
+      <link>/features/tags/</link>
+      <pubDate>Tue, 19 Mar 2019 13:21:00 +0100</pubDate>
+      
+      <guid>/features/tags/</guid>
+      <description>Crab also supports tags. This page has some tags, as you can see below, although tags are probably more common with blog posts.
+If you click on a tag, you&amp;rsquo;ll be redirected to a page that shows all pages and posts with that tag. (For some tags, there is only this one page.)</description>
+    </item>
+    
+  </channel>
+</rss>

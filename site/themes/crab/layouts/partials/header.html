@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{ .Title }} - {{ .Site.Title }}</title>
+    <link rel="stylesheet" href="{{ .Site.BaseURL }}css/crab.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=3.0">
+    <meta charset="utf-8">
+    {{ hugo.Generator }}
+
+    {{ if isset .Site.Params "mathjax"}}
+    <script type="text/javascript" src="{{ .Site.Params.mathjax }}">
+    </script>
+    {{end}}
+
+  </head>
+  <body>
+
+    <div id="container">
+
+      <div id="header">
+
+        <div id="site-logo">
+          {{ if isset .Site.Params "logoimage" }}
+            <img src="{{ .Site.BaseURL }}{{ .Site.Params.logoimage }}">
+          {{ else }}
+            <img src="{{ .Site.BaseURL }}img/crab-logo.png">
+          {{ end }}
+        </div>
+
+	<div id="site-title"><a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a></div>
+	<div id="site-slogan">{{ .Site.Params.Description }}</div>
+
+      </div>
+
+      {{ partial "menu.html" . }}
+
+      <div id="content">
+
+        <div id="article">
+	  <h1>{{ .Title }}</h1>
