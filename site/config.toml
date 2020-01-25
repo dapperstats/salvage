@@ -18,7 +18,7 @@ homepage = "https://www.dapperstats.com"
 
 [params]
 description = "Data from the California Delta fish salvage facilities"
-# logoimage = "images/logo.jpg"
+logoimage = "hex.png"
 
 
 # mathjax = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"
