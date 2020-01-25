@@ -1,24 +1,14 @@
 ---
-date: "2019-03-18T10:59:56+01:00"
-draft: false
+date: "2020-01-24"
 title: Contact
 ---
 
 {{% summary %}}
-This is a an example contact page.
+Contact us.
 {{% /summary %}}
 
 Contact the website author:
 
-*Mister Crab  
-42 Ocean Street  
-Oceania, OC 98765*
-
-Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper
-suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem
-vel eum iriure dolor in hendrerit in vulputate velit esse molestie
-consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et
-accumsan et iusto odio dignissim qui blandit praesent luptatum zzril
-delenit augue duis dolore te feugait nulla facilisi. 
+[Report bugs on GitHub](https://www.github.com/dapperstats/salvage/issues)
 
 Thanks for your feeback!
