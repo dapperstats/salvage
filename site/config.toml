@@ -8,7 +8,7 @@ licenselink = "https://github.com/dapperstats/salvage/blob/master/LICENSE"
 homepage = "https://github.com/dapperstats/salvage"
 tags = ["fish", "salvage", "California Delta"]
 features = ["responsive", "404", "blog", "tags"]
-# logoimage = "images/logo.jpg"
+logoimage = "images/logo.jpg"
 
 [author]
 name = "Juniper L. Simonis"
