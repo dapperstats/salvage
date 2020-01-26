@@ -12,6 +12,6 @@ most_recent <- most_recent_samples(salvage)
 most_recent <- data.frame(t(most_recent))
 mr_file <- paste0("site/static/files/most_recent_samples.csv")
 #write.csv(most_recent, file = mr_file, row.names = FALSE)
-list.files("site", recursive=TRUE)
+list.files()
 message("completed")
 
