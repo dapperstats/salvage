@@ -2,6 +2,22 @@
 
 Version numbers follow [Semantic Versioning](https://semver.org/).
 
+# [v0.5.0](https://github.com/dapperstats/salvage/releases/tag/v0.5.0) 
+*2020-01-25*
+
+## Website
+
+* Integration with [salvage.fish](https://salvage.fish)
+* Starting point, set up with netlify
+* Not yet populated with the data summary
+
+## Ongoing work on the R script to make the data summary
+
+* Some basic functions are set up and running
+* Travis runs the script in the container that reads in and uses the db
+* Produce proper tables for output
+* They do pass through CI
+
 # [v0.4.0](https://github.com/dapperstats/salvage/releases/tag/v0.4.0) 
 *2020-01-17*
 
