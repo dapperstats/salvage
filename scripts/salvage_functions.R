@@ -11,8 +11,9 @@ most_recent_samples <- function(salvage){
 }
 
 
+# break this functionality out to be more efficient
 
-daily_counts <- function(salvage, dates = NULL, organism = 26, 
+daily_values <- function(salvage, dates = NULL, organism = 26, 
                          facility = c("SWP", "CVP"), study = 0){
 
   pumping_times <- salvage$Sample$MinutesPumping

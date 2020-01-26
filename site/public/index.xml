@@ -5,12 +5,118 @@
     <link>/</link>
       <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     <description>salvage.fish</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sat, 25 Jan 2020 00:00:00 +0000</lastBuildDate>
     <image>
       <url>img/map[gravatar:%!s(bool=false) shape:circle]</url>
       <title>salvage.fish</title>
       <link>/</link>
     </image>
+    
+    <item>
+      <title>Data Access</title>
+      <link>/data_access/</link>
+      <pubDate>Sat, 25 Jan 2020 00:00:00 +0000</pubDate>
+      <guid>/data_access/</guid>
+      <description>&lt;br&gt;
+&lt;p&gt;This document outlines the process by which the remote database is converted into local files and data objects.&lt;/p&gt;
+&lt;br&gt;
+&lt;h2 id=&#34;bash-script-remote-accdb-to-local-csvs&#34;&gt;&lt;code&gt;bash&lt;/code&gt; script: remote &lt;code&gt;.accdb&lt;/code&gt; to local &lt;code&gt;.csv&lt;/code&gt;s&lt;/h2&gt;
+&lt;p&gt;The main conversion is from the &lt;code&gt;.accdb&lt;/code&gt; file on the remote 
+&lt;a href=&#34;ftp://ftp.dfg.ca.gov/salvage/&#34;&gt;ftp&lt;/a&gt;
+ to a local set of &lt;code&gt;.csv&lt;/code&gt; files named by the tables in the database. 
+We accomplish this through a stable 
+&lt;a href=&#34;https://www.docker.com&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;code&gt;Docker&lt;/code&gt;&lt;/a&gt;
+ 
+&lt;a href=&#34;https://www.docker.com/resources/what-container&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;software container&lt;/a&gt;
+.
+The 
+&lt;a href=&#34;https://hub.docker.com/r/dapperstats/accessor&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;code&gt;accessor&lt;/code&gt; image&lt;/a&gt;
+ is freely available on 
+&lt;a href=&#34;https://hub.docker.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Docker Hub&lt;/a&gt;
+ and its default setting are configured for the contemporary salvage database.
+Code for the construction of the &lt;code&gt;accessor&lt;/code&gt; image is available in a 
+&lt;a href=&#34;https://www.github.com/dapperstats/accessor&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;separate repo&lt;/a&gt;
+.&lt;/p&gt;
+&lt;p&gt;For ease, we provide a 
+&lt;a href=&#34;https://github.com/dapperstats/salvage/blob/master/data&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;daily-made version of the salvage data&lt;/a&gt;
+ with &lt;code&gt;.csv&lt;/code&gt;s from an up-to-date &amp;ldquo;current&amp;rdquo; (1993 - Present) salvage database file (&lt;code&gt;Salvage_data_FTP.accdb&lt;/code&gt;).
+Updates are pushed to GitHub as 
+&lt;a href=&#34;https://github.com/dapperstats/salvage/releases&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;tagged Releases&lt;/a&gt;
+.
+Data can be downloaded via via various methods from the repository.
+Updates are executed via 
+&lt;a href=&#34;https://docs.travis-ci.com/user/cron-jobs/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;code&gt;cron&lt;/code&gt; jobs&lt;/a&gt;
+ on 
+&lt;a href=&#34;https://travis-ci.org/dapperstats/salvage&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;code&gt;travis-ci&lt;/code&gt;&lt;/a&gt;
+.&lt;/p&gt;
+&lt;p&gt;To use the current image to generate an up-to-date container with data for yourself&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;(If needed) 
+&lt;a href=&#34;https://docs.docker.com/get-docker/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;install Docker&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Specific instructions vary depending on OS&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Open up a docker-ready terminal&lt;/li&gt;
+&lt;li&gt;Download the image
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;sudo docker pull dapperstats/salvage&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Build the container
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;sudo docker container run -ti --name salvage dapperstats/salvage&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Copy the data out from the container
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;sudo docker cp salvage:/data .&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;br&gt;
+&lt;h2 id=&#34;r-script-local-csvs-to-r-list-object&#34;&gt;&lt;code&gt;R&lt;/code&gt; script: local &lt;code&gt;.csv&lt;/code&gt;s to &lt;code&gt;R&lt;/code&gt; &lt;code&gt;list&lt;/code&gt; object&lt;/h2&gt;
+&lt;p&gt;An additional conversion makes the data available in 
+&lt;a href=&#34;https://www.r-project.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;code&gt;R&lt;/code&gt;&lt;/a&gt;
+ as a &lt;code&gt;list&lt;/code&gt; of &lt;code&gt;data.frames&lt;/code&gt; that is directly analagous to the &lt;code&gt;.accdb&lt;/code&gt; database of tables.&lt;/p&gt;
+&lt;p&gt;Within an instance of &lt;code&gt;R&lt;/code&gt;, navigate to where you have this code repository located, source the functions script, and read in the database:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;source(&amp;quot;scripts/r_functions.R&amp;quot;)
+database &amp;lt;- read_database()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The resulting &lt;code&gt;database&lt;/code&gt; object is a named &lt;code&gt;list&lt;/code&gt; of the database&amp;rsquo;s tables, ready for analyses.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Salvage Data Methods</title>
+      <link>/methods/</link>
+      <pubDate>Sat, 25 Jan 2020 00:00:00 +0000</pubDate>
+      <guid>/methods/</guid>
+      <description>&lt;h2 id=&#34;data-accessdata_access&#34;&gt;
+&lt;a href=&#34;/data_access&#34;&gt;Data Access&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Accessing the remote data, converting the &lt;code&gt;.accdb&lt;/code&gt; to &lt;code&gt;.csv&lt;/code&gt; files, and loading the data into R.
+Leverages 
+&lt;a href=&#34;https://www.github.com/dapperstats/accessor&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;the &lt;code&gt;accessor&lt;/code&gt; software&lt;/a&gt;
+.&lt;/p&gt;
+&lt;h2 id=&#34;auto-build&#34;&gt;Auto-build&lt;/h2&gt;
+&lt;p&gt;The data are updated daily via 
+&lt;a href=&#34;https://docs.travis-ci.com/user/cron-jobs/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;code&gt;cron&lt;/code&gt; jobs&lt;/a&gt;
+ on 
+&lt;a href=&#34;https://travis-ci.org/dapperstats/salvage&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;code&gt;travis-ci&lt;/code&gt;&lt;/a&gt;
+.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Salvage Data Summary</title>
+      <link>/summary/</link>
+      <pubDate>Sat, 25 Jan 2020 00:00:00 +0000</pubDate>
+      <guid>/summary/</guid>
+      <description>&lt;p&gt;HI&lt;/p&gt;
+</description>
+    </item>
     
   </channel>
 </rss>
