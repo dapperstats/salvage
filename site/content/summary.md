@@ -3,4 +3,6 @@ title: "Salvage Data Summary"
 date: "2020-01-25"
 ---
 
-HI
+The Data Summary will be posted shortly!
+
+Come back soon!
