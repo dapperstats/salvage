@@ -12,7 +12,7 @@ script:
   - docker exec -i acc bash -c "Rscript scripts/salvage_script.R"
   - docker exec -i acc ls
   - docker cp acc:/files ./site/static/files
-
+  - ls
 
 after_success:
   - test $TRAVIS_EVENT_TYPE = "cron" &&
