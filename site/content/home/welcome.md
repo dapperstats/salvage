@@ -41,4 +41,8 @@ Source code is available on [GitHub](https://www.github.com/dapperstats/salvage)
 
 <br>
 
+`.csv`s of the Salvage database files are available in the [salvage GitHub repository](https://github.com/dapperstats/salvage/tree/master/data/Salvage_data_FTP).
+
+<br>
+
 The site is currently **under construction**, so check back for updates!

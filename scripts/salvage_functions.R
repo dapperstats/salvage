@@ -10,11 +10,28 @@ most_recent_samples <- function(salvage){
   out
 }
 
+daily_counts <- function(salvage, dates = NULL, species_code = 1, 
+                              facility = c("SWP", "CVP"), study = 0){
 
-# break this functionality out to be more efficient
 
-daily_values <- function(salvage, dates = NULL, organism = 26, 
-                         facility = c("SWP", "CVP"), study = 0){
+    building_in <- salvage$Sample$SampleMethod == tab$SampleMethod[i]
+    date_in <- salvage$Sample$SampleDate == tab$SampleDate[i]
+    study_in <- salvage$Sample$StudyRowID %in% study 
+    all_in <- building_in & date_in & study_in
+    sample_ids <- salvage$Sample$SampleRowID[all_in]
+    sample_in <- salvage$Building$SampleRowID %in% sample_ids
+
+    building_ids <- salvage$Building$BuildingRowID[sample_in]
+    catch_in <- salvage$Catch$BuildingRowID %in% building_ids
+    species_in <- salvage$Catch$Organism == tab$Organism[i]
+    all_in <- catch_in & species_in
+    catches <- salvage$Catch$Count[all_in]
+    catch[i] <- sum(catches, na.rm = TRUE)
+
+}
+
+daily_sample_vols <- function(salvage, dates = NULL, 
+                              facility = c("SWP", "CVP"), study = 0){
 
   pumping_times <- salvage$Sample$MinutesPumping
   sample_times <- salvage$Sample$SampleTimeLength
@@ -36,10 +53,8 @@ daily_values <- function(salvage, dates = NULL, organism = 26,
   }
   dates <- as.character(dates)
   tab <- expand.grid(SampleMethod = sample_method, SampleDate = dates, 
-                     Organism = organism, 
                      stringsAsFactors = FALSE)
   nrows <- NROW(tab)
-  catch <- rep(NA, nrows)
   pumping_time <- rep(NA, nrows)
   sample_time <- rep(NA, nrows)
   pumping_vol <- rep(NA, nrows)
@@ -68,26 +83,17 @@ daily_values <- function(salvage, dates = NULL, organism = 26,
     vols <- salvage$Sample$AcreFeet[all_in]
     vol[i] <- mean(vols, na.rm = TRUE)
 
-    sample_ids <- salvage$Sample$SampleRowID[all_in]
-    sample_in <- salvage$Building$SampleRowID %in% sample_ids
-
-    building_ids <- salvage$Building$BuildingRowID[sample_in]
-    catch_in <- salvage$Catch$BuildingRowID %in% building_ids
-    species_in <- salvage$Catch$Organism == tab$Organism[i]
-    all_in <- catch_in & species_in
-    catches <- salvage$Catch$Count[all_in]
-    catch[i] <- sum(catches, na.rm = TRUE)
 
   }
   vol <- convert_volume_units(vol, "AF", "thousand_m3")
 
-  out <- data.frame(tab, catch, nsamples, pumping_time, sample_time,
+  out <- data.frame(tab, nsamples, pumping_time, sample_time,
                     pumping_vol, sample_vol, vol) 
   out$SampleMethod[out$SampleMethod == 1] <- "SWP"
   out$SampleMethod[out$SampleMethod == 2] <- "CVP"
-  colnames(out) <- c("Building", "Date", "Species", "Count", "Samples",
-                     "Pumping_Time", "Sample_Time", "Pumping_Volume",
-                     "Sample_Volume", "Exported_Volume")
+  colnames(out) <- c("Building", "Date", "Samples",
+                     "Pumping_Time", "Sample_Time",
+                     "Pumping_Volume", "Sample_Volume", "Exported_Volume")
   out
 }
 
