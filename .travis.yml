@@ -11,6 +11,7 @@ script:
   - ls data
   - docker exec -i acc bash -c "Rscript scripts/salvage_script.R"
   - docker exec -i acc ls
+  - docker exec -i acc mkdir files
   - docker cp acc:/files ./site/static/files
   - ls
 

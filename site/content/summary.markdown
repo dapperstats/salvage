@@ -3,9 +3,9 @@ title: "Salvage Data Summary"
 date: "2020-01-25"
 ---
 
-The Data Summary will be posted shortly!
+This page is minimal, but highlights the continuous integration.
 
-Come back soon!
+Come back for updates soon!
 
 
 
