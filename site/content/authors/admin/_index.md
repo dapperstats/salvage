@@ -5,6 +5,6 @@ name: Juniper Simonis
 organizations:
 - name: DAPPER Stats
   url: "https://www.dapperstats.com"
-role: Founder, Owner, Lead Scientist
+role: Lead Scientist
 superuser: true
 ---

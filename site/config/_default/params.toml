@@ -41,6 +41,7 @@ docs_section_pager = true
 
 link_authors = true
 plugins_js  = []
+plugins_css = ["custom"]
 
 [avatar]
   gravatar = false
