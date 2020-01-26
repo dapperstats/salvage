@@ -20,6 +20,6 @@ if(n_sample_dates == 2){
 
 ```
 
-The most recent samples posted to the FTP from the State Water Project and Central Valley Project were collected on `r date_txt`. 
+The most recent salvage samples posted to the FTP from the State Water Project and Central Valley Project were collected on **`r date_txt`**. 
 
 `.csv`s of the Salvage database files are available in the [salvage GitHub repository](https://github.com/dapperstats/salvage/tree/master/data/Salvage_data_FTP).
