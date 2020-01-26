@@ -3,11 +3,13 @@ sudo: required
 
 install:
   - docker pull dapperstats/accessor
-  - docker run --name acc -t dapperstats/accessor
+  - docker run --name acc --restart=always -t dapperstats/accessor
   - docker cp acc:/data .
+  - docker cp scripts acc:/
 
 script:
   - ls data
+  - docker exec -i acc bash -c "Rscript scripts/salvage_script.R"
 
 after_success:
   - test $TRAVIS_EVENT_TYPE = "cron" &&

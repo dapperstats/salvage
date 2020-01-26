@@ -16,22 +16,29 @@ subtitle = " "
   image_size = "cover"  #  Options are `cover` (default), `contain`, or `actual` size.
   image_position = "center"  
   image_parallax = true  
-
-  # Text color (true=light or false=dark).
   text_color_light = true
 
 [design.spacing]
   # Customize the section spacing. Order is top, right, bottom, left.
-  padding = ["20px", "0", "20px", "0"]
+  padding = ["50px", "0", "75px", "0"]
 
 [advanced]
- # Custom CSS. 
  css_style = ""
- 
- # CSS class.
  css_class = ""
 +++
 
-Welcome to the website for analyses of the California Delta fish salvage database.
+<br>
 
-The site is currently **under construction**, but check back soon for updates!
+Welcome to the website for analyses of the California Delta fish salvage database, coded by [DAPPER Stats](https://www.dapperstats.com).
+
+<br>
+
+We provide an up-to-date [summary](https://salvage.fish/summary) of the salvage data based on the publicily available data using computational and statistical [methods](https://salvage.fish/methods).
+
+<br>
+
+Source code is available on [GitHub](https://www.github.com/dapperstats/salvage).
+
+<br>
+
+The site is currently **under construction**, so check back for updates!
