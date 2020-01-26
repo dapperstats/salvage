@@ -10,6 +10,25 @@ most_recent_samples <- function(salvage){
   out
 }
 
+daily_counts <- function(salvage, dates = NULL, species_code = 1, 
+                              facility = c("SWP", "CVP"), study = 0){
+
+
+    building_in <- salvage$Sample$SampleMethod == tab$SampleMethod[i]
+    date_in <- salvage$Sample$SampleDate == tab$SampleDate[i]
+    study_in <- salvage$Sample$StudyRowID %in% study 
+    all_in <- building_in & date_in & study_in
+    sample_ids <- salvage$Sample$SampleRowID[all_in]
+    sample_in <- salvage$Building$SampleRowID %in% sample_ids
+
+    building_ids <- salvage$Building$BuildingRowID[sample_in]
+    catch_in <- salvage$Catch$BuildingRowID %in% building_ids
+    species_in <- salvage$Catch$Organism == tab$Organism[i]
+    all_in <- catch_in & species_in
+    catches <- salvage$Catch$Count[all_in]
+    catch[i] <- sum(catches, na.rm = TRUE)
+
+}
 
 daily_sample_vols <- function(salvage, dates = NULL, 
                               facility = c("SWP", "CVP"), study = 0){

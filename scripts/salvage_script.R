@@ -5,7 +5,7 @@ salvage <- read_database()
 most_recent_samples(salvage)
 dates <- seq.Date(as.Date("2020-01-01"), as.Date("2020-01-22"), 1)
 daily_volume(salvage, dates)
-x <- daily_sample_vols(salvage, dates, organism = 21)
+x <- daily_sample_vols(salvage, dates)
 plot(as.Date(x$Date), x$Sample_Volume/x$Pumping_Volume)
 
 most_recent <- most_recent_samples(salvage)
