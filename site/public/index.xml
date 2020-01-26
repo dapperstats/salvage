@@ -116,6 +116,10 @@ Leverages
       <guid>/summary/</guid>
       <description>&lt;p&gt;The Data Summary will be posted shortly!&lt;/p&gt;
 &lt;p&gt;Come back soon!&lt;/p&gt;
+&lt;p&gt;The most recent samples posted to the FTP from the State Water Project and Central Valley Project were collected on 2020-01-23.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;.csv&lt;/code&gt;s of the Salvage database files are available in the 
+&lt;a href=&#34;https://github.com/dapperstats/salvage/tree/master/data/Salvage_data_FTP&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;salvage GitHub repository&lt;/a&gt;
+.&lt;/p&gt;
 </description>
     </item>
     
