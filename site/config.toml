@@ -5,6 +5,7 @@ name = "Salvage"
 license = "MIT"
 licenselink = "https://github.com/dapperstats/salvage/blob/master/LICENSE"
 homepage = "https://github.com/dapperstats/salvage"
+
 enableGitInfo = false
 defaultContentLanguage = "en"
 hasCJKLanguage = false  
