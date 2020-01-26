@@ -3,7 +3,7 @@ title: "Salvage Data Summary"
 date: "2020-01-25"
 ---
 
-This page is minimal, but highlights the continuous integration.
+This page is minimal, but highlights the continuous integration (the data pulled from the FTP are used to update the **bolded** date below).
 
 Come back for updates soon!
 

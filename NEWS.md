@@ -2,6 +2,20 @@
 
 Version numbers follow [Semantic Versioning](https://semver.org/).
 
+
+
+# [v0.6.0](https://github.com/dapperstats/salvage/releases/tag/v0.6.0) 
+*2020-01-26*
+
+## Website meets CI output
+
+* Minimal, but successful integration of output from the docker image into the website.
+* Now just given as the date of the last sample on the FTP.
+
+# Hookup with Zenodo
+
+* Addresses [https://github.com/dapperstats/salvage/issues/17]
+
 # [v0.5.0](https://github.com/dapperstats/salvage/releases/tag/v0.5.0) 
 *2020-01-25*
 
