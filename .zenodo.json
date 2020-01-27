@@ -1,0 +1,26 @@
+{
+"title": "salvage: tools for the California Delta Fish Salvage Database",
+"description": "Tools for interacting with the publicly available California Delta Fish Salvage Database, including continuous deployment of data access, analysis, and presentation.",
+  "creators": [
+    {
+      "affiliation": "DAPPER Stats",
+      "name": "Juniper L. Simonis",
+      "orcid": "0000-0001-9798-0460"
+    }
+  ],
+  "keywords": [
+    "California Delta",
+    "continuous analysis",
+    "continuous deployment",
+    "continuous integration",
+    "ecology",
+    "fish",
+    "forecasting",
+    "pipeline",
+    "Sacramento River",
+    "salvage"
+  ],
+  "access_right": "open",
+  "license": "mit-license",
+  "upload_type": "software"
+}
