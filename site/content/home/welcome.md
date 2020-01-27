@@ -35,7 +35,7 @@ Welcome to the website for analyses of the California Delta fish salvage databas
 
 <br>
 
-We provide an up-to-date [summary](https://salvage.fish/summary) of the salvage data based on the publicily available data using computational and statistical [methods](https://salvage.fish/methods).
+We provide an up-to-date [summary](/summary) of the salvage data based on the publicily available data using computational and statistical [methods](/methods).
 
 <br>
 
