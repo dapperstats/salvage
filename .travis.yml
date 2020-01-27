@@ -2,17 +2,23 @@ language: bash
 sudo: required
 
 install:
-  - docker pull dapperstats/accessor
+#  - docker pull dapperstats/accessor
+  - docker pull rocker/tidyverse
 
 script:
-  - docker run --name acc --restart=always -t dapperstats/accessor
-  - docker cp scripts acc:/
-  - docker exec -i acc mkdir files
-  - docker exec -i acc bash -c "Rscript scripts/salvage_script.R"
-  - docker cp acc:/data .
-  - docker cp acc:/files ./site/static/
-  - ls  ./site/static/files
+#  - docker run --name acc --restart=always -t dapperstats/accessor
+  - docker run --name salv --restart=always -d -e PASSWORD=$RSTUDIO_PASS -p 8787:8787 -t rocker/tidyverse 
+
+#  - docker cp acc:/data .
+#  - docker cp acc:/data salv:/
+  - docker cp site salv:/  
+  - docker cp scripts salv:/ # move into Dockerfile
+#  - docker exec -i salv mkdir files # move into Dockerfile
+  - docker exec -i salv bash -c "Rscript scripts/salvage_script.R"
+
+  - docker cp salv:/site .
+  - ls site
 
 after_success:
-  - test $TRAVIS_EVENT_TYPE = "cron" &&
-    bash scripts/update_github_data.bash 
+  #- test $TRAVIS_EVENT_TYPE = "cron" &&
+  -  bash scripts/update_github.bash 

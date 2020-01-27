@@ -1,0 +1,15 @@
+name: "salvage_fish"
+navbar:
+  title: "Delta Fish Salvage"
+  left:
+    - text: "Home"
+      href: index.html
+
+output_dir: "docs"
+#This ensures only website files are put
+#into docs/, all .Rmd and .md files are
+#still rendered regardless.
+exclude: "*"
+
+output: 
+  html_document
