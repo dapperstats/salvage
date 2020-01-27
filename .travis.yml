@@ -12,7 +12,7 @@ script:
   - docker cp acc:/data .
   - docker cp acc:/data salv:/
   - docker cp site salv:/  
-#  - docker exec -i salv mkdir files # move into Dockerfile
+  - docker cp acc:/scripts salv:/
   - docker exec -i salv R -e "source('scripts/salvage_script.R')"
 
   - docker cp salv:/site .
