@@ -23,7 +23,7 @@ sample_vols <- read.csv("../static/files/sample_vols.csv", stringsAsFactors = FA
 
 ```
 
-[figure]("../static/files/sample_vol_fig.png")
+![Delta salvage facility outflow]("/static/files/sample_vol_fig.png)
 
 The most recent salvage samples posted to the FTP from the State Water Project and Central Valley Project were collected on **`r date_txt`**. 
 
