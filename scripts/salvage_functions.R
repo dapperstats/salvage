@@ -1,4 +1,57 @@
 
+sample_vol_fig <- function(vals){
+
+  on.exit(dev.off())
+  fname <- "sample_vol_fig.png"
+  png(fname, width = 6, height = 5, units = "in", res = 200)
+  par(bty = "U", mar = c(3, 5, 1, 5))
+
+  rows_in <- vals$Building == "SWP"
+  x <- as.Date(vals$Date[rows_in])
+  y <- vals$Exported_Volume[rows_in]
+  x <- x[!(is.na(y))]
+  y <- y[!(is.na(y))]
+  xlim <- range(x)
+  ylim <- c(0, max(y))
+  plot(1, 1, type = "n", xaxt = "n", yaxt = "n", xlab = "", ylab = "",
+       xlim = xlim, ylim = ylim)
+  points(x, y, type = "o", lwd = 3, pch = 16)
+  axis(2, las = 1)
+  txt <- expression(paste("State Water Project Daily Export (1000 m"^"3",")"))
+  mtext(side = 2, txt, line = 3.5)
+
+  par(new = TRUE)
+  rows_in <- vals$Building == "CVP"
+  x <- as.Date(vals$Date[rows_in])
+  y <- vals$Exported_Volume[rows_in]
+  x <- x[!(is.na(y))]
+  y <- y[!(is.na(y))]
+  xlim <- range(x)
+  ylim <- c(0, max(y))
+  plot(1, 1, type = "n", xaxt = "n", yaxt = "n", xlab = "", ylab = "",
+       xlim = xlim, ylim = ylim)
+  points(x, y, type = "o", lwd = 3, pch = 16, col = grey(0.6))
+  axis(4, las = 1)
+  txt <- expression(paste("Central Valley Project Daily Export (1000 m"^"3",
+                          ")"))
+  mtext(side = 4, txt, line = 3.5)
+
+  mtext(side = 3, "SWP", col = 1, at = min(x), font = 2)
+  mtext(side = 3, "CVP", col = grey(0.6), at = max(x), font = 2)
+
+  allx <- seq.Date(min(x), max(x), by = 1)
+  axis(1, at = allx, labels = F, tck = -0.005)
+  monthx <- seq.Date(min(x), max(x), by = "month")
+  month_lab <- as.character(monthx)
+  axis(1, at = monthx, labels = month_lab)
+  if(length(monthx) == 1){
+    weekx <- seq.Date(min(x), max(x), by = "week")
+    week_lab <- as.character(weekx)
+    axis(1, at = weekx, labels = week_lab)
+  }
+
+}
+
 most_recent_samples <- function(salvage){
   out <- rep(NA, 2)
   for(i in 1:2){
