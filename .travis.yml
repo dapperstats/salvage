@@ -2,15 +2,15 @@ language: bash
 sudo: required
 
 install:
-#  - docker pull dapperstats/accessor
+  - docker pull dapperstats/accessor
   - docker pull dapperstats/salvage
 
 script:
-#  - docker run --name acc --restart=always -t dapperstats/accessor
+  - docker run --name acc --restart=always -t dapperstats/accessor
   - docker run --name salv --restart=always -dit dapperstats/salvage
 
-#  - docker cp acc:/data .
-#  - docker cp acc:/data salv:/
+  - docker cp acc:/data .
+  - docker cp acc:/data salv:/
   - docker cp site salv:/  
 #  - docker exec -i salv mkdir files # move into Dockerfile
   - docker exec -i salv R -e "rmarkdown::render_site('site')"
