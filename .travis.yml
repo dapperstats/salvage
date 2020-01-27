@@ -7,7 +7,7 @@ install:
 
 script:
 #  - docker run --name acc --restart=always -t dapperstats/accessor
-  - docker run --name salv --restart=always -t rocker/verse
+  - docker run --name salv --restart=always -e PASSWORD=stuffnthings -p 8787:8787 -t rocker/verse 
 
 #  - docker cp acc:/data .
 #  - docker cp acc:/data salv:/
@@ -17,6 +17,7 @@ script:
   - docker exec -i salv bash -c "Rscript scripts/salvage_script.R"
 
   - docker cp salv:/site .
+  - ls
 
 after_success:
   - test $TRAVIS_EVENT_TYPE = "cron" &&
