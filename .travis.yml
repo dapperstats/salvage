@@ -17,7 +17,7 @@ script:
   - docker exec -i salv bash -c "Rscript scripts/salvage_script.R"
 
   - docker cp salv:/site .
-  - ls
+  - ls site
 
 after_success:
   - test $TRAVIS_EVENT_TYPE = "cron" &&
