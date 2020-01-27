@@ -11,8 +11,8 @@ git config --global user.name "DAPPER Deploy Bot"
 # Checkout the master branch
 git checkout master
 
-# Add .csv (data) files 
-git add data/*.csv
+# Add .csv data files and the website folder
+git add data/*.csv site/*
 
 # Commit the files with a message tracking the job number and date
 git commit -m "updating data cron job: $CURRENT_DATE"

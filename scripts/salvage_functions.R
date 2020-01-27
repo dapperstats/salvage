@@ -1,8 +1,8 @@
 
-sample_vol_fig <- function(vals){
+exported_volumes_fig <- function(vals){
 
   on.exit(dev.off())
-  fname <- "files/sample_vol_fig.png"
+  fname <- "files/exported_volumes.png"
   png(fname, width = 6, height = 5, units = "in", res = 200)
   par(bty = "U", mar = c(3, 5, 1, 5))
 

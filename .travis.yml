@@ -15,4 +15,4 @@ script:
 
 after_success:
   - test $TRAVIS_EVENT_TYPE = "cron" &&
-    bash scripts/update_github_data.bash 
+    bash scripts/update_github.bash 
