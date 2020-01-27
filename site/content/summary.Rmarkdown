@@ -18,6 +18,9 @@ if(n_sample_dates == 2){
   date_txt <- sample_dates
 }
 
+sample_vols <- read.csv("../static/files/sample_vols.csv", stringsAsFactors = FALSE)
+
+
 ```
 
 The most recent salvage samples posted to the FTP from the State Water Project and Central Valley Project were collected on **`r date_txt`**. 
