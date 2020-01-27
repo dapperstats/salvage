@@ -2,16 +2,21 @@ language: bash
 sudo: required
 
 install:
-  - docker pull dapperstats/accessor
+#  - docker pull dapperstats/accessor
+  - docker pull rocker/verse
 
 script:
-  - docker run --name acc --restart=always -t dapperstats/accessor
-  - docker cp scripts acc:/
-  - docker cp site acc:/
-  - docker exec -i acc mkdir files
-  - docker exec -i acc bash -c "Rscript scripts/salvage_script.R"
-  - docker cp acc:/data .
-  - docker cp acc:/site .
+#  - docker run --name acc --restart=always -t dapperstats/accessor
+  - docker run --name salv --restart=always -t rocker/verse
+
+#  - docker cp acc:/data .
+#  - docker cp acc:/data salv:/
+  - docker cp site salv:/  
+  - docker cp scripts salv:/ # move into Dockerfile
+#  - docker exec -i salv mkdir files # move into Dockerfile
+  - docker exec -i salv bash -c "Rscript scripts/salvage_script.R"
+
+  - docker cp salv:/site .
 
 after_success:
   - test $TRAVIS_EVENT_TYPE = "cron" &&
