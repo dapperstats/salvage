@@ -2,7 +2,8 @@
 
 [![Build Status](https://travis-ci.org/dapperstats/salvage.svg?branch=master)](https://travis-ci.org/dapperstats/salvage)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/dapperstats/salvage/master/LICENSE)
-[![Lifecycle:experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+[![Lifecycle:maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3628045.svg)](https://doi.org/10.5281/zenodo.3628045)
 [![Netlify Status](https://api.netlify.com/api/v1/badges/d4013762-bc67-40c7-a656-fd24e92dd06e/deploy-status)](https://app.netlify.com/sites/peaceful-jepsen-15c633/deploys)
 
 <img src="imgs/hex.png" width="200px" align="right">
