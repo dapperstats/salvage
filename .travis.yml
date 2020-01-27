@@ -13,7 +13,7 @@ script:
 #  - docker cp acc:/data salv:/
   - docker cp site salv:/  
 #  - docker exec -i salv mkdir files # move into Dockerfile
-  - docker exec -i salv bash -c "Rscript rmarkdown::render_site('site')"
+  - docker exec -i salv R -e "rmarkdown::render_site('site')"
 
   - docker cp salv:/site .
   - ls site
