@@ -1,4 +1,3 @@
-install.packages("pander")
 source("scripts/r_functions.R")
 source("scripts/salvage_functions.R")
 salvage <- read_database()
