@@ -25,6 +25,11 @@ subtitle = " "
 [advanced]
  css_style = ""
  css_class = ""
+
+[markup]
+  defaultMarkdownHandler = "goldmark"
+  [markup.goldmark]
+    hrefTargetBlank = false
 +++
 
 <br>
