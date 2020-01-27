@@ -18,7 +18,7 @@ sample_vol_fig <- function(vals){
   points(x, y, type = "o", lwd = 3, pch = 16)
   axis(2, las = 1)
   txt <- expression(paste("State Water Project Daily Export (1000 m"^"3",")"))
-  mtext(side = 2, txt, line = 3)
+  mtext(side = 2, txt, line = 3.5)
 
   par(new = TRUE)
   rows_in <- vals$Building == "CVP"
@@ -34,7 +34,7 @@ sample_vol_fig <- function(vals){
   axis(4, las = 1)
   txt <- expression(paste("Central Valley Project Daily Export (1000 m"^"3",
                           ")"))
-  mtext(side = 4, txt, line = 3)
+  mtext(side = 4, txt, line = 3.5)
 
   mtext(side = 3, "SWP", col = 1, at = min(x), font = 2)
   mtext(side = 3, "CVP", col = grey(0.6), at = max(x), font = 2)
