@@ -13,7 +13,7 @@ git checkout master
 
 # Add .csv data files and the website folder
 #git add data/*.csv site/*
-git add site/*
+git add site/docs/*
 
 # Commit the files with a message tracking the job number and date
 git commit -m "updating data cron job: $CURRENT_DATE"
