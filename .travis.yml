@@ -7,7 +7,7 @@ install:
 
 script:
 #  - docker run --name acc --restart=always -t dapperstats/accessor
-  - docker run --name salv --restart=always -t rocker/tidyverse 
+  - docker run --name salv --restart=always -d -e PASSWORD=$RSTUDIO_PASS -p 8787:8787 -t rocker/tidyverse 
 
 #  - docker cp acc:/data .
 #  - docker cp acc:/data salv:/
