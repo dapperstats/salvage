@@ -12,7 +12,8 @@ git config --global user.name "DAPPER Deploy Bot"
 git checkout master
 
 # Add .csv data files and the website folder
-git add data/*.csv site/*
+#git add data/*.csv site/*
+git add site/*
 
 # Commit the files with a message tracking the job number and date
 git commit -m "updating data cron job: $CURRENT_DATE"
@@ -21,14 +22,14 @@ git commit -m "updating data cron job: $CURRENT_DATE"
 git remote add deploy https://${GITHUB_DEPLOY_PAT}@github.com/dapperstats/salvage.git > /dev/null 2>&1
 
 # Create a tag based on the date
-git tag $CURRENT_DATE
+#git tag $CURRENT_DATE
 
 # Push the deploy branch to update the master
 git push --quiet --set-upstream deploy master
 
 # Push the tag to the branch
-git push --quiet deploy --tags > /dev/null 2>&1
+#git push --quiet deploy --tags > /dev/null 2>&1
 
 # POST the tag as a release
-curl -v -i -X POST -H "Content-Type:application/json" -H "Authorization: token $GITHUB_RELEASE_PAT" https://api.github.com/repos/dapperstats/salvage/releases -d "{\"tag_name\":\"$CURRENT_DATE\"}"
+#curl -v -i -X POST -H "Content-Type:application/json" -H "Authorization: token $GITHUB_RELEASE_PAT" https://api.github.com/repos/dapperstats/salvage/releases -d "{\"tag_name\":\"$CURRENT_DATE\"}"
 
