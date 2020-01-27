@@ -10,8 +10,9 @@ script:
   - docker run --name salv --restart=always -dit dapperstats/salvage
 
   - docker cp acc:/data .
-  - docker cp acc:/data salv:/
-  - docker cp site salv:/  
+  - docker cp data salv:/
+  - docker cp acc:/site .  
+  - docker cp site salv:/
   - docker cp acc:/scripts salv:/
   - docker exec -i salv R -e "source('scripts/salvage_script.R')"
 
