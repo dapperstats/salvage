@@ -26,10 +26,7 @@ subtitle = " "
  css_style = ""
  css_class = ""
 
-[markup]
-  defaultMarkdownHandler = "goldmark"
-  [markup.goldmark]
-    hrefTargetBlank = false
+hrefTargetBlank = false
 +++
 
 <br>
