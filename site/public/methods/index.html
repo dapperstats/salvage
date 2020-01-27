@@ -29,10 +29,10 @@
     
   
   <meta name="description" content="Data Access Accessing the remote data, converting the .accdb to .csv files, and loading the data into R. Leverages the accessor software.
-Auto-build The data are updated daily via cron jobson travis-ci.">
+Data Preparation Preparing the raw data for summaries and analyses. Uses included R scriptand accessor R scriptswithin a Dockercontainer started from the accessor imageAuto-build The data and output are updated daily via cron jobson travis-ci.">
 
   
-  <link rel="alternate" hreflang="en-us" href="/methods/">
+  <link rel="alternate" hreflang="en-us" href="https://salvage.fish/methods/">
 
   
 
@@ -215,7 +215,7 @@ Auto-build The data are updated daily via cron jobson travis-ci.">
   <link rel="icon" type="image/png" href="/images/icon_hu88e77fda8259aec1ad610bc9dd60fa00_1409_32x32_fill_lanczos_center_2.png">
   <link rel="apple-touch-icon" type="image/png" href="/images/icon_hu88e77fda8259aec1ad610bc9dd60fa00_1409_192x192_fill_lanczos_center_2.png">
 
-  <link rel="canonical" href="/methods/">
+  <link rel="canonical" href="https://salvage.fish/methods/">
 
   
   
@@ -229,10 +229,10 @@ Auto-build The data are updated daily via cron jobson travis-ci.">
   <meta property="twitter:card" content="summary">
   
   <meta property="og:site_name" content="salvage.fish">
-  <meta property="og:url" content="/methods/">
+  <meta property="og:url" content="https://salvage.fish/methods/">
   <meta property="og:title" content="Salvage Data Methods | salvage.fish">
   <meta property="og:description" content="Data Access Accessing the remote data, converting the .accdb to .csv files, and loading the data into R. Leverages the accessor software.
-Auto-build The data are updated daily via cron jobson travis-ci."><meta property="og:image" content="img/map[gravatar:%!s(bool=false) shape:circle]">
+Data Preparation Preparing the raw data for summaries and analyses. Uses included R scriptand accessor R scriptswithin a Dockercontainer started from the accessor imageAuto-build The data and output are updated daily via cron jobson travis-ci."><meta property="og:image" content="img/map[gravatar:%!s(bool=false) shape:circle]">
   <meta property="twitter:image" content="img/map[gravatar:%!s(bool=false) shape:circle]"><meta property="og:locale" content="en-us">
   
     
@@ -533,8 +533,21 @@ Auto-build The data are updated daily via cron jobson travis-ci."><meta proper
 Leverages 
 <a href="https://www.github.com/dapperstats/accessor" target="_blank" rel="noopener">the <code>accessor</code> software</a>
 .</p>
+<h2 id="data-preparationdata_preparation">
+<a href="/data_preparation">Data Preparation</a>
+</h2>
+<p>Preparing the raw data for summaries and analyses.
+Uses included 
+<a href="https://github.com/dapperstats/salvage/blob/master/scripts/salvage_script.R" target="_blank" rel="noopener">R script</a>
+ and 
+<a href="https://github.com/dapperstats/accessor/blob/master/scripts/r_functions.R" target="_blank" rel="noopener"><code>accessor</code> R scripts</a>
+ within a 
+<a href="https://www.docker.com/" target="_blank" rel="noopener">Docker</a>
+ container started from the 
+<a href="https://hub.docker.com/r/dapperstats/accessor" target="_blank" rel="noopener"><code>accessor</code> image</a>
+</p>
 <h2 id="auto-build">Auto-build</h2>
-<p>The data are updated daily via 
+<p>The data and output are updated daily via 
 <a href="https://docs.travis-ci.com/user/cron-jobs/" target="_blank" rel="noopener"><code>cron</code> jobs</a>
  on 
 <a href="https://travis-ci.org/dapperstats/salvage" target="_blank" rel="noopener"><code>travis-ci</code></a>

@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>salvage.fish</title>
-    <link>/</link>
-      <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <link>https://salvage.fish/</link>
+      <atom:link href="https://salvage.fish/index.xml" rel="self" type="application/rss+xml" />
     <description>salvage.fish</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sat, 25 Jan 2020 00:00:00 +0000</lastBuildDate>
     <image>
       <url>img/map[gravatar:%!s(bool=false) shape:circle]</url>
       <title>salvage.fish</title>
-      <link>/</link>
+      <link>https://salvage.fish/</link>
     </image>
     
     <item>
       <title>Data Access</title>
-      <link>/data_access/</link>
+      <link>https://salvage.fish/data_access/</link>
       <pubDate>Sat, 25 Jan 2020 00:00:00 +0000</pubDate>
-      <guid>/data_access/</guid>
+      <guid>https://salvage.fish/data_access/</guid>
       <description>&lt;br&gt;
 &lt;p&gt;This document outlines the process by which the remote database is converted into local files and data objects.&lt;/p&gt;
 &lt;br&gt;
@@ -89,19 +89,44 @@ database &amp;lt;- read_database()
     </item>
     
     <item>
-      <title>Salvage Data Methods</title>
-      <link>/methods/</link>
+      <title>Data Preparing</title>
+      <link>https://salvage.fish/data_preparation/</link>
       <pubDate>Sat, 25 Jan 2020 00:00:00 +0000</pubDate>
-      <guid>/methods/</guid>
+      <guid>https://salvage.fish/data_preparation/</guid>
+      <description>&lt;br&gt;
+&lt;p&gt;This document outlines the process by which the raw salvage data are prepared for present use.&lt;/p&gt;
+&lt;br&gt;
+&lt;h2 id=&#34;daily-summaries&#34;&gt;Daily Summaries&lt;/h2&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Salvage Data Methods</title>
+      <link>https://salvage.fish/methods/</link>
+      <pubDate>Sat, 25 Jan 2020 00:00:00 +0000</pubDate>
+      <guid>https://salvage.fish/methods/</guid>
       <description>&lt;h2 id=&#34;data-accessdata_access&#34;&gt;
-&lt;a href=&#34;/data_access&#34;&gt;Data Access&lt;/a&gt;
+&lt;a href=&#34;https://salvage.fish/data_access&#34;&gt;Data Access&lt;/a&gt;
 &lt;/h2&gt;
 &lt;p&gt;Accessing the remote data, converting the &lt;code&gt;.accdb&lt;/code&gt; to &lt;code&gt;.csv&lt;/code&gt; files, and loading the data into R.
 Leverages 
 &lt;a href=&#34;https://www.github.com/dapperstats/accessor&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;the &lt;code&gt;accessor&lt;/code&gt; software&lt;/a&gt;
 .&lt;/p&gt;
+&lt;h2 id=&#34;data-preparationdata_preparation&#34;&gt;
+&lt;a href=&#34;https://salvage.fish/data_preparation&#34;&gt;Data Preparation&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Preparing the raw data for summaries and analyses.
+Uses included 
+&lt;a href=&#34;https://github.com/dapperstats/salvage/blob/master/scripts/salvage_script.R&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;R script&lt;/a&gt;
+ and 
+&lt;a href=&#34;https://github.com/dapperstats/accessor/blob/master/scripts/r_functions.R&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;code&gt;accessor&lt;/code&gt; R scripts&lt;/a&gt;
+ within a 
+&lt;a href=&#34;https://www.docker.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Docker&lt;/a&gt;
+ container started from the 
+&lt;a href=&#34;https://hub.docker.com/r/dapperstats/accessor&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;code&gt;accessor&lt;/code&gt; image&lt;/a&gt;
+&lt;/p&gt;
 &lt;h2 id=&#34;auto-build&#34;&gt;Auto-build&lt;/h2&gt;
-&lt;p&gt;The data are updated daily via 
+&lt;p&gt;The data and output are updated daily via 
 &lt;a href=&#34;https://docs.travis-ci.com/user/cron-jobs/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;code&gt;cron&lt;/code&gt; jobs&lt;/a&gt;
  on 
 &lt;a href=&#34;https://travis-ci.org/dapperstats/salvage&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;code&gt;travis-ci&lt;/code&gt;&lt;/a&gt;
@@ -111,11 +136,16 @@ Leverages
     
     <item>
       <title>Salvage Data Summary</title>
-      <link>/summary/</link>
+      <link>https://salvage.fish/summary/</link>
       <pubDate>Sat, 25 Jan 2020 00:00:00 +0000</pubDate>
-      <guid>/summary/</guid>
+      <guid>https://salvage.fish/summary/</guid>
       <description>&lt;p&gt;This page is minimal, but highlights the continuous integration (the data pulled from the FTP are used to update the &lt;strong&gt;bolded&lt;/strong&gt; date below).&lt;/p&gt;
 &lt;p&gt;Come back for updates soon!&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../static/files/sample_vol_fig.png&#34; alt=&#34;Delta salvage facility outflow&#34;&gt;
+tryin
+&lt;img src=&#34;files/sample_vol_fig.png&#34; alt=&#34;Delta salvage facility outflow&#34;&gt;
+tryin
+&lt;img src=&#34;https://salvage.fish/files/sample_vol_fig.png&#34; alt=&#34;Delta salvage facility outflow&#34;&gt;&lt;/p&gt;
 &lt;p&gt;The most recent salvage samples posted to the FTP from the State Water Project and Central Valley Project were collected on &lt;strong&gt;2020-01-23&lt;/strong&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;.csv&lt;/code&gt;s of the Salvage database files are available in the 
 &lt;a href=&#34;https://github.com/dapperstats/salvage/tree/master/data/Salvage_data_FTP&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;salvage GitHub repository&lt;/a&gt;

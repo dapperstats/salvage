@@ -3,43 +3,48 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>/data_access/</loc>
+    <loc>https://salvage.fish/data_access/</loc>
     <lastmod>2020-01-25T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/methods/</loc>
+    <loc>https://salvage.fish/data_preparation/</loc>
     <lastmod>2020-01-25T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/summary/</loc>
+    <loc>https://salvage.fish/methods/</loc>
     <lastmod>2020-01-25T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/</loc>
+    <loc>https://salvage.fish/summary/</loc>
     <lastmod>2020-01-25T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/authors/admin/</loc>
+    <loc>https://salvage.fish/</loc>
+    <lastmod>2020-01-25T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/authors/</loc>
+    <loc>https://salvage.fish/authors/admin/</loc>
   </url>
   
   <url>
-    <loc>/categories/</loc>
+    <loc>https://salvage.fish/authors/</loc>
   </url>
   
   <url>
-    <loc>/publication_types/</loc>
+    <loc>https://salvage.fish/categories/</loc>
   </url>
   
   <url>
-    <loc>/tags/</loc>
+    <loc>https://salvage.fish/publication_types/</loc>
+  </url>
+  
+  <url>
+    <loc>https://salvage.fish/tags/</loc>
   </url>
   
 </urlset>
