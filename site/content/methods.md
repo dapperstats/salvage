@@ -10,5 +10,5 @@ Leverages [the `accessor` software](https://www.github.com/dapperstats/accessor)
 
 ## Auto-build
 
-The data are updated daily via [`cron` jobs](https://docs.travis-ci.com/user/cron-jobs/) on [`travis-ci`](https://travis-ci.org/dapperstats/salvage).
+The data and output are updated daily via [`cron` jobs](https://docs.travis-ci.com/user/cron-jobs/) on [`travis-ci`](https://travis-ci.org/dapperstats/salvage).
 
