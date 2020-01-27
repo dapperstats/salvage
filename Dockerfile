@@ -1,5 +1,2 @@
-# Base image is rocker/verse
+# Base image is rocker/tidyverse
 FROM rocker/tidyverse
-
-# will add shiny server!
-# RUN export ADD=shiny && bash /etc/cont-init.d/add
