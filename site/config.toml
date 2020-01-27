@@ -32,6 +32,7 @@ ignoreFiles = ["\\.ipynb$", ".ipynb_checkpoints$", "\\.Rmd$", "\\.Rmarkdown$", "
   [markup.goldmark]
     [markup.goldmark.renderer]
       unsafe = true  
+    hrefTargetBlank = false
   [markup.highlight]
     codeFences = false  
   [markup.tableOfContents]
