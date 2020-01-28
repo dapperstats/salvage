@@ -11,7 +11,7 @@
 
 
 
-<title>Analyses of the CA Delta fish salvage database</title>
+<title>Salvage Data Methods</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -303,15 +303,23 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Analyses of the <a href="https://en.wikipedia.org/wiki/Sacramento%E2%80%93San_Joaquin_River_Delta">CA Delta</a> <a href="https://wildlife.ca.gov/Conservation/Delta/Salvage-Monitoring">fish salvage database</a></h1>
+<h1 class="title toc-ignore">Salvage Data Methods</h1>
 
 </div>
 
 
-<p>Welcome to the website for analyses of the California Delta fish salvage database, coded by <a href="https://www.dapperstats.com">DAPPER Stats</a>.</p>
-<p>Source code is available on <a href="https://www.github.com/dapperstats/salvage">GitHub</a>.</p>
-<p><code>.csv</code>s of the Salvage database files are available in the <a href="https://github.com/dapperstats/salvage/tree/master/data/Salvage_data_FTP">salvage GitHub repository</a>.</p>
-<p>The site is currently <strong>under construction</strong>, so check back for updates!</p>
+<div id="data-access" class="section level2">
+<h2><a href="data_access.html">Data Access</a></h2>
+<p>Accessing the remote data, converting the <code>.accdb</code> to <code>.csv</code> files, and loading the data into R. Leverages <a href="https://www.github.com/dapperstats/accessor">the <code>accessor</code> software</a>.</p>
+</div>
+<div id="data-preparation" class="section level2">
+<h2><a href="data_preparation.html">Data Preparation</a></h2>
+<p>Preparing the raw data for summaries and analyses. Uses included <a href="https://github.com/dapperstats/salvage/blob/master/scripts/salvage_script.R">R script</a> and <a href="https://github.com/dapperstats/accessor/blob/master/scripts/r_functions.R"><code>accessor</code> R scripts</a> within a <a href="https://www.docker.com/">Docker</a> container started from the <a href="https://hub.docker.com/r/dapperstats/accessor"><code>accessor</code> image</a></p>
+</div>
+<div id="auto-build" class="section level2">
+<h2>Auto-build</h2>
+<p>The data and output are updated daily via <a href="https://docs.travis-ci.com/user/cron-jobs/"><code>cron</code> jobs</a> on <a href="https://travis-ci.org/dapperstats/salvage"><code>travis-ci</code></a>.</p>
+</div>
 
 
 

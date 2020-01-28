@@ -11,7 +11,7 @@
 
 
 
-<title>Analyses of the CA Delta fish salvage database</title>
+<title>Data Access</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -303,15 +303,29 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Analyses of the <a href="https://en.wikipedia.org/wiki/Sacramento%E2%80%93San_Joaquin_River_Delta">CA Delta</a> <a href="https://wildlife.ca.gov/Conservation/Delta/Salvage-Monitoring">fish salvage database</a></h1>
+<h1 class="title toc-ignore">Data Access</h1>
 
 </div>
 
 
-<p>Welcome to the website for analyses of the California Delta fish salvage database, coded by <a href="https://www.dapperstats.com">DAPPER Stats</a>.</p>
-<p>Source code is available on <a href="https://www.github.com/dapperstats/salvage">GitHub</a>.</p>
-<p><code>.csv</code>s of the Salvage database files are available in the <a href="https://github.com/dapperstats/salvage/tree/master/data/Salvage_data_FTP">salvage GitHub repository</a>.</p>
-<p>The site is currently <strong>under construction</strong>, so check back for updates!</p>
+<p><br></p>
+<p>This document outlines the process by which the remote database is converted into local files and data objects.</p>
+<p><br></p>
+<div id="bash-script-remote-.accdb-to-local-.csvs" class="section level2">
+<h2><code>bash</code> script: remote <code>.accdb</code> to local <code>.csv</code>s</h2>
+<p>The main conversion is from the <code>.accdb</code> file on the remote <a href="ftp://ftp.dfg.ca.gov/salvage/">ftp</a> to a local set of <code>.csv</code> files named by the tables in the database. We accomplish this through a stable <a href="https://www.docker.com"><code>Docker</code></a> <a href="https://www.docker.com/resources/what-container">software container</a>. The <a href="https://hub.docker.com/r/dapperstats/accessor"><code>accessor</code> image</a> is freely available on <a href="https://hub.docker.com/">Docker Hub</a> and its default setting are configured for the contemporary salvage database. Code for the construction of the <code>accessor</code> image is available in a <a href="https://www.github.com/dapperstats/accessor">separate repo</a>.</p>
+<p>For ease, we provide a <a href="https://github.com/dapperstats/salvage/blob/master/data">daily-made version of the salvage data</a> with <code>.csv</code>s from an up-to-date “current” (1993 - Present) salvage database file (<code>Salvage_data_FTP.accdb</code>). Updates are pushed to GitHub as <a href="https://github.com/dapperstats/salvage/releases">tagged Releases</a>. Data can be downloaded via via various methods from the repository. Updates are executed via <a href="https://docs.travis-ci.com/user/cron-jobs/"><code>cron</code> jobs</a> on <a href="https://travis-ci.org/dapperstats/salvage"><code>travis-ci</code></a>.</p>
+<p>To use the current image to generate an up-to-date container with data for yourself 1. (If needed) <a href="https://docs.docker.com/get-docker/">install Docker</a> * Specific instructions vary depending on OS 2. Open up a docker-ready terminal 3. Download the image * <code>sudo docker pull dapperstats/salvage</code> 4. Build the container * <code>sudo docker container run -ti --name salvage dapperstats/salvage</code> 5. Copy the data out from the container * <code>sudo docker cp salvage:/data .</code></p>
+<p><br></p>
+</div>
+<div id="r-script-local-.csvs-to-r-list-object" class="section level2">
+<h2><code>R</code> script: local <code>.csv</code>s to <code>R</code> <code>list</code> object</h2>
+<p>An additional conversion makes the data available in <a href="https://www.r-project.org/"><code>R</code></a> as a <code>list</code> of <code>data.frames</code> that is directly analagous to the <code>.accdb</code> database of tables.</p>
+<p>Within an instance of <code>R</code>, navigate to where you have this code repository located, source the functions script, and read in the database:</p>
+<pre><code>source(&quot;scripts/r_functions.R&quot;)
+database &lt;- read_database()</code></pre>
+<p>The resulting <code>database</code> object is a named <code>list</code> of the database’s tables, ready for analyses.</p>
+</div>
 
 
 
