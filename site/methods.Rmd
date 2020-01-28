@@ -8,10 +8,6 @@ author: "Juniper L. Simonis"
 
 ## Data Access
 
-Accessing the remote data, converting the `.accdb` to `.csv` files, and loading the data into R.
-Leverages [the `accessor` software](https://www.github.com/dapperstats/accessor). 
-
-outlines the process by which the remote database is converted into local files and data objects.
 
 <br>
 
