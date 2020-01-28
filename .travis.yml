@@ -6,12 +6,12 @@ install:
   - docker pull dapperstats/salvage
 
 script:
-  - docker run --name acc --restart=always -t dapperstats/accessor
+  #- docker run --name acc --restart=always -t dapperstats/accessor
   - docker run --name salv --restart=always -dit dapperstats/salvage
 
-  - docker cp acc:/data .
+  #- docker cp acc:/data .
   - docker cp data salv:/
-  - docker cp acc:/scripts .
+  #- docker cp acc:/scripts .
   - docker cp scripts salv:/
   - docker cp site salv:/
 
