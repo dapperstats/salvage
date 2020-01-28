@@ -7,7 +7,7 @@ install:
 
 script:
   - docker run --name acc --restart=always -it dapperstats/accessor
-  - docker run --name salv --restart=always -it dapperstats/salvage
+  - docker run --name salv --restart=always -t dapperstats/salvage
 
   - docker cp acc:/data .
   - docker cp data salv:/
