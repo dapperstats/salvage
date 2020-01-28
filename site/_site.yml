@@ -4,6 +4,13 @@ navbar:
   left:
     - text: "Home"
       href: index.html
+    - text: "Methods"
+      href: methods.html
+      menu:
+        - text: "Data Access" 
+          href: data_access.html
+        - text: "Data Preparation"
+          href: data_preparation.html
 
 output_dir: "docs"
 #This ensures only website files are put
