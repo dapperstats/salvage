@@ -4,6 +4,8 @@ navbar:
   left:
     - text: "Home"
       href: index.html
+    - text: "Summary"
+      href: summary.html
     - text: "Methods"
       href: methods.html
       menu:
@@ -16,10 +18,6 @@ navbar:
       href: https://www.github.com/dapperstats/salvage
 
 output_dir: "docs"
-#This ensures only website files are put
-#into docs/, all .Rmd and .md files are
-#still rendered regardless.
-exclude: "*"
 
 output: 
   html_document
