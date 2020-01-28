@@ -11,9 +11,10 @@ script:
 
   - docker cp acc:/data .
   - docker cp data salv:/
-  - docker cp acc:/site .  
+  - docker cp acc:/scripts .
+  - docker cp scripts salv:/
   - docker cp site salv:/
-  - docker cp acc:/scripts salv:/
+
   - docker exec -i salv R -e "source('scripts/salvage_script.R')"
 
   - docker cp salv:/site .
