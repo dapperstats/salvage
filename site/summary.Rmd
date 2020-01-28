@@ -1,37 +1,43 @@
 ---
 title: "Salvage Data Summary"
-date: "2020-01-25"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
 ---
-
-This page is minimal, but highlights the continuous integration aspects.
-
-Come back soon for substantive updates!!
 
 
 ```{r, include = FALSE}
 
-most_recent <- read.csv("files/most_recent_samples.csv", stringsAsFactors = FALSE)
-sample_dates <- unique(as.character(c(most_recent$SWP, most_recent$CVP)))
-n_sample_dates <- length(sample_dates)
-if(n_sample_dates == 2){
-  sample_dates <- c(most_recent$SWP, most_recent$CVP)
-  date_txt <- paste0(sample_dates[1], " and ", sample_dates[2], " respectively")
-} else if(n_sample_dates == 1){
-  date_txt <- sample_dates
-}
-
 sample_vols <- read.csv("files/sample_vols.csv", stringsAsFactors = FALSE)
-print(sample_vols)
+first_date_in_plot <- min(sample_vols$Date, na.rm = TRUE)
+first_date_in_plot <- as.Date(first_date_in_plot)
+first_date_in_plot <- format(first_date_in_plot, "%B %e, %Y")
+first_date_in_plot <- gsub("  ", " ", first_date_in_plot)
+
+most_recent_date <- max(sample_vols$Date, na.rm = TRUE)
+most_recent_date <- as.Date(most_recent_date)
+most_recent_date <- format(most_recent_date, "%B %e, %Y")
+most_recent_date <- gsub("  ", " ", most_recent_date) 
+
+txt <- list(most_recent_date = most_recent_date,
+            first_date_in_plot = first_date_in_plot)
+
+
 file.exists("files/exported_volumes.png")
 ```
 
+This page is minimal, but highlights the continuous integration aspects by showing the facility export since **`r txt$first_date_in_plot`**
+
+Come back soon for substantive updates!!
+
+
 <br>
 This figure shows the daily exported volume from each facility:
+
 <br>
+<br>
+
 ![Delta salvage facilities exported volumes](files/exported_volumes.png)
 
 
-The most recent salvage samples posted to the FTP from the State Water Project and Central Valley Project were collected on **`r date_txt`**. 
+The most recent salvage samples posted to the FTP from the State Water Project and Central Valley Project were collected on **`r txt$most_recent_date`**. 
 
 `.csv`s of the Salvage database files are available in the [salvage GitHub repository](https://github.com/dapperstats/salvage/tree/master/data/Salvage_data_FTP).
-```

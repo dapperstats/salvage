@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
 
 <meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
 
 
-<title>Fish Salvage</title>
+<title>Analyses of the CA Delta fish salvage database</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -20,8 +21,10 @@
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
-<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
@@ -68,6 +71,7 @@ h6 {
 }
 </style>
 
+<link rel="stylesheet" href="styles.css" type="text/css" />
 
 
 
@@ -231,7 +235,6 @@ $(document).ready(function () {
   border: none;
   display: inline-block;
   border-radius: 4px;
-  background-color: transparent;
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li {
@@ -272,11 +275,46 @@ $(document).ready(function () {
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="index.html">Home</a>
+  <a href="index.html">
+    <span class="fa fa-home"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="summary.html">Summary</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Methods
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="data_access.html">Data Access</a>
+    </li>
+    <li>
+      <a href="data_preparation.html">Data Preparation</a>
+    </li>
+  </ul>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://www.github.com/dapperstats/salvage">
+    <span class="fa fa-github"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="https://www.twitter.com/dapperstats">
+    <span class="fa fa-twitter"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="https://www.dapperstats.com">DAPPER Stats</a>
+</li>
       </ul>
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
@@ -286,13 +324,17 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Fish Salvage</h1>
+<h1 class="title toc-ignore">Analyses of the <a href="https://en.wikipedia.org/wiki/Sacramento%E2%80%93San_Joaquin_River_Delta">CA Delta</a> <a href="https://wildlife.ca.gov/Conservation/Delta/Salvage-Monitoring">fish salvage database</a></h1>
 
 </div>
 
 
-<p>Welcome to salvage!</p>
+<p>Welcome to the website for analyses of the California Delta fish salvage database, coded by <a href="https://www.dapperstats.com">DAPPER Stats</a>.</p>
+<p>Source code is available on <a href="https://www.github.com/dapperstats/salvage">GitHub</a>.</p>
+<p><code>.csv</code>s of the Salvage database files are available in the <a href="https://github.com/dapperstats/salvage/tree/master/data/Salvage_data_FTP">salvage GitHub repository</a>.</p>
+<p>The site is currently <strong>under construction</strong>, so check back for updates!</p>
 
+<p>Copyright &copy; 2020 DAPPER Stats</p>
 
 
 

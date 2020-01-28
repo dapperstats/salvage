@@ -2,7 +2,7 @@ name: "salvage_fish"
 navbar:
   title: "Delta Fish Salvage"
   left:
-    - text: "Home"
+    - icon: fa-home
       href: index.html
     - text: "Summary"
       href: summary.html
@@ -14,10 +14,18 @@ navbar:
         - text: "Data Preparation"
           href: data_preparation.html
   right:
-    - text: "Source Code"
+    - icon: fa-github
       href: https://www.github.com/dapperstats/salvage
+    - icon: fa-twitter
+      href: https://www.twitter.com/dapperstats
+    - text: "DAPPER Stats"
+      href: https://www.dapperstats.com
 
 output_dir: "docs"
 
-output: 
-  html_document
+output:
+  html_document:
+    highlight: textmate
+    include:
+      after_body: footer.html
+    css: styles.css
