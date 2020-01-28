@@ -1,6 +1,5 @@
 ---
 title: "Data Preparing"
-date: "2020-01-25"
 ---
 
 <br>

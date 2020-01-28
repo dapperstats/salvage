@@ -1,6 +1,5 @@
 ---
 title: "Salvage Data Methods"
-date: "2020-01-25"
 ---
 
 ## [Data Access](data_access.html)

@@ -11,6 +11,9 @@ navbar:
           href: data_access.html
         - text: "Data Preparation"
           href: data_preparation.html
+  right:
+    - text: "Source Code"
+      href: https://www.github.com/dapperstats/salvage
 
 output_dir: "docs"
 #This ensures only website files are put
