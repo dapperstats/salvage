@@ -3,9 +3,9 @@ title: "Salvage Data Summary"
 date: "2020-01-25"
 ---
 
-This page is minimal, but highlights the continuous integration (the data pulled from the FTP are used to update the **bolded** date below).
+This page is minimal, but highlights the continuous integration aspects.
 
-Come back for updates soon!
+Come back soon for substantive updates!!
 
 
 ```{r, include = FALSE}
@@ -25,6 +25,9 @@ print(sample_vols)
 file.exists("files/exported_volumes.png")
 ```
 
+<br>
+This figure shows the daily exported volume from each facility:
+<br>
 ![Delta salvage facilities exported volumes](files/exported_volumes.png)
 
 
