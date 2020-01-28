@@ -114,7 +114,7 @@ We use the functions included in the [`salvage_functions.R` R script](https://gi
 
 ## Continuous Deployment
 
-The data and output are updated daily via [`cron` jobs](https://docs.travis-ci.com/user/cron-jobs/) on [`travis-ci`](https://travis-ci.org/dapperstats/salvage) with a recipe (a.k.a. job lifecycle) described by the [`.travis.tml` file](https://github.com/dapperstats/salvage/blob/master/.travis.yml).
+The data and output are updated daily via [`cron` jobs](https://docs.travis-ci.com/user/cron-jobs/) on [`travis-ci`](https://travis-ci.org/dapperstats/salvage) with a recipe (a.k.a. job lifecycle) described by the [`.travis.yml` file](https://github.com/dapperstats/salvage/blob/master/.travis.yml).
 
 
 <br>
