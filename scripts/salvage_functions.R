@@ -2,7 +2,7 @@
 exported_volumes_fig <- function(vals){
 
   on.exit(dev.off())
-  fname <- "files/exported_volumes.png"
+  fname <- "site/docs/exported_volumes.png"
   png(fname, width = 6, height = 5, units = "in", res = 200)
   par(bty = "U", mar = c(3, 5, 1, 5))
 
