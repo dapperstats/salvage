@@ -8,11 +8,6 @@ navbar:
       href: summary.html
     - text: "Methods"
       href: methods.html
-      menu:
-        - text: "Data Access" 
-          href: data_access.html
-        - text: "Data Preparation"
-          href: data_preparation.html
   right:
     - icon: fa-github
       href: https://www.github.com/dapperstats/salvage
@@ -25,7 +20,13 @@ output_dir: "docs"
 
 output:
   html_document:
-    highlight: textmate
+    highlight: tango
+    theme: darkly 
     include:
+      in_header: head.html
       after_body: footer.html
     css: styles.css
+    toc: true
+    toc_depth: 5
+    toc_float:
+      collapsed: false

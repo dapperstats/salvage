@@ -7,5 +7,5 @@ RUN R -e "install.packages('blogdown')"
 # Hugo is required to run blogdown
 RUN R -e "blogdown::install_hugo()" 
 
-# Copy in the scripts directory
+# Copy the local scripts directory in
 COPY scripts scripts

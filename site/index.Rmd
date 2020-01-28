@@ -1,13 +1,25 @@
 ---
-title: "Analyses of the [CA Delta](https://en.wikipedia.org/wiki/Sacramento%E2%80%93San_Joaquin_River_Delta) [fish salvage database](https://wildlife.ca.gov/Conservation/Delta/Salvage-Monitoring)"
+title: "salvage.fish"
+output:
+  html_document:
+    toc: false
+    toc_float: false
 ---
 
+<br>
 
-Welcome to the website for analyses of the California Delta fish salvage database, coded by [DAPPER Stats](https://www.dapperstats.com).
+Welcome to the website for analyses of the [California Delta](https://en.wikipedia.org/wiki/Sacramento%E2%80%93San_Joaquin_River_Delta) [fish salvage database](https://wildlife.ca.gov/Conservation/Delta/Salvage-Monitoring), coded by [DAPPER Stats](https://www.dapperstats.com).
+
+<br>
 
 
 Source code is available on [GitHub](https://www.github.com/dapperstats/salvage).
 
-`.csv`s of the Salvage database files are available in the [salvage GitHub repository](https://github.com/dapperstats/salvage/tree/master/data/Salvage_data_FTP).
+Up-to-date `.csv`s of the salvage database files are available in the [salvage GitHub repository](https://github.com/dapperstats/salvage/tree/master/data/Salvage_data_FTP).
+
+<br>
+
 
 The site is currently **under construction**, so check back for updates!
+
+![](images/fishes.png)

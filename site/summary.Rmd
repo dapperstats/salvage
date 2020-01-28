@@ -1,6 +1,7 @@
 ---
 title: "Salvage Data Summary"
 date: "`r format(Sys.time(), '%B %d, %Y')`"
+author: "Juniper L. Simonis"
 ---
 
 
@@ -24,20 +25,28 @@ txt <- list(most_recent_date = most_recent_date,
 file.exists("files/exported_volumes.png")
 ```
 
-This page is minimal, but highlights the continuous integration aspects by showing the facility export since **`r txt$first_date_in_plot`**
+<br>
+
+This page is minimal, but highlights the continuous integration.
 
 Come back soon for substantive updates!!
 
-
-<br>
-This figure shows the daily exported volume from each facility:
-
-<br>
 <br>
 
-![Delta salvage facilities exported volumes](files/exported_volumes.png)
+## Daily Exported Volume
 
+<br>
+This figure shows the daily exported volume from each facility since **`r txt$first_date_in_plot`**:
+
+<br>
+
+![Delta salvage facilities exported volumes.](files/exported_volumes.png)
+
+<br>
 
 The most recent salvage samples posted to the FTP from the State Water Project and Central Valley Project were collected on **`r txt$most_recent_date`**. 
 
 `.csv`s of the Salvage database files are available in the [salvage GitHub repository](https://github.com/dapperstats/salvage/tree/master/data/Salvage_data_FTP).
+
+<br>
+<br>
