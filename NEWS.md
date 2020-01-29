@@ -2,6 +2,14 @@
 
 Version numbers follow [Semantic Versioning](https://semver.org/).
 
+
+# [v0.8.0](https://github.com/dapperstats/salvage/releases/tag/v0.8.0) 
+*2020-01-29*
+
+## Fixing a hiccup with the `salvage_script`
+* I had forgotten to remove a placeholder that was keeping the last date to use fixed
+* Removed now, image updated
+
 # [v0.7.0](https://github.com/dapperstats/salvage/releases/tag/v0.7.0) 
 *2020-01-28*
 
