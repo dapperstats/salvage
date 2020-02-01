@@ -10,6 +10,9 @@ spp <- c(1:3, 26)
 daily_salvage_tab <- daily_salvage(salvage, "1993-01-01", Sys.Date(), spp)
 write.csv(daily_salvage_table, "../daily_salvage.csv", row.names = FALSE)
 
+
+
+
 # split by facility 
 # write up methods
 #

@@ -8,40 +8,77 @@ author: "Juniper L. Simonis"
 
 Here, we describe the methods used to analyze the salvage database, both within an automated pipeline and locally. 
 
+As developed below, the general methodology is depecited in the [`.travis.yml`](https://github.com/dapperstats/salvage/blob/master/.travis.yml) file, which shows full remote implementation.
 
 ## Software and Systems
 
-Following the 
 
 To promote cross-platform availability and future reliability, we leverage a [software container approach](https://www.docker.com/resources/what-container) via [`Docker`](https://www.docker.com), which allows any user to establish stable runtime environments for data retrieval and calculation.
+[A container is an instance of a software environment spun-up from an image that has been defined by a `Dockerfile`](https://docs.docker.com/engine/docker-overview/).
 
-For continuous integration and analysis of newly posted data and continuous deployment of the data products and website, we follow the general approach of White et al. (2019), as outlined here and detailed below (see **Continuous Deployment**). We host our code and data on [GitHub](https://github.com), use [Travis CI](https://travis-ci.org) for compute, deploy our website via [Netlify](https://www.netlify.com/), and archive everything on [Zenodo](https://www.netlify.com/).
+For continuous integration and analysis of newly posted data and continuous deployment of the data products and website, we follow the general approach of White et al. (2019), as outlined here and detailed below (see **Continuous Deployment**). 
+We host our code and data on [GitHub](https://github.com), use [Travis CI](https://travis-ci.org) to orchestrate compute, run analysis and related code in [`R`](https://www.r-project.org/) deploy our website via [Netlify](https://www.netlify.com/), and archive everything on [Zenodo](https://www.netlify.com/).
 
 ## Establishing the Runtime Environments
 
-Following [best practices for Docker containers](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/), we have decoupled our overall workflow into two major components, each of which has its own container:
-1. Data retrieval
-  - done using the [`accessor` container](https://hub.docker.com/r/dapperstats/accessor)
-2. Data summary/analysis/presentation
-  - done using the [`salvage` container](https://hub.docker.com/r/dapperstats/salvage)
+### Docker
+
+To use a container approach, we need to have `Docker` installed first. 
+
+The standard [Travis CI](https://travis-ci.org) `bash` runtime environment comes pre-loaded with a small suite of programs, including `Docker`.
+As such, we do not need to install it during our continuous integration workflow in order to use containers.
+
+However, this is likely not to be the case for users establishing local versions of the pipeline.
+As needed, then, [install `Docker`](https://docs.docker.com/get-docker/).
+The specific instructions vary depending on your operating system, so pay special attention to that.
+
+### Collecting Software Images
+
+Following [best practices for Docker containers](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/), we have decoupled our overall workflow into two major components, each of which has its own image:
+1. Data retrieval via the [`accessor` image](https://hub.docker.com/r/dapperstats/accessor)
+2. Data summary/analysis/presentation via the [`salvage` image](https://hub.docker.com/r/dapperstats/salvage)
+
+It is likely that in the future the second stage will be further decoupled into separate image (*e.g.*, "summary and analysis" and "presentation"), but that is not yet enacted.
 
 Within a standard [Travis CI job](https://docs.travis-ci.com/user/job-lifecycle/), we use the [`bash` language](https://git.savannah.gnu.org/cgit/bash.git) and set the user with `sudo` privileges.
 
-We then pull the remote images of the Docker containers to the "local" Travis server
+We then pull the remote images of the Docker containers from [Docker Hub](https://hub.docker.com/) to the Travis server:
 
 ```{bash, eval = FALSE}
 docker pull dapperstats/accessor
 docker pull dapperstats/salvage
 ```
 
+### Instantiating Software Containers
+
+At this point we can now `docker run` the images to produce containers in our runtime:
+
+```{bash, eval = FALSE}
+docker run --name acc --restart=always -it dapperstats/accessor
+docker run --name salv --restart=always -itd dapperstats/salvage
+```
+
+We name the containers `acc` and `salv` for `accessor` and `salvage`, respectively, and keep them restarted so that their content is more quickly accessible.
+The additional flags used are
+ - `d` runs the container in the background (needed because there is no command line within `salvage`)
+ - `i` keeps the container's `stdin` open
+ - `t` allocates a pseudo-TTY to the `stdin`
+
 
 ## Data Access
 
 ### Retrieve the Salvage Database
 
-The bulk of the data access protocol involves converting the `.accdb` salvagae database file on the remote [ftp](ftp://ftp.dfg.ca.gov/salvage/) to a local set of `.csv` files named by the tables in the database. 
+The [`accessor` image](https://hub.docker.com/r/dapperstats/accessor), is defined with the software necessary to retrieve a remote Access<sup>&reg;</sup> database, convert it to a set of `.csv` files named by the tables in the database, and read the `.csv` files into [`R`](). 
+
+The default settings for the image are configured for the salvage database.
+
+
+
+
+
 We accomplish this in two lines of code by pulling and then running a stable [`Docker`](https://www.docker.com) [software container](https://www.docker.com/resources/what-container) that contains a set of `bash` scripts designed specifically for this task.
-The specific image used for data access is called [`accessor`](https://hub.docker.com/r/dapperstats/accessor), is freely available on [Docker Hub](https://hub.docker.com/), and has default setting configured for the salvage database.
+
 Code for the construction of the `accessor` image is available in its [repository](https://www.github.com/dapperstats/accessor).
 
 For accessability and reproducibility, we provide an [up-to-date version of the salvage data](https://github.com/dapperstats/salvage/blob/master/data) as `.csv`s from the "current" (1993 - Present) salvage database file (`Salvage_data_FTP.accdb`).
@@ -51,25 +88,6 @@ Updates to the data are executed via [`cron` jobs](https://docs.travis-ci.com/us
 
 <br> 
 
-#### Build A Salvage Container
-
-To use the current image to generate an up-to-date container with data for yourself
-
-1. [Install Docker](https://docs.docker.com/get-docker/)
-   * Specific instructions vary depending on OS
-2. Open up a docker-ready terminal
-3. Download the image
-```{bash, eval = FALSE}
-sudo docker pull dapperstats/salvage`
-```
-4. Build the container
-```{bash, eval = FALSE}
-sudo docker container run -ti --name salvage dapperstats/salvage`
-```
-5. Copy the data out from the container 
-```{bash, eval = FALSE}
-sudo docker cp salvage:/data .`
-```
 
 <br>
 
@@ -152,6 +170,29 @@ Thus, for a quick and simple expansion to a full-volume estimate, we divide the 
 ## Continuous Deployment
 
 The data and output are updated daily via [`cron` jobs](https://docs.travis-ci.com/user/cron-jobs/) on [`travis-ci`](https://travis-ci.org/dapperstats/salvage) with a recipe (a.k.a. job lifecycle) described by the [`.travis.yml` file](https://github.com/dapperstats/salvage/blob/master/.travis.yml).
+
+
+
+
+#### Build A Salvage Container
+
+To use the current image to generate an up-to-date container with data for yourself
+
+1. 
+2. Open up a docker-ready terminal
+3. Download the image
+```{bash, eval = FALSE}
+sudo docker pull dapperstats/salvage`
+```
+4. Build the container
+```{bash, eval = FALSE}
+sudo docker container run -ti --name salvage dapperstats/salvage`
+```
+5. Copy the data out from the container 
+```{bash, eval = FALSE}
+sudo docker cp salvage:/data .`
+```
+
 
 
 ## References 
