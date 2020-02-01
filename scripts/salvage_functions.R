@@ -1,7 +1,9 @@
-daily_salvage <- function(salvage, date_from = as.Date("2019-01-01"), 
+daily_salvage <- function(salvage, date_from = "2019-01-01", 
                           date_to = Sys.Date(), organism = 1, 
                           facility = c("SWP", "CVP"), study = 0){
 
+  date_from <- as.Date(date_from)
+  date_to <- as.Date(date_to)
   dates <- seq.Date(date_from, date_to, 1)
 
   vols <- daily_sample_vols(salvage = salvage, dates = dates, 
