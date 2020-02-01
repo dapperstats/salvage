@@ -1,4 +1,14 @@
+---
+title: "Salvage Data Methods"
+date: "2020-02-01"
+author: "Juniper L. Simonis"
+---
+
 # Methods
+
+## Software
+
+
 
 ## Data Access
 
@@ -98,10 +108,21 @@ The resulting `database` object is a named `list` of the database's tables, read
 
 ## Data Preparation
 
-Data preparation code is *in development*!
-
 Having brought the data into R as-is, we can now prepare them for summaries and analyses.
-We use the functions included in the [`salvage_functions.R` R script](https://github.com/dapperstats/salvage/blob/master/scripts/salvage_functions.R), which is included within the and [`salvage` docker image](https://hub.docker.com/r/dapperstats/salvage), which provides a stable runtime environment for the analyses and output generation (including website rendering).
+We use the functions included in the [`salvage_functions.R` R script](https://github.com/dapperstats/salvage/blob/master/scripts/salvage_functions.R), which is included within the and [`salvage` docker image](https://hub.docker.com/r/dapperstats/salvage) that provides a stable runtime environment for the analyses and output generation (including website rendering).
+
+### Daily Summaries
+
+The data in the Sample table are at the highest frequency (sample level, generally every 2-hr) and for the present work we summarize the volumes and counts at the daily level within each of two buildings (CVP, SWP).
+For a given sample, the amount of time (minutes) the facility was pumping, the amount of time (minutes) of the pumping that was sampled, and the primary flow (cubic feet per second) are recorded.
+We convert the flow to cubic meters per minute and assume an average primary flow over the sample times to estimate sample-specific pumping and sampling volumes, which we then sum within days to produce daily totals in 1000 m$^3$.
+For comparison, we also include the total daily exported volume reported in the Sample table, converted to 1000 m$^3$.
+This value should be similar to the calculated daily totals, and indeed the values are very strongly aligned (correlation coefficient of 0.952 for CVP and 0.996 for SWP for 9,893 daily values from 1993-01-01 to 2020-02-01).
+As an additional sample size metric, we also include the total number of included entries (samples) within each day for each building (general target being 12). 
+
+To determine the total daily counts for each organism of interest, we gather the entries in the Catch table that are aligned with all samples for that day in that building and sum across their counts. 
+These counts are the number of times a fish of that species was found in the processed sample volume, which is a fraction of the total volume sampled.
+Thus, for a quick and simple expansion to a full-volume estimate, we divide the count by the sample volume and multiply by the pumped volume (as calculated).
 
 <br>
 

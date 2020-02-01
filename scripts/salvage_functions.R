@@ -201,8 +201,9 @@ daily_sample_vols <- function(salvage, dates = NULL,
   # simply to reduce the data stream and in case there's accidentally more
   # than one unique value (there should be only one)
 
-daily_volume <- function(salvage, dates = NULL, units = "thousand_m3",
-                         facility = c("SWP", "CVP")){
+daily_exported_volume <- function(salvage, dates = NULL, 
+                                  units = "thousand_m3",
+                                  facility = c("SWP", "CVP")){
   sample_method <- as.numeric(factor(facility, levels = c("SWP", "CVP")))
   if(is.null(dates)){
     dates <- max(salvage$Sample$SampleDate, na.rm = TRUE)
