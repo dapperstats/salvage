@@ -6,8 +6,13 @@ author: "Juniper L. Simonis"
 
 # Methods
 
-## Software
+Here, we describe the methods used to analyze the salvage database, both within an automated pipeline and locally. 
 
+## Software and Systems
+
+To promote cross-platform availability and future reliability, we leverage a [software container approach](https://www.docker.com/resources/what-container) via [`Docker`](https://www.docker.com), which allows any user to establish stable runtime environments for data retrieval and calculation.
+
+For continuous integration and analysis of newly posted data and continuous deployment of the data products and website, we follow the general approach of White et al. (2019), as outlined here and detailed below. We host our code and data on [GitHub](https://github.com), use [Travis CI](https://travis-ci.org) for compute, deploy our website via [Netlify](https://www.netlify.com/), and archive everything on [Zenodo](https://www.netlify.com/).
 
 
 ## Data Access
@@ -130,3 +135,5 @@ Thus, for a quick and simple expansion to a full-volume estimate, we divide the 
 
 The data and output are updated daily via [`cron` jobs](https://docs.travis-ci.com/user/cron-jobs/) on [`travis-ci`](https://travis-ci.org/dapperstats/salvage) with a recipe (a.k.a. job lifecycle) described by the [`.travis.yml` file](https://github.com/dapperstats/salvage/blob/master/.travis.yml).
 
+
+## References 

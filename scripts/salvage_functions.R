@@ -6,8 +6,8 @@ daily_salvage <- function(salvage, date_from = "2019-01-01",
   date_to <- as.Date(date_to)
   dates <- seq.Date(date_from, date_to, 1)
 
-  vols <- daily_sample_vols(salvage = salvage, dates = dates, 
-                            facility = facility, study = study)
+  vols <- daily_volumes(salvage = salvage, dates = dates, 
+                        facility = facility, study = study)
   counts <- daily_counts(salvage = salvage, dates = dates, 
                          organism = organism, facility = facility, 
                          study = study)
@@ -127,8 +127,8 @@ daily_counts <- function(salvage, dates = NULL, organism = 1,
   out
 }
 
-daily_sample_vols <- function(salvage, dates = NULL, 
-                              facility = c("SWP", "CVP"), study = 0){
+daily_volumes <- function(salvage, dates = NULL, 
+                          facility = c("SWP", "CVP"), study = 0){
 
   pumping_times <- salvage$Sample$MinutesPumping
   sample_times <- salvage$Sample$SampleTimeLength
