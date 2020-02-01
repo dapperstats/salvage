@@ -17,7 +17,7 @@ To promote cross-platform availability and future reliability, we leverage a [so
 [A container is an instance of a software environment spun-up from an image that has been defined by a `Dockerfile`](https://docs.docker.com/engine/docker-overview/).
 
 For continuous integration and analysis of newly posted data and continuous deployment of the data products and website, we follow the general approach of White et al. (2019), as outlined here and detailed below (see **Continuous Deployment**). 
-We host our code and data on [GitHub](https://github.com), use [Travis CI](https://travis-ci.org) to orchestrate compute, run analysis and related code in [`R`](https://www.r-project.org/) deploy our website via [Netlify](https://www.netlify.com/), and archive everything on [Zenodo](https://www.netlify.com/).
+We host our code and data on [GitHub](https://github.com), use [Travis CI](https://travis-ci.org) to orchestrate compute, run analysis and related code in [`R`](https://www.r-project.org/), deploy our website via [Netlify](https://www.netlify.com/), and archive everything on [Zenodo](https://www.netlify.com/).
 
 ## Establishing the Runtime Environments
 
@@ -70,28 +70,51 @@ The additional flags used are
 ### Retrieve the Salvage Database
 
 The [`accessor` image](https://hub.docker.com/r/dapperstats/accessor), is defined with the software necessary to retrieve a remote Access<sup>&reg;</sup> database, convert it to a set of `.csv` files named by the tables in the database, and read the `.csv` files into [`R`](). 
+The `accessor` image also contains `bash` scripts to perform the retrieval and conversion, which are executed at the creation of a container.
+The default settings for the image are configured for the "current" (1993 - Present) salvage database, so the `acc` container will include the most up-to-date version of the salvage data, collected within the `data` folder. 
+Code for the construction of the `accessor` image and details of its scripts are available in its [repository](https://www.github.com/dapperstats/accessor).
 
-The default settings for the image are configured for the salvage database.
+### Share the Data Among Environments
+
+The data that the `acc` container creates are located within itself and need to be shared to the build folder for archiving as well as to the `salv` container for analysis and presentation.
+The main `Docker` command for moving files around is `cp`.
+At the present, there is no capacity in `Docker` to copy between containers, so instead we copy the `data` folder out from `acc` and then make another copy into `salv`:
+
+```{bash, eval = FALSE}
+docker cp acc:/data .
+docker cp data salv:/
+```
+
+Any existing files within the local `data` folder will be overwritten with the up-to-date versions.
+
+## Script Access
+
+### Share the Scripts Among Environments
+
+Whereas the `acc` container got us an accessible version of the data, the `salv` container is where we are going to do stuff with the data, which is facilitated by pre-written scripts and functions.
+
+The scripts within the `acc` container include some functions, especially for reading the `.csv` files into `R`, that we would like to have within the `salv` container, so we follow suit for copying scripts:
+
+```{bash, eval = FALSE}
+docker cp acc:/scripts .
+docker cp scripts salv:/
+```
+
+Note that this means the files in the `scripts` folder will overwrite any already-existing files in the `salv` container.
+This also means that a user can add more scripts of their choosing into the container by having them in the local `scripts` folder prior to running the above line.
+
+## Site Access
+
+### Bring the Site into `salv`
+
+The website is comprised of a suite a folders and files that are contained within a folder named `site`.
+The `accessor` image has nothing to do with the site whatsoever, so we do not need to copy anything from the container, but we do have a local instance of the `site` folder, which we copy into `salv`:
 
 
+```{bash, eval = FALSE}
+docker cp site salv:/
+```
 
-
-
-We accomplish this in two lines of code by pulling and then running a stable [`Docker`](https://www.docker.com) [software container](https://www.docker.com/resources/what-container) that contains a set of `bash` scripts designed specifically for this task.
-
-Code for the construction of the `accessor` image is available in its [repository](https://www.github.com/dapperstats/accessor).
-
-For accessability and reproducibility, we provide an [up-to-date version of the salvage data](https://github.com/dapperstats/salvage/blob/master/data) as `.csv`s from the "current" (1993 - Present) salvage database file (`Salvage_data_FTP.accdb`).
-The data can be downloaded via various methods from the repository, including from the website.
-
-Updates to the data are executed via [`cron` jobs](https://docs.travis-ci.com/user/cron-jobs/) on [`travis-ci`](https://travis-ci.org/dapperstats/salvage) and pushed to GitHub as [tagged Releases](https://github.com/dapperstats/salvage/releases).
-
-<br> 
-
-
-<br>
-
-### Bring the Data into R 
 
 An additional conversion makes the data available in [`R`](https://www.r-project.org/) as a `list` of `data.frames` that is directly analagous to the `.accdb` database of tables.
 
