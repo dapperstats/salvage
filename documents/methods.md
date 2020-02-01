@@ -2,7 +2,6 @@
 
 ## Data Access
 
-
 <br>
 
 ### Retrieve the Salvage Database

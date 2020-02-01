@@ -1,3 +1,24 @@
+daily_salvage <- function(salvage, date_from = as.Date("2019-01-01"), 
+                          date_to = Sys.Date(), organism = 1, 
+                          facility = c("SWP", "CVP"), study = 0){
+
+  dates <- seq.Date(date_from, date_to, 1)
+
+  vols <- daily_sample_vols(salvage = salvage, dates = dates, 
+                            facility = facility, study = study)
+  counts <- daily_counts(salvage = salvage, dates = dates, 
+                         organism = organism, facility = facility, 
+                         study = study)
+  counts_sample_match <- match(paste0(counts$Building, "_", counts$Date),
+                               paste0(vols$Building, "_", vols$Date)) 
+  counts_cols_out <- c("Building", "Date")
+  counts_cols <- !(colnames(counts) %in% counts_cols_out)
+  counts1 <- data.frame(counts[counts_sample_match, counts_cols])
+  colnames(counts1) <- colnames(counts)[counts_cols]
+  data.frame(vols, counts1)
+}
+
+
 
 exported_volumes_fig <- function(vals){
 
@@ -63,24 +84,45 @@ most_recent_samples <- function(salvage){
   out
 }
 
-daily_counts <- function(salvage, dates = NULL, species_code = 1, 
+
+daily_counts <- function(salvage, dates = NULL, organism = 1, 
                               facility = c("SWP", "CVP"), study = 0){
 
+  sample_method <- as.numeric(factor(facility, levels = c("SWP", "CVP")))
+  sample_method <- 1:2
+  if(is.null(dates)){
+    dates <- max(salvage$Sample$SampleDate, na.rm = TRUE)
+  }
+  dates <- as.character(dates)
+  tab <- expand.grid(SampleMethod = sample_method, SampleDate = dates, 
+                     stringsAsFactors = FALSE)
+  nrows <- NROW(tab)
+  ncols <- length(organism)
+  samples_counts <- matrix(NA, nrow = nrows, ncol = ncols)
 
-    building_in <- salvage$Sample$SampleMethod == tab$SampleMethod[i]
-    date_in <- salvage$Sample$SampleDate == tab$SampleDate[i]
-    study_in <- salvage$Sample$StudyRowID %in% study 
-    all_in <- building_in & date_in & study_in
-    sample_ids <- salvage$Sample$SampleRowID[all_in]
-    sample_in <- salvage$Building$SampleRowID %in% sample_ids
+  for(i in 1:nrows){
+    sample_method_in <- salvage$Sample$SampleMethod == tab$SampleMethod[i]
+    sample_date_in <- salvage$Sample$SampleDate == tab$SampleDate[i]
+    study_row_id_in <- salvage$Sample$StudyRowID %in% study 
+    all_in <- sample_method_in & sample_date_in & study_row_id_in
+    sample_row_id <- salvage$Sample$SampleRowID[all_in]
+    sample_row_id_in <- salvage$Building$SampleRowID %in% sample_row_id
 
-    building_ids <- salvage$Building$BuildingRowID[sample_in]
-    catch_in <- salvage$Catch$BuildingRowID %in% building_ids
-    species_in <- salvage$Catch$Organism == tab$Organism[i]
-    all_in <- catch_in & species_in
-    catches <- salvage$Catch$Count[all_in]
-    catch[i] <- sum(catches, na.rm = TRUE)
-
+    building_row_id <- salvage$Building$BuildingRowID[sample_row_id_in]
+    building_row_id_in <- salvage$Catch$BuildingRowID %in% building_row_id
+    for(j in 1:ncols){
+      organism_in <- salvage$Catch$Organism == organism[j]
+      all_in <- building_row_id_in & organism_in
+      sample_counts <- salvage$Catch$Count[all_in]
+      samples_counts[i, j] <- sum(sample_counts, na.rm = TRUE)
+    }
+  }
+  out <- data.frame(tab, samples_counts) 
+  out$SampleMethod[out$SampleMethod == 1] <- "SWP"
+  out$SampleMethod[out$SampleMethod == 2] <- "CVP"
+  organism_col_names <- paste0("organism_", organism)
+  colnames(out) <- c("Building", "Date", organism_col_names)
+  out
 }
 
 daily_sample_vols <- function(salvage, dates = NULL, 

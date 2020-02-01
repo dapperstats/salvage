@@ -4,13 +4,13 @@ source("../../accessor/scripts/r_functions.R")
 salvage <- read_database()
 
 most_recent <- most_recent_samples(salvage)
+daily_salvage_table <- daily_salvage(salvage)
 
 
-dates <- seq.Date(as.Date("2020-01-01"), as.Date("2020-01-22"), 1)
+org_dens <- daily_salvage_table$organism_1 / daily_salvage_table$Sample_Volume
+org_counts <- org_dens * daily_salvage_table$Pumping_Volume
 
-vals <- daily_sample_vols(salvage, dates)
+plot(as.Date(daily_salvage_table$Date), org_counts)
 
-
-most_recent <- data.frame(t(most_recent))
-mr_file <- paste0("site/static/files/most_recent_samples.csv")
-write.csv(most_recent, file = mr_file, row.names = FALSE)
+plot(daily_salvage_table$Pumping_Volume, daily_salvage_table$Exported_Volume)
+abline(0,1)
