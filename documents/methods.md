@@ -8,16 +8,34 @@ author: "Juniper L. Simonis"
 
 Here, we describe the methods used to analyze the salvage database, both within an automated pipeline and locally. 
 
+
 ## Software and Systems
+
+Following the 
 
 To promote cross-platform availability and future reliability, we leverage a [software container approach](https://www.docker.com/resources/what-container) via [`Docker`](https://www.docker.com), which allows any user to establish stable runtime environments for data retrieval and calculation.
 
-For continuous integration and analysis of newly posted data and continuous deployment of the data products and website, we follow the general approach of White et al. (2019), as outlined here and detailed below. We host our code and data on [GitHub](https://github.com), use [Travis CI](https://travis-ci.org) for compute, deploy our website via [Netlify](https://www.netlify.com/), and archive everything on [Zenodo](https://www.netlify.com/).
+For continuous integration and analysis of newly posted data and continuous deployment of the data products and website, we follow the general approach of White et al. (2019), as outlined here and detailed below (see **Continuous Deployment**). We host our code and data on [GitHub](https://github.com), use [Travis CI](https://travis-ci.org) for compute, deploy our website via [Netlify](https://www.netlify.com/), and archive everything on [Zenodo](https://www.netlify.com/).
+
+## Establishing the Runtime Environments
+
+Following [best practices for Docker containers](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/), we have decoupled our overall workflow into two major components, each of which has its own container:
+1. Data retrieval
+  - done using the [`accessor` container](https://hub.docker.com/r/dapperstats/accessor)
+2. Data summary/analysis/presentation
+  - done using the [`salvage` container](https://hub.docker.com/r/dapperstats/salvage)
+
+Within a standard [Travis CI job](https://docs.travis-ci.com/user/job-lifecycle/), we use the [`bash` language](https://git.savannah.gnu.org/cgit/bash.git) and set the user with `sudo` privileges.
+
+We then pull the remote images of the Docker containers to the "local" Travis server
+
+```{bash, eval = FALSE}
+docker pull dapperstats/accessor
+docker pull dapperstats/salvage
+```
 
 
 ## Data Access
-
-<br>
 
 ### Retrieve the Salvage Database
 
@@ -137,3 +155,5 @@ The data and output are updated daily via [`cron` jobs](https://docs.travis-ci.c
 
 
 ## References 
+
+White, E. P., G. M. Yenni, S. Taylor, E. Christensen, E. Bledsoe, J. L. Simonis, and S. K. M. Ernest. 2019. Developing an automated iterative near-term forecasting system for an ecological study. Methods in Ecology and Evolution 10:332-344. DOI: [10.1111/2041-210X.13104](https://doi.org/10.1111/2041-210x.13104).
