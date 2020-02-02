@@ -151,7 +151,8 @@ daily_counts <- function(salvage, dates = NULL, organism = 1,
 }
 
 daily_volumes <- function(salvage, dates = NULL, 
-                          facility = c("SWP", "CVP"), study = 0){
+                          facility = c("SWP", "CVP"), study = 0,
+                          save_out = FALSE){
 
   pumping_times <- salvage$Sample$MinutesPumping
   sample_times <- salvage$Sample$SampleTimeLength
@@ -214,6 +215,15 @@ daily_volumes <- function(salvage, dates = NULL,
   colnames(out) <- c("Building", "Date", "Samples",
                      "Pumping_Time", "Sample_Time",
                      "Pumping_Volume", "Sample_Volume", "Exported_Volume")
+  if(save_out){
+    dir.create("site/files", showWarnings = FALSE)
+    dir.create("data/summaries", showWarnings = FALSE)
+
+    ds_table_fpath1 <- "data/summaries/daily_volumes.csv"
+    ds_table_fpath2 <- "site/files/daily_volumes.csv"
+    write.csv(out, file = ds_table_fpath1, row.names = FALSE)
+    write.csv(out, file = ds_table_fpath2, row.names = FALSE)
+  }
   out
 }
 
@@ -226,7 +236,8 @@ daily_volumes <- function(salvage, dates = NULL,
 
 daily_exported_volume <- function(salvage, dates = NULL, 
                                   units = "thousand_m3",
-                                  facility = c("SWP", "CVP")){
+                                  facility = c("SWP", "CVP"),
+                                  save_out = TRUE){
   sample_method <- as.numeric(factor(facility, levels = c("SWP", "CVP")))
   if(is.null(dates)){
     dates <- max(salvage$Sample$SampleDate, na.rm = TRUE)
@@ -248,6 +259,15 @@ daily_exported_volume <- function(salvage, dates = NULL,
   out$SampleMethod[out$SampleMethod == 1] <- "SWP"
   out$SampleMethod[out$SampleMethod == 2] <- "CVP"
   colnames(out) <- c("Building", "Date", "Exported_Volume")
+  if(save_out){
+    dir.create("site/files", showWarnings = FALSE)
+    dir.create("data/summaries", showWarnings = FALSE)
+
+    ds_table_fpath1 <- "data/summaries/exported_volumes.csv"
+    ds_table_fpath2 <- "site/files/exported_volumes.csv"
+    write.csv(out, file = ds_table_fpath1, row.names = FALSE)
+    write.csv(out, file = ds_table_fpath2, row.names = FALSE)
+  }
   out
 }
 
