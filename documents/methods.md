@@ -65,9 +65,9 @@ docker run --name salv --restart=always -itd dapperstats/salvage
 
 We name the containers `acc` and `salv` for `accessor` and `salvage`, respectively, and keep them restarted so that their content is more quickly accessible.
 The additional flags used are
- - `d` runs the container in the background (needed because there is no command line within `salvage`)
- - `i` keeps the container's `stdin` open
- - `t` allocates a pseudo-TTY to the `stdin`
+ - `-d` runs the container in the background (needed because there is no command line within `salvage`)
+ - `-i` keeps the container's `stdin` open
+ - `-t` allocates a pseudo-TTY to the `stdin`
 
 
 
@@ -231,8 +231,8 @@ We use the functions included in the [`salvage_functions.R` R script](https://gi
 
 The data in the Sample table are at the highest frequency (sample level, generally every 2-hr) and for the present work we summarize the volumes and counts at the daily level within each of two buildings (CVP, SWP).
 For a given sample, the amount of time (minutes) the facility was pumping, the amount of time (minutes) of the pumping that was sampled, and the primary flow (cubic feet per second) are recorded.
-We convert the flow to cubic meters per minute and assume an average primary flow over the sample times to estimate sample-specific pumping and sampling volumes, which we then sum within days to produce daily totals in 1000 m$^3$.
-For comparison, we also include the total daily exported volume reported in the Sample table, converted to 1000 m$^3$.
+We convert the flow to cubic meters per minute and assume an average primary flow over the sample times to estimate sample-specific pumping and sampling volumes, which we then sum within days to produce daily totals in 1000 m<sup>3</sup>.
+For comparison, we also include the total daily exported volume reported in the Sample table, converted to 1000 m<sup>3</sup>.
 This value should be similar to the calculated daily totals, and indeed the values are very strongly aligned (correlation coefficient of 0.952 for CVP and 0.996 for SWP for 9,893 daily values from 1993-01-01 to 2020-02-01).
 As an additional sample size metric, we also include the total number of included entries (samples) within each day for each building (general target being 12). 
 
