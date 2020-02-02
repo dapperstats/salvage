@@ -2,6 +2,14 @@
 
 Version numbers follow [Semantic Versioning](https://semver.org/).
 
+# [v0.9.0](https://github.com/dapperstats/salvage/releases/tag/v0.9.0) 
+*2020-02-02*
+
+## Finish the `daily_count` function
+* [Addresses](https://github.com/dapperstats/salvage/issues/37) 
+* combined with `daily_volumes` into a `daily_salvage` function
+
+## Updating and editing methods code
 
 # [v0.8.0](https://github.com/dapperstats/salvage/releases/tag/v0.8.0) 
 *2020-01-29*

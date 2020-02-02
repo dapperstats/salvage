@@ -142,8 +142,8 @@ daily_counts <- function(salvage, dates = NULL, organism = 1,
     dir.create("site/files", showWarnings = FALSE)
     dir.create("data/summaries", showWarnings = FALSE)
 
-    ds_table_fpath1 <- "data/summaries/exported_volumes.csv"
-    ds_table_fpath2 <- "site/files/exported_volumes.csv"
+    ds_table_fpath1 <- "data/summaries/daily_counts.csv"
+    ds_table_fpath2 <- "site/files/daily_counts.csv"
     write.csv(out, file = ds_table_fpath1, row.names = FALSE)
     write.csv(out, file = ds_table_fpath2, row.names = FALSE)
   }
