@@ -14,7 +14,9 @@ write.csv(daily_salvage_table, "../daily_salvage.csv", row.names = FALSE)
 
 
 # split by facility 
-# write up methods
+# make prettier figures
+# bibtex
+# ABSTRACT
 #
 par(mfrow = c(4,1), mar = c(3, 4, 1, 1), bty = "L")
 org_dens <- daily_salvage_tab$organism_1 / daily_salvage_tab$Sample_Volume

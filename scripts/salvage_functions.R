@@ -1,6 +1,7 @@
 daily_salvage <- function(salvage, date_from = "2019-01-01", 
                           date_to = Sys.Date(), organism = 1, 
-                          facility = c("SWP", "CVP"), study = 0){
+                          facility = c("SWP", "CVP"), study = 0, 
+                          save_out = TRUE){
 
   date_from <- as.Date(date_from)
   date_to <- as.Date(date_to)
@@ -17,7 +18,18 @@ daily_salvage <- function(salvage, date_from = "2019-01-01",
   counts_cols <- !(colnames(counts) %in% counts_cols_out)
   counts1 <- data.frame(counts[counts_sample_match, counts_cols])
   colnames(counts1) <- colnames(counts)[counts_cols]
-  data.frame(vols, counts1)
+  out <- data.frame(vols, counts1)
+
+  if(save_out){
+    dir.create("site/files", showWarnings = FALSE)
+    dir.create("data/summaries", showWarnings = FALSE)
+
+    ds_table_fpath1 <- "data/summaries/daily_salvage.csv"
+    ds_table_fpath2 <- "site/files/daily_salvage.csv"
+    write.csv(out, file = ds_table_fpath1, row.names = FALSE)
+    write.csv(out, file = ds_table_fpath2, row.names = FALSE)
+  }
+  out
 }
 
 
@@ -88,7 +100,8 @@ most_recent_samples <- function(salvage){
 
 
 daily_counts <- function(salvage, dates = NULL, organism = 1, 
-                              facility = c("SWP", "CVP"), study = 0){
+                         facility = c("SWP", "CVP"), study = 0, 
+                         save_out = TRUE){
 
   sample_method <- as.numeric(factor(facility, levels = c("SWP", "CVP")))
   sample_method <- 1:2
@@ -124,6 +137,16 @@ daily_counts <- function(salvage, dates = NULL, organism = 1,
   out$SampleMethod[out$SampleMethod == 2] <- "CVP"
   organism_col_names <- paste0("organism_", organism)
   colnames(out) <- c("Building", "Date", organism_col_names)
+
+  if(save_out){
+    dir.create("site/files", showWarnings = FALSE)
+    dir.create("data/summaries", showWarnings = FALSE)
+
+    ds_table_fpath1 <- "data/summaries/exported_volumes.csv"
+    ds_table_fpath2 <- "site/files/exported_volumes.csv"
+    write.csv(out, file = ds_table_fpath1, row.names = FALSE)
+    write.csv(out, file = ds_table_fpath2, row.names = FALSE)
+  }
   out
 }
 
@@ -224,7 +247,7 @@ daily_exported_volume <- function(salvage, dates = NULL,
   out <- data.frame(tab, val) 
   out$SampleMethod[out$SampleMethod == 1] <- "SWP"
   out$SampleMethod[out$SampleMethod == 2] <- "CVP"
-  colnames(out) <- c("Building", "Date", "Volume_Exported")
+  colnames(out) <- c("Building", "Date", "Exported_Volume")
   out
 }
 

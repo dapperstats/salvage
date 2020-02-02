@@ -4,22 +4,25 @@ date: "2020-02-01"
 author: "Juniper L. Simonis"
 ---
 
-# Methods
-
 Here, we describe the methods used to analyze the salvage database, both within an automated pipeline and locally. 
 
 As developed below, the general methodology is depecited in the [`.travis.yml`](https://github.com/dapperstats/salvage/blob/master/.travis.yml) file, which shows full remote implementation.
 
-## Software and Systems
-
+# Software and Systems
 
 To promote cross-platform availability and future reliability, we leverage a [software container approach](https://www.docker.com/resources/what-container) via [`Docker`](https://www.docker.com), which allows any user to establish stable runtime environments for data retrieval and calculation.
 [A container is an instance of a software environment spun-up from an image that has been defined by a `Dockerfile`](https://docs.docker.com/engine/docker-overview/).
 
-For continuous integration and analysis of newly posted data and continuous deployment of the data products and website, we follow the general approach of White et al. (2019), as outlined here and detailed below (see **Continuous Deployment**). 
-We host our code and data on [GitHub](https://github.com), use [Travis CI](https://travis-ci.org) to orchestrate compute, run analysis and related code in [`R`](https://www.r-project.org/), deploy our website via [Netlify](https://www.netlify.com/), and archive everything on [Zenodo](https://www.netlify.com/).
 
-## Establishing the Runtime Environments
+## Continuous Deployment
+
+For continuous integration and analysis of newly posted data and continuous deployment of the data products and website, we follow the general approach of White et al. (2019). 
+We host our code and data on [GitHub](https://github.com), use [Travis CI](https://travis-ci.org) to orchestrate compute, run analysis and related code in [`R`](https://www.r-project.org/), deploy our website via [Netlify](https://www.netlify.com/), and archive everything on [Zenodo](https://www.netlify.com/).
+The data and output are updated daily via [`cron` jobs](https://docs.travis-ci.com/user/cron-jobs/) on [`travis-ci`](https://travis-ci.org/dapperstats/salvage) with a recipe (a.k.a. job lifecycle) described by the [`.travis.yml` file](https://github.com/dapperstats/salvage/blob/master/.travis.yml).
+
+
+## Runtime Environments
+
 
 ### Docker
 
@@ -31,6 +34,7 @@ As such, we do not need to install it during our continuous integration workflow
 However, this is likely not to be the case for users establishing local versions of the pipeline.
 As needed, then, [install `Docker`](https://docs.docker.com/get-docker/).
 The specific instructions vary depending on your operating system, so pay special attention to that.
+
 
 ### Collecting Software Images
 
@@ -49,7 +53,8 @@ docker pull dapperstats/accessor
 docker pull dapperstats/salvage
 ```
 
-### Instantiating Software Containers
+
+### Instantiating Containers
 
 At this point we can now `docker run` the images to produce containers in our runtime:
 
@@ -65,16 +70,22 @@ The additional flags used are
  - `t` allocates a pseudo-TTY to the `stdin`
 
 
-## Data Access
 
-### Retrieve the Salvage Database
+## Populating Files
+
+
+### Data Access
+
+
+#### Retrieve the Salvage Database
 
 The [`accessor` image](https://hub.docker.com/r/dapperstats/accessor), is defined with the software necessary to retrieve a remote Access<sup>&reg;</sup> database, convert it to a set of `.csv` files named by the tables in the database, and read the `.csv` files into [`R`](). 
 The `accessor` image also contains `bash` scripts to perform the retrieval and conversion, which are executed at the creation of a container.
 The default settings for the image are configured for the "current" (1993 - Present) salvage database, so the `acc` container will include the most up-to-date version of the salvage data, collected within the `data` folder. 
 Code for the construction of the `accessor` image and details of its scripts are available in its [repository](https://www.github.com/dapperstats/accessor).
 
-### Share the Data Among Environments
+
+#### Share the Data 
 
 The data that the `acc` container creates are located within itself and need to be shared to the build folder for archiving as well as to the `salv` container for analysis and presentation.
 The main `Docker` command for moving files around is `cp`.
@@ -87,9 +98,11 @@ docker cp data salv:/
 
 Any existing files within the local `data` folder will be overwritten with the up-to-date versions.
 
-## Script Access
 
-### Share the Scripts Among Environments
+### Script Access
+
+
+#### Share the Scripts 
 
 Whereas the `acc` container got us an accessible version of the data, the `salv` container is where we are going to do stuff with the data, which is facilitated by pre-written scripts and functions.
 
@@ -103,9 +116,11 @@ docker cp scripts salv:/
 Note that this means the files in the `scripts` folder will overwrite any already-existing files in the `salv` container.
 This also means that a user can add more scripts of their choosing into the container by having them in the local `scripts` folder prior to running the above line.
 
-## Site Access
 
-### Bring the Site into `salv`
+### Site Access
+
+
+#### Bring the Site into `salv`
 
 The website is comprised of a suite a folders and files that are contained within a folder named `site`.
 The `accessor` image has nothing to do with the site whatsoever, so we do not need to copy anything from the container, but we do have a local instance of the `site` folder, which we copy into `salv`:
@@ -116,66 +131,103 @@ docker cp site salv:/
 ```
 
 
-An additional conversion makes the data available in [`R`](https://www.r-project.org/) as a `list` of `data.frames` that is directly analagous to the `.accdb` database of tables.
+## Salvage Analyses & Presentation
 
-The reading into R is conducted via functions included in the `r_functions.R` script in the [`accessor` image](https://hub.docker.com/r/dapperstats/accessor) and available in the [public code repository](https://github.com/dapperstats/accessor/tree/master/scripts).
+Having created a runtime environment within the `salv` container that includes the necessary programs, data, and scripts to analyze and present the salvage data, we can use the `docker exec` to execute a command within the container.
+To keep the overall code tidy at the `travis.yml` level, we package all of the necessary R code for analyses and presentation, including website rendering, within a single script `salvage_script.R`, 
+which we execute:
 
-<br>
-
-#### Within a Salvage Container
-
-Building on the list above, you can leverage the `r_script.R` script included in the image, which sources the `r_functions.R` script and loads the database in as an `R` object named `database`. 
-Docker provides ample access and avenues to run R within the container.
-For example, the `docker exec` command opens a full API for running within the top (read/write) layer of the container, allowing an endless supply of R code to be included within a single character input:
-
-6. Run a `bash` `R` script from the command line 
 ```{bash, eval = FALSE}
-sudo docker exec -i salvage R -e "source('scripts/r_script.R'); <additional R code>"
+docker exec -i salv R -e "source('scripts/salvage_script.R')"
 ```
 
-You can copy your own scripts *into* the image and then run them from that environment:
+The `-i` flag keeps the container's `stdin` open.
+The `-e` flag allows the input for the `R` command to be an expression. 
 
-7. Copying a script into the image
-```{bash, eval = FALSE}
-sudo docker cp path/to/my_r_script.R salvage:/scripts
-```
-8. Running the script in the image
-```{bash, eval = FALSE}
-sudo docker exec -i salvage R -e "source('scripts/r_script.R'); source('scripts/my_r_script.R')"
-```
 
-Note that we are running the main `r_script.R` first still here; that script does not save any files externally, so the R session in **6.** is gone when we run **8.**. 
-For the sake of simplifying the command line call, it is therefore recommended that expanded uses follow **8.** and use `my_r_script.R` as a hub file that directs all of your specific functions, including files saved out from R.
-For simplicity, saving out all files into a single folder, e.g. `output` allows a single docker command for retrieving the results from the top layer of the container:
+### `R` Salvage Script
 
-9. Copy the output out from the container 
-```{bash, eval = FALSE}
-sudo docker cp salvage:/output .
-```
+The `salvage_script.R` file consists of a few component blocks of code, which leverage functions written in the scripts to orchestrate the analysis and presentation.
+Presently, these include
 
-<br>
-
-#### Working in an Open R Session
-
-Alternatively, the functions are written in only base R, so they **should** be reproducibly functional outside the image (in an open session).
-
-Within an instance of `R`, navigate to where you have read the data out from the container into/where this code repository located and source `r_script.R`:
-
-6. Load the functions and read in the data
+1. Source the `acc` and `salv` functions
 ```{R, eval = FALSE}
-source("scripts/r_script.R")
+source("scripts/r_functions.R")
+source("scripts/salvage_functions.R")
+
+```
+2. Read the Database into `R`
+```{R, eval = FALSE}v
+salvage <- read_database()
+``` 
+  - `salvage` is a `list` of `data.frames` that is directly analagous to the `.accdb` database of tables and the folder of `.csv` files
+  - `read_database` has arguments to allow direction to alternative file locations but default settings are for this pipeline
+3. Calculate all daily volumes and counts for Chinook, Steelhead, Striped Bass, and Delta Smelt at both facilities:
+```{R, eval = FALSE}
+species <- c(1:3, 26)
+daily_salvage_tab <- daily_salvage(salvage, "1993-01-01", Sys.Date(), species)
+```
+4. Calculate and plot the daily exported volumes from both facilities
+```{R, eval = FALSE}
+dates <- seq.Date(as.Date("2020-01-01"), Sys.Date(), 1)
+exported_volumes <- daily_exported_volume(salvage, dates)
+exported_volumes_fig(exported_volumes)
+
+```
+5. Render the website
+```{R, eval = FALSE}
+rmarkdown::render_site("site")
+```
+6. Notify
+```{R, eval = FALSE}
+message("completed")
 ```
 
-The resulting `database` object is a named `list` of the database's tables, ready for analyses.
 
-<br>
+### Adding to the `R` execution
 
-## Data Preparation
+It is possible to add to the executed `R` code in one of two ways: 
+1. Add to the `salvage_script.R` file
+2. Add to the `docker exec` command
+
+For [1], add code directly to your local `scripts/salvage_script.R`, save the file, and re-run
+```{bash, eval = FALSE}
+docker cp scripts salv:/
+``` 
+to copy the file into the container.
+
+For [2], if you are adding a brief bit of `R` code, you can simply expand the `R -e` character input
+```{bash, eval = FALSE}
+sudo docker exec -i salvage R -e "source('scripts/r_script.R'); <additional_R_code>"
+```
+(replacing <additional_R_code> with the actual code). 
+Alternatively, if your code is complex enough to warrant its own script, save it to a file `scripts/<your_scripts_name>.R` (replacing <your_scripts_name> with the actual file name), copy the file into the container
+```{bash, eval = FALSE}
+docker cp scripts salv:/
+``` 
+and then expand the `R -e` character input
+```{bash, eval = FALSE}
+docker exec -i salv R -e "source('scripts/salvage_script.R'); source('scripts/<your_scripts_name>.R')"
+```
+Note that we are still running the main `salvage_script.R` first here, which sources the function, loads the data, and puts the daily salvage table and current year's daily exported volumes into the working environment (as `daily_salvage_tab` and `exported_volumes`, respsectively).
+
+
+## Retrieving the Results
+
+We use the `cp` command again to move the resulting data (summary files are saved in `data/summaries`) and site files from the `salv` container out to the local space
+```{bash, eval = FALSE}
+docker cp salv:/data .
+docker cp salv:/site .
+```
+
+
+# Data Preparation
 
 Having brought the data into R as-is, we can now prepare them for summaries and analyses.
-We use the functions included in the [`salvage_functions.R` R script](https://github.com/dapperstats/salvage/blob/master/scripts/salvage_functions.R), which is included within the and [`salvage` docker image](https://hub.docker.com/r/dapperstats/salvage) that provides a stable runtime environment for the analyses and output generation (including website rendering).
+We use the functions included in the [`salvage_functions.R` R script](https://github.com/dapperstats/salvage/blob/master/scripts/salvage_functions.R), which is included within the [`salvage` docker image](https://hub.docker.com/r/dapperstats/salvage) that provides a stable runtime environment for the analyses and output generation (including website rendering).
 
-### Daily Summaries
+
+## Daily Summaries
 
 The data in the Sample table are at the highest frequency (sample level, generally every 2-hr) and for the present work we summarize the volumes and counts at the daily level within each of two buildings (CVP, SWP).
 For a given sample, the amount of time (minutes) the facility was pumping, the amount of time (minutes) of the pumping that was sampled, and the primary flow (cubic feet per second) are recorded.
@@ -188,36 +240,7 @@ To determine the total daily counts for each organism of interest, we gather the
 These counts are the number of times a fish of that species was found in the processed sample volume, which is a fraction of the total volume sampled.
 Thus, for a quick and simple expansion to a full-volume estimate, we divide the count by the sample volume and multiply by the pumped volume (as calculated).
 
-<br>
 
-## Continuous Deployment
-
-The data and output are updated daily via [`cron` jobs](https://docs.travis-ci.com/user/cron-jobs/) on [`travis-ci`](https://travis-ci.org/dapperstats/salvage) with a recipe (a.k.a. job lifecycle) described by the [`.travis.yml` file](https://github.com/dapperstats/salvage/blob/master/.travis.yml).
-
-
-
-
-#### Build A Salvage Container
-
-To use the current image to generate an up-to-date container with data for yourself
-
-1. 
-2. Open up a docker-ready terminal
-3. Download the image
-```{bash, eval = FALSE}
-sudo docker pull dapperstats/salvage`
-```
-4. Build the container
-```{bash, eval = FALSE}
-sudo docker container run -ti --name salvage dapperstats/salvage`
-```
-5. Copy the data out from the container 
-```{bash, eval = FALSE}
-sudo docker cp salvage:/data .`
-```
-
-
-
-## References 
+# References 
 
 White, E. P., G. M. Yenni, S. Taylor, E. Christensen, E. Bledsoe, J. L. Simonis, and S. K. M. Ernest. 2019. Developing an automated iterative near-term forecasting system for an ecological study. Methods in Ecology and Evolution 10:332-344. DOI: [10.1111/2041-210X.13104](https://doi.org/10.1111/2041-210x.13104).
