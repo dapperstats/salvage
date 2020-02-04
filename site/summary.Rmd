@@ -7,13 +7,14 @@ author: "Juniper L. Simonis"
 
 ```{r, include = FALSE}
 
-sample_vols <- read.csv("files/sample_vols.csv", stringsAsFactors = FALSE)
-first_date_in_plot <- min(sample_vols$Date, na.rm = TRUE)
+exported_volumes <- read.csv("files/exported_volumes.csv", stringsAsFactors = FALSE)
+exported_volumes <- na.omit(exported_volumes)
+first_date_in_plot <- min(exported_volumes$Date)
 first_date_in_plot <- as.Date(first_date_in_plot)
 first_date_in_plot <- format(first_date_in_plot, "%B %e, %Y")
 first_date_in_plot <- gsub("  ", " ", first_date_in_plot)
 
-most_recent_date <- max(sample_vols$Date, na.rm = TRUE)
+most_recent_date <- max(exported_volumes$Date)
 most_recent_date <- as.Date(most_recent_date)
 most_recent_date <- format(most_recent_date, "%B %e, %Y")
 most_recent_date <- gsub("  ", " ", most_recent_date) 

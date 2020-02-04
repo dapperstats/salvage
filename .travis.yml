@@ -15,9 +15,10 @@ script:
   - docker cp scripts salv:/
   - docker cp site salv:/
 
-  - docker exec -i salv R -e "source('scripts/salvage_script.R')"
+  - travis_wait 50 docker exec -i salv R -e "source('scripts/salvage_script.R')"
 
   - docker cp salv:/site .
+  - docker cp salv:/data .
   - ls site
 
 after_success:

@@ -3,14 +3,41 @@ source("../../accessor/scripts/r_functions.R")
 
 salvage <- read_database()
 
+
 most_recent <- most_recent_samples(salvage)
 
+spp <- c(1:3, 26)
+daily_salvage_tab <- daily_salvage(salvage, "1993-01-01", Sys.Date(), spp)
+write.csv(daily_salvage_table, "../daily_salvage.csv", row.names = FALSE)
 
-dates <- seq.Date(as.Date("2020-01-01"), as.Date("2020-01-22"), 1)
-
-vals <- daily_sample_vols(salvage, dates)
 
 
-most_recent <- data.frame(t(most_recent))
-mr_file <- paste0("site/static/files/most_recent_samples.csv")
-write.csv(most_recent, file = mr_file, row.names = FALSE)
+
+# split by facility 
+# make prettier figures
+# bibtex
+# ABSTRACT
+#
+par(mfrow = c(4,1), mar = c(3, 4, 1, 1), bty = "L")
+org_dens <- daily_salvage_tab$organism_1 / daily_salvage_tab$Sample_Volume
+org_counts <- org_dens * daily_salvage_tab$Pumping_Volume
+
+plot(as.Date(daily_salvage_table$Date), org_counts)
+
+
+org_dens <- daily_salvage_tab$organism_2 / daily_salvage_tab$Sample_Volume
+org_counts <- org_dens * daily_salvage_tab$Pumping_Volume
+
+plot(as.Date(daily_salvage_tab$Date), org_counts)
+
+
+org_dens <- daily_salvage_tab$organism_3 / daily_salvage_tab$Sample_Volume
+org_counts <- org_dens * daily_salvage_tab$Pumping_Volume
+
+plot(as.Date(daily_salvage_table$Date), org_counts)
+
+
+org_dens <- daily_salvage_tab$organism_26 / daily_salvage_tab$Sample_Volume
+org_counts <- org_dens * daily_salvage_tab$Pumping_Volume
+
+plot(as.Date(daily_salvage_tab$Date), org_counts)
