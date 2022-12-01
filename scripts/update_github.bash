@@ -1,5 +1,8 @@
 #!/bin/bash
 
+if ${GITHUB_EVENT} != 'pull_request'
+then
+
 echo "Updating files on GitHub..."
 # Set environment variables
 CURRENT_DATE=`date +%Y-%m-%d_%H-%M | head -c 20`
@@ -34,3 +37,6 @@ git push --quiet deploy --tags > /dev/null 2>&1
 # POST the tag as a release
 curl -v -i -X POST -H "Content-Type:application/json" -H "Authorization: token $GITHUB_TOKEN" https://api.github.com/repos/dapperstats/salvage/releases -d "{\"tag_name\":\"$CURRENT_DATE\"}"
 
+else
+echo "Not updating files on GitHub for PR"
+fi
