@@ -38,3 +38,7 @@ jobs:
         run: |
           docker cp salv:/site .
           ls site
+      - name: update the github repo with the built site
+        run: |
+          test ${{ github.event_name != 'pull_request' }}
+          
