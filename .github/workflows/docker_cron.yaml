@@ -1,4 +1,4 @@
-# Run the cron jorb in docker
+# Run the cron job in docker container
 name: docker_cron
 
 on:
