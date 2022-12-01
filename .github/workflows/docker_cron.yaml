@@ -13,5 +13,8 @@ name: docker_cron
 jobs:
   build:
     runs-on: ubuntu-latest
+    container:
+      image: docker://dapperstats/accessor:latest
+      image: docker://dapperstats/salvage:latest
     steps:
       - uses: actions/checkout@v3
