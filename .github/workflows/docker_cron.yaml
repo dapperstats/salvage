@@ -41,6 +41,8 @@ jobs:
           docker cp salv:/site .
           ls site
       - name: update the github repo with the built site
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           test ${{ github.event_name != 'pull_request' }}
           bash scripts/update_github.bash 
