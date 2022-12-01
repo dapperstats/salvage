@@ -20,5 +20,5 @@ jobs:
         image: docker://dapperstats/salvage:latest
     steps:
       - uses: actions/checkout@v3
-      - name: get from accessor
-        run: docker cp accesor:/data .
+      - name: name up accessor
+        run: run --name acc --restart=always -it dapperstats/accessor
