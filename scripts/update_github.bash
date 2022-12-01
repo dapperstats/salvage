@@ -9,7 +9,7 @@ git config --global user.email "deploy@dapperstats.com"
 git config --global user.name "DAPPER Deploy Bot"
 
 # Checkout the main branch
-git checkout -t -b main origin/main
+git checkout -b main --track origin/main
 
 # Add .csv data files and the website folder
 git add data/*.csv 
