@@ -1,19 +1,27 @@
 # Run the cron jorb in docker
+name: docker_cron
 
 on:
-  push:
   pull_request:
     branches:
       - main
   schedule:
     - cron: '0 0 * * *' # daily
 
-name: docker_cron
+
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    container:
-      image: docker://dapperstats/salvage:latest
+    services:
+      accessor:
+        image: docker://dapperstats/accessor:latest
+          - 3001:3000
+    
+      salvage:
+        image: docker://dapperstats/salvage:latest
+        ports:
+          - 4001:4000
+
     steps:
       - uses: actions/checkout@v3
