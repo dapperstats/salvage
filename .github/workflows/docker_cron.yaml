@@ -44,6 +44,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          test ${{ github.event_name != 'pull_request' }}
+          test ${{ github.event_name != 'pull_request' }} && 
           bash scripts/update_github.bash 
           
