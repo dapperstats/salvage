@@ -21,4 +21,4 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: name up accessor
-        run: run --name acc --restart=always -it dapperstats/accessor
+        run: docker run --name acc --restart=always -it dapperstats/accessor
