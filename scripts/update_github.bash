@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if ${GITHUB_EVENT} != 'pull_request'
+if ${{GITHUB_EVENT != 'pull_request' }} 
 then
 
 echo "Updating files on GitHub..."
