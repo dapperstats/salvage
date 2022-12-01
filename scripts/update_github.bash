@@ -20,7 +20,6 @@ git add site/docs/*
 git commit -m "updating data cron job: $CURRENT_DATE"
 
 # Remote add the committed files to the deploy branch
-git remote remove deploy # Removing the remote ensures that updates to the GitHub Token are added to the remote
 git remote add deploy https://${GITHUB_TOKEN}@github.com/dapperstats/salvage.git > /dev/null 2>&1
 
 # Create a tag based on the date
