@@ -15,6 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: docker://dapperstats/accessor:latest
+    container:
       image: docker://dapperstats/salvage:latest
     steps:
       - uses: actions/checkout@v3
