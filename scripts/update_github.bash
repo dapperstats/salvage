@@ -1,9 +1,10 @@
 #!/bin/bash
 
 if [[ ${GITHUB_EVENT} == "pull_request"]]
-echo "PR PR PR"
+then
+  echo "PR PR PR"
 else
-echo "NOT PR NOT PR"
+  echo "NOT PR NOT PR"
 fi
 
 
