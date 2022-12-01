@@ -1,6 +1,7 @@
 #!/bin/bash
 
-echo ${GITHUB_EVENT}
+test ${GITHUB_EVENT} == "pull_request"
+
 
 
 echo "Updating files on GitHub..."
