@@ -16,9 +16,9 @@ jobs:
     services:
       accessor:
         image: docker://dapperstats/accessor:latest
-    
       salvage:
         image: docker://dapperstats/salvage:latest
-
     steps:
       - uses: actions/checkout@v3
+      - name: get from accessor
+        run: docker cp acc:/data .
