@@ -1,14 +1,5 @@
 #!/bin/bash
 
-if [[ test ${GITHUB_EVENT} == "pull_request"]]
-then
-  echo "PR PR PR"
-else
-  echo "NOT PR NOT PR"
-fi
-
-
-
 echo "Updating files on GitHub..."
 # Set environment variables
 CURRENT_DATE=`date +%Y-%m-%d_%H-%M | head -c 20`
