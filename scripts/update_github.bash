@@ -9,7 +9,6 @@ git config --global user.email "deploy@dapperstats.com"
 git config --global user.name "DAPPER Deploy Bot"
 
 # Checkout the main branch
-git fetch --unshallow
 git checkout main
 
 # Add .csv data files and the website folder
@@ -20,7 +19,7 @@ git add site/docs/*
 git commit -m "updating data cron job: $CURRENT_DATE"
 
 # Remote add the committed files to the deploy branch
-git remote add deploy https://${GITHUB_DEPLOY_PAT}@github.com/dapperstats/salvage.git > /dev/null 2>&1
+git remote add deploy https://${DEPLOY_PAT}@github.com/dapperstats/salvage.git > /dev/null 2>&1
 
 # Create a tag based on the date
 git tag $CURRENT_DATE
