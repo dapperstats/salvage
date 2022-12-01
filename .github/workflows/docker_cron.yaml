@@ -16,7 +16,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: install
+      - name: install containers
         run: |
           docker pull dapperstats/accessor
           docker pull dapperstats/salvage
+      - name: start and name containers
+        run: |
+          docker run --name acc --restart=always -it dapperstats/accessor
+          docker run --name salv --restart=always -itd dapperstats/salvage
+      - name: copy data files and scripts
+        run: |
+          docker cp acc:/data .
+          docker cp data salv:/
+          docker cp acc:/scripts .
+          docker cp scripts salv:/
+          docker cp site salv:/
