@@ -40,10 +40,14 @@ jobs:
         run: |
           docker cp salv:/site .
           ls site
-      - name: update the github repo with the built site
-        if: ${{ github.event_name != 'pull_request'}}
+      - name: update the github repo with the built site for cron
+        if: ${{ github.event_name == 'schedule'}}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           bash scripts/update_github.bash 
+      - name: don't update the github repo with the built site for pr
+        if: ${{ github.event_name == 'pull_request'}}
+        run: |
+          echo "Repo not updated for PR only"
           
