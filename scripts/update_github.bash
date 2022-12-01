@@ -31,5 +31,5 @@ git push --quiet --set-upstream deploy main
 git push --quiet deploy --tags > /dev/null 2>&1
 
 # POST the tag as a release
-curl -v -i -X POST -H "Content-Type:application/json" -H "Authorization: token $GITHUB_RELEASE_PAT" https://api.github.com/repos/dapperstats/salvage/releases -d "{\"tag_name\":\"$CURRENT_DATE\"}"
+curl -v -i -X POST -H "Content-Type:application/json" -H "Authorization: token $GITHUB_TOKEN" https://api.github.com/repos/dapperstats/salvage/releases -d "{\"tag_name\":\"$CURRENT_DATE\"}"
 
