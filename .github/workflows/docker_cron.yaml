@@ -16,12 +16,10 @@ jobs:
     services:
       accessor:
         image: docker://dapperstats/accessor:latest
-          - 3001:3000
     
       salvage:
         image: docker://dapperstats/salvage:latest
         ports:
-          - 4001:4000
 
     steps:
       - uses: actions/checkout@v3
