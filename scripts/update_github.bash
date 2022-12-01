@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [[ ${GITHUB_EVENT} == "pull_request"]]
+if [[ test ${GITHUB_EVENT} == "pull_request"]]
 then
   echo "PR PR PR"
 else
