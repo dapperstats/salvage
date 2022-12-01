@@ -11,13 +11,9 @@ on:
 
 
 jobs:
-  build:
+  salvage_pipeline:
+    name: salvage pipeline
     runs-on: ubuntu-latest
-    services:
-      accessor:
-        name: accessor
-        image: docker://dapperstats/accessor:latest
-      salvage:
-        image: docker://dapperstats/salvage:latest
     steps:
       - uses: actions/checkout@v3
+      - run: docker run --name acc --restart=always -it dapperstats/accessor
