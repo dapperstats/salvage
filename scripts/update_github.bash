@@ -8,8 +8,8 @@ CURRENT_DATE=`date +%Y-%m-%d_%H-%M | head -c 20`
 git config --global user.email "deploy@dapperstats.com"
 git config --global user.name "DAPPER Deploy Bot"
 
-# Checkout the master branch
-git checkout master
+# Checkout the main branch
+git checkout -b main --track origin/main
 
 # Add .csv data files and the website folder
 git add data/*.csv 
@@ -24,8 +24,8 @@ git remote add deploy https://${GITHUB_DEPLOY_PAT}@github.com/dapperstats/salvag
 # Create a tag based on the date
 git tag $CURRENT_DATE
 
-# Push the deploy branch to update the master
-git push --quiet --set-upstream deploy master
+# Push the deploy branch to update the main
+git push --quiet --set-upstream deploy main
 
 # Push the tag to the branch
 git push --quiet deploy --tags > /dev/null 2>&1
