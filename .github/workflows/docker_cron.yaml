@@ -16,4 +16,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - run: docker run --name acc --restart=always -it dapperstats/accessor
+      - run: docker pull dapperstats/accessor
+      - run: docker pull dapperstats/salvage
