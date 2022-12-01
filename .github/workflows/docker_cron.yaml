@@ -21,4 +21,4 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: get from accessor
-        run: docker cp acc:/data .
+        run: docker cp accesor:/data .
