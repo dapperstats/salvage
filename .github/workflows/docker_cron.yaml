@@ -31,3 +31,10 @@ jobs:
           docker cp acc:/scripts .
           docker cp scripts salv:/
           docker cp site salv:/
+      - name: run R salvage script in the container
+        run: |
+          docker exec -i salv R -e "source('scripts/salvage_script.R')"
+      - name: copy out the site and list contents
+        run: |
+          docker cp salv:/site .
+          ls site
