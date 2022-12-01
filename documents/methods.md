@@ -28,15 +28,15 @@ To use the current image to generate an up-to-date container with data for yours
 2. Open up a docker-ready terminal
 3. Download the image
 ```{bash, eval = FALSE}
-sudo docker pull dapperstats/salvage`
+sudo docker pull dapperstats/salvage
 ```
 4. Build the container
 ```{bash, eval = FALSE}
-sudo docker container run -ti --name salvage dapperstats/salvage`
+sudo docker container run -ti --name salvage dapperstats/salvage
 ```
 5. Copy the data out from the container 
 ```{bash, eval = FALSE}
-sudo docker cp salvage:/data .`
+sudo docker cp salvage:/data .
 ```
 
 <br>
