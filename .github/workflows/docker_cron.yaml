@@ -1,0 +1,53 @@
+# Run the cron job in docker container
+name: docker_cron
+
+on:
+  pull_request:
+    branches:
+      - main
+  schedule:
+    - cron: '0 0 * * *' # daily
+
+
+
+jobs:
+  salvage_pipeline:
+    name: salvage pipeline
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: install containers
+        run: |
+          docker pull dapperstats/accessor
+          docker pull dapperstats/salvage
+      - name: start up and name containers
+        run: |
+          docker run --name acc --restart=always -i dapperstats/accessor
+          docker run --name salv --restart=always -id dapperstats/salvage
+      - name: copy data files and scripts
+        run: |
+          docker cp acc:/data .
+          docker cp data salv:/
+          docker cp acc:/scripts .
+          docker cp scripts salv:/
+          docker cp site salv:/
+      - name: run R salvage script in the container
+        run: |
+          docker exec -i salv R -e "source('scripts/salvage_script.R')"
+      - name: copy out the site and list contents
+        run: |
+          docker cp salv:/site .
+          ls site
+      - name: update the github repo with the built site for cron
+        if: ${{ github.event_name == 'schedule'}}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          bash scripts/update_github.bash 
+      - name: don't update the github repo with the built site for pr
+        if: ${{ github.event_name == 'pull_request'}}
+        run: |
+          echo "Repo not updated for PR only"
+          
