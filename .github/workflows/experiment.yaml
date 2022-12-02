@@ -18,13 +18,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: install containers
+      - name: create directories
         run: |
-          docker pull dapperstats/accessor
-          docker pull dapperstats/salvage
-      - name: start and name containers
+          mkdir data
+          mkdir "data/Salvage_data_FTP" -p
+      - name: wget the db
         run: |
-          docker run -e "r=https://filelib.wildlife.ca.gov/Public/salvage/Salvage_data_FTP.accdb" --name acc --restart=always -i dapperstats/accessor 
-
-
-          
+          wget "https://filelib.wildlife.ca.gov/Public/salvage/Salvage_data_FTP.accdb" -nv -q -O "data/local.accdb" --show-progress
+      - name: convert the db
+        run: |
+          echo "Converting to csvs..."
+          mdb-tables -1 $DATA_DIR/$TEMP_DB_FILE | xargs -L1 -d '\n' -I{} bash -c 'mdb-export "$1" "$2" > "$3"' -- "data/local.accdb" {} "data/Salvage_data_FTP"/{}.csv
