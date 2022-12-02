@@ -24,7 +24,7 @@ jobs:
           docker pull dapperstats/salvage
       - name: start and name containers
         run: |
-          docker run --name acc --restart=always -i dapperstats/accessor -e "r=https://filelib.wildlife.ca.gov/Public/salvage/Salvage_data_FTP.accdb"
+          docker run -e "r=https://filelib.wildlife.ca.gov/Public/salvage/Salvage_data_FTP.accdb" --name acc --restart=always -i dapperstats/accessor 
 
 
           
