@@ -1,4 +1,4 @@
-# Run the cron job in docker container
+# Run the cron job without containers
 name: cron_experiment
 
 on:

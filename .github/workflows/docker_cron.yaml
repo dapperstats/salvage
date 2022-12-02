@@ -22,7 +22,7 @@ jobs:
         run: |
           docker pull dapperstats/accessor
           docker pull dapperstats/salvage
-      - name: start and name containers
+      - name: start up and name containers
         run: |
           docker run --name acc --restart=always -i dapperstats/accessor
           docker run --name salv --restart=always -id dapperstats/salvage
