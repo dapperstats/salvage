@@ -18,6 +18,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install mdbtools
+          sudo apt-get install unixodbc-dev
       - name: create directories
         run: |
           mkdir "data/Salvage_data_FTP" -p
