@@ -2,6 +2,16 @@
 
 Version numbers follow [Semantic Versioning](https://semver.org/).
 
+# [v0.9.0](https://github.com/dapperstats/salvage/releases/tag/v0.9.0)
+*In Progress*
+
+## Shifting build workflow from travis to Github Actions
+* cron workflow implementing the image-based pipeline
+* tag workflow building and publishing image updates
+* both workflows proceed but do not finish on PRs
+
+## Move dockerfile into a folder
+* Create a docker folder for holding dockerfile and readme
 
 # [v0.8.0](https://github.com/dapperstats/salvage/releases/tag/v0.8.0) 
 *2020-01-29*
