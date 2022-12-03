@@ -6,6 +6,8 @@
 
 Tools for smooth interactions with the [California Delta](https://en.wikipedia.org/wiki/Sacramento%E2%80%93San_Joaquin_River_Delta) [fish salvage monitoring database](https://wildlife.ca.gov/Conservation/Delta/Salvage-Monitoring).
 
-The image is built using the [`Docker` GitHub Action](https://github.com/dapperstats/salvage/actions/workflows/docker-publish.yml) for any pull request in the `salvage` repository but is only pushed to [Docker Hub](https://hub.docker.com/repository/docker/dapperstats/salvage) upon creation of a tagged release.
+This image includes the R-based script and functions for reading in the converted data files, analyzing, and vizualizing the results, including production of the website output. 
+
+The image is built using the [`Docker` GitHub Action](https://github.com/dapperstats/salvage/actions/workflows/docker-publish.yml) for any pull request in the `salvage` repository but is only pushed to [Docker Hub](https://hub.docker.com/repository/docker/dapperstats/salvage) upon creation of a release tagged under semantic versioning. 
 
 Two copies of the image are pushed to Docker Hub: one tagged with the release version and one tagged as "latest"..

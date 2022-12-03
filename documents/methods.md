@@ -3,11 +3,11 @@
 ## Data Access
 
 
-<br>
+### Retrieve the [Salvage Database]((https://filelib.wildlife.ca.gov/Public/salvage/)
 
-### Retrieve the Salvage Database
+Source data are freely available from the [California Department of Fish and Wildlife](https://wildlife.ca.gov) [Fish Salvage Monitoring Program](https://wildlife.ca.gov/Conservation/Delta/Salvage-Monitoring) on a [public data server](https://filelib.wildlife.ca.gov/Public/salvage/).
 
-The bulk of the data access protocol involves converting the `.accdb` salvagae database file on the remote [server](https://wildlife.ca.gov/Conservation/Delta/Salvage-Monitoring) to a local set of `.csv` files named by the tables in the database. 
+The bulk of the data access protocol involves converting the `.accdb` salvage database file on the remote [server](https://wildlife.ca.gov/Conservation/Delta/Salvage-Monitoring) to a local set of `.csv` files named by the tables in the database. 
 We accomplish this in two lines of code by pulling and then running a stable [`Docker`](https://www.docker.com) [software container](https://www.docker.com/resources/what-container) that contains a set of `bash` scripts designed specifically for this task.
 The specific image used for data access is called [`accessor`](https://hub.docker.com/r/dapperstats/accessor), is freely available on [Docker Hub](https://hub.docker.com/), and has default setting configured for the salvage database.
 Code for the construction of the `accessor` image is available in its [repository](https://www.github.com/dapperstats/accessor).
@@ -43,7 +43,7 @@ sudo docker cp salvage:/data .
 
 ### Bring the Data into R 
 
-An additional conversion makes the data available in [`R`](https://www.r-project.org/) as a `list` of `data.frames` that is directly analagous to the `.accdb` database of tables.
+An additional conversion makes the data available in [`R`](https://www.r-project.org/) as a `list` of `data.frames` that is directly analogous to the `.accdb` database of tables.
 
 The reading into R is conducted via functions included in the `r_functions.R` script in the [`accessor` image](https://hub.docker.com/r/dapperstats/accessor) and available in the [public code repository](https://github.com/dapperstats/accessor/tree/main/scripts).
 

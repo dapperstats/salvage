@@ -3,7 +3,7 @@
 Version numbers follow [Semantic Versioning](https://semver.org/).
 
 # [v0.9.0](https://github.com/dapperstats/salvage/releases/tag/v0.9.0)
-*In Progress*
+*2022-12-02*
 
 ## Shifting build workflow from travis to Github Actions
 * cron workflow implementing the image-based pipeline
@@ -80,7 +80,7 @@ Version numbers follow [Semantic Versioning](https://semver.org/).
   * `.travis.yml` leverages the non-interactive image to build only the `.csv` files (no `R` session is started)
   * `update_github_data.bash` is what's run `after_success` for `cron` jobs only
     * Uses @dapperdeploy as the user bpt
-    * Updates the master branch with the `.csv`s and `.txt` date log
+    * Updates the main branch with the `.csv`s and `.txt` date log
     * Creates a tag based on the date, and deploys the tag as a release
 
 
@@ -97,7 +97,7 @@ Version numbers follow [Semantic Versioning](https://semver.org/).
 ## Updated `Docker` image
 * [v0.2.0](https://hub.docker.com/layers/dapperstats/salvage/0.2.0/images/sha256-224f226aa90eb94a6730c7e95f5f8013bc2c150258d090c0df6e97769a3ef044)
 
-## Inclusion of this here [`NEWS`](https://github.com/dapperstats/salvage/blob/master/NEWS.md)
+## Inclusion of this here [`NEWS`](https://github.com/dapperstats/salvage/blob/main/NEWS.md)
 
 # [v0.1.0](https://github.com/dapperstats/salvage/releases/tag/v0.1.0) 
 *2020-01-12*
