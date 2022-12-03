@@ -3,19 +3,19 @@
 ## Data Access
 
 
-<br>
+### Retrieve the [Salvage Database]((https://filelib.wildlife.ca.gov/Public/salvage/)
 
-### Retrieve the Salvage Database
+Source data are freely available from the [California Department of Fish and Wildlife](https://wildlife.ca.gov) [Fish Salvage Monitoring Program](https://wildlife.ca.gov/Conservation/Delta/Salvage-Monitoring) on a [public data server](https://filelib.wildlife.ca.gov/Public/salvage/).
 
-The bulk of the data access protocol involves converting the `.accdb` salvagae database file on the remote [ftp](ftp://ftp.dfg.ca.gov/salvage/) to a local set of `.csv` files named by the tables in the database. 
+The bulk of the data access protocol involves converting the `.accdb` salvage database file on the remote [server](https://wildlife.ca.gov/Conservation/Delta/Salvage-Monitoring) to a local set of `.csv` files named by the tables in the database. 
 We accomplish this in two lines of code by pulling and then running a stable [`Docker`](https://www.docker.com) [software container](https://www.docker.com/resources/what-container) that contains a set of `bash` scripts designed specifically for this task.
 The specific image used for data access is called [`accessor`](https://hub.docker.com/r/dapperstats/accessor), is freely available on [Docker Hub](https://hub.docker.com/), and has default setting configured for the salvage database.
 Code for the construction of the `accessor` image is available in its [repository](https://www.github.com/dapperstats/accessor).
 
-For accessability and reproducibility, we provide an [up-to-date version of the salvage data](https://github.com/dapperstats/salvage/blob/master/data) as `.csv`s from the "current" (1993 - Present) salvage database file (`Salvage_data_FTP.accdb`).
+For accessability and reproducibility, we provide an [up-to-date version of the salvage data](https://github.com/dapperstats/salvage/blob/main/data) as `.csv`s from the "current" (1993 - Present) salvage database file (`Salvage_data_FTP.accdb`).
 The data can be downloaded via various methods from the repository, including from the website.
 
-Updates to the data are executed via [`cron` jobs](https://docs.travis-ci.com/user/cron-jobs/) on [`travis-ci`](https://travis-ci.org/dapperstats/salvage) and pushed to GitHub as [tagged Releases](https://github.com/dapperstats/salvage/releases).
+Updates are executed via [`cron` jobs](https://en.wikipedia.org/wiki/Cron) on [`Github Actions`](https://github.com/dapperstats/salvage/actions)  and pushed to GitHub as [tagged Releases](https://github.com/dapperstats/salvage/releases).
 
 <br> 
 
@@ -43,9 +43,9 @@ sudo docker cp salvage:/data .
 
 ### Bring the Data into R 
 
-An additional conversion makes the data available in [`R`](https://www.r-project.org/) as a `list` of `data.frames` that is directly analagous to the `.accdb` database of tables.
+An additional conversion makes the data available in [`R`](https://www.r-project.org/) as a `list` of `data.frames` that is directly analogous to the `.accdb` database of tables.
 
-The reading into R is conducted via functions included in the `r_functions.R` script in the [`accessor` image](https://hub.docker.com/r/dapperstats/accessor) and available in the [public code repository](https://github.com/dapperstats/accessor/tree/master/scripts).
+The reading into R is conducted via functions included in the `r_functions.R` script in the [`accessor` image](https://hub.docker.com/r/dapperstats/accessor) and available in the [public code repository](https://github.com/dapperstats/accessor/tree/main/scripts).
 
 <br>
 
@@ -102,11 +102,11 @@ The resulting `database` object is a named `list` of the database's tables, read
 Data preparation code is *in development*!
 
 Having brought the data into R as-is, we can now prepare them for summaries and analyses.
-We use the functions included in the [`salvage_functions.R` R script](https://github.com/dapperstats/salvage/blob/master/scripts/salvage_functions.R), which is included within the and [`salvage` docker image](https://hub.docker.com/r/dapperstats/salvage), which provides a stable runtime environment for the analyses and output generation (including website rendering).
+We use the functions included in the [`salvage_functions.R` R script](https://github.com/dapperstats/salvage/blob/main/scripts/salvage_functions.R), which is included within the and [`salvage` docker image](https://hub.docker.com/r/dapperstats/salvage), which provides a stable runtime environment for the analyses and output generation (including website rendering).
 
 <br>
 
 ## Continuous Deployment
 
-The data and output are updated daily via [`cron` jobs](https://docs.travis-ci.com/user/cron-jobs/) on [`travis-ci`](https://travis-ci.org/dapperstats/salvage) with a recipe (a.k.a. job lifecycle) described by the [`.travis.yml` file](https://github.com/dapperstats/salvage/blob/master/.travis.yml).
+Updates are executed via [`cron` jobs](https://en.wikipedia.org/wiki/Cron) on [`Github Actions`](https://github.com/dapperstats/salvage/actions) with a workflow described by the [`docker_cron.yaml` file](https://github.com/dapperstats/salvage/blob/main/.github/workflows/docker_cron.yaml).
 
