@@ -145,3 +145,6 @@ OrganismCode,Active,CommonName,Phylum,Class,Order,Family,Genus,Species,Comments,
 260,0,"Catfish Unknown","Chordata","Osteichthyes","Siluriformes","Ictaluridae","NA","NA",,260
 261,0,"Tidewater Goby","Chordata","Osteichthyes","Perciformes","Gobiidae","Eucyclogobius","newberryi",,261
 262,0,"Silversides Unknown","Chordata","Osteichthyes","Atheriniformes","Atherinidae","NA","NA",,262
+73,1,"Pond Loach","Chordata","Actinopterygii","Cypriniformes","Cobitidae","Misgurnus","anguillicaudatus",,
+75,1,"Bluefin Killifish","Chordata","Actinopterygii","Cyprinodontiformes","Fundulidae","Lucania","goodei",,
+72,1,"Loach (All spp.)",,,,,"NA","NA",,
