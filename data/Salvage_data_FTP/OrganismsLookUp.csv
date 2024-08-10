@@ -65,9 +65,6 @@ OrganismCode,Active,CommonName,Phylum,Class,Order,Family,Genus,Species,Comments,
 69,1,"Shokihaze Goby","Chordata","Osteichthyes","Perciformes","Gobiidae","Tridentiger","barbatus",,
 70,1,"Spotted Bass","Chordata","Osteichthyes","Perciformes","Centrarchidae","Micropterus","punctulatus",,213
 71,1,"Large-Scale Loach","Chordata","Osteichthyes","dabryanus","cobitidae","Paramisgurnus","dabryanus","Added on February 21, 2017",263
-72,1,"Loach (All spp.)",,,,,"NA","NA",,
-73,1,"Pond Loach","Chordata","Actinopterygii","Cypriniformes","Cobitidae","Misgurnus","anguillicaudatus",,
-75,1,"Bluefin Killifish","Chordata","Actinopterygii","Cyprinodontiformes","Fundulidae","Lucania","goodei",,
 80,1,"Chinese Mitten Crab","Arthropoda","Crustacea","Decapoda","Grapsidae","Eriocheir","sinensis",,139
 81,1,"Chinese Mitten Crab Temp.","NA","NA","NA","NA","NA","NA",,139
 90,1,"Unknown","NA","NA","NA","NA","NA","unknown",,190
@@ -148,3 +145,6 @@ OrganismCode,Active,CommonName,Phylum,Class,Order,Family,Genus,Species,Comments,
 260,0,"Catfish Unknown","Chordata","Osteichthyes","Siluriformes","Ictaluridae","NA","NA",,260
 261,0,"Tidewater Goby","Chordata","Osteichthyes","Perciformes","Gobiidae","Eucyclogobius","newberryi",,261
 262,0,"Silversides Unknown","Chordata","Osteichthyes","Atheriniformes","Atherinidae","NA","NA",,262
+73,1,"Pond Loach","Chordata","Actinopterygii","Cypriniformes","Cobitidae","Misgurnus","anguillicaudatus",,
+75,1,"Bluefin Killifish","Chordata","Actinopterygii","Cyprinodontiformes","Fundulidae","Lucania","goodei",,
+72,1,"Loach (All spp.)",,,,,"NA","NA",,
