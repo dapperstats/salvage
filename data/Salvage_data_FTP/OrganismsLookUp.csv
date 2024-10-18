@@ -64,14 +64,14 @@ OrganismCode,Active,CommonName,Phylum,Class,Order,Family,Genus,Species,Comments,
 68,1,"Northern Pike","Chordata","Osteichthyes","Esociformes","Esocidae","Esox","lucius",,
 69,1,"Shokihaze Goby","Chordata","Osteichthyes","Perciformes","Gobiidae","Tridentiger","barbatus",,
 70,1,"Spotted Bass","Chordata","Osteichthyes","Perciformes","Centrarchidae","Micropterus","punctulatus",,213
-71,1,"Large-Scale Loach","Chordata","Osteichthyes","dabryanus","cobitidae","Paramisgurnus","dabryanus","Added on February 21, 2017",263
-72,1,"Loach (All spp.)",,,,,"NA","NA",,
-73,1,"Pond Loach","Chordata","Actinopterygii","Cypriniformes","Cobitidae","Misgurnus","anguillicaudatus",,
-75,1,"Bluefin Killifish","Chordata","Actinopterygii","Cyprinodontiformes","Fundulidae","Lucania","goodei",,
+71,1,"Large-scale Loach","Chordata","Osteichthyes","dabryanus","cobitidae","Paramisgurnus","dabryanus","Added on February 21, 2017",263
+72,1,"Loach (all spp.)",,,,,,,,
+73,1,"Pond Loach",,,,,,,,
+75,1,"Bluefin Killifish",,,,,,,,
 80,1,"Chinese Mitten Crab","Arthropoda","Crustacea","Decapoda","Grapsidae","Eriocheir","sinensis",,139
 81,1,"Chinese Mitten Crab Temp.","NA","NA","NA","NA","NA","NA",,139
-90,1,"Unknown","NA","NA","NA","NA","NA","unknown",,190
-98,1,"Total Fish Count","NA","NA","NA","NA","NA","Total",,
+90,1,"Miscellaneous","NA","NA","NA","NA","NA","unknown",,190
+98,1,"Total Fish Salvaged","NA","NA","NA","NA","NA","Total",,
 99,1,"Total Fish Estimate","NA","NA","NA","NA","NA","Estimate",,
 117,1,"Striped Mullet","Chordata","Osteichthyes","Perciformes","Mugilidae","Mugil","cephalus",,212
 127,0,"Bay Pipefish","Chordata","Osteichthyes","Gasterosteiformes","Syngnathidae","Syngnathus","leptorhynchus",,127
@@ -86,7 +86,7 @@ OrganismCode,Active,CommonName,Phylum,Class,Order,Family,Genus,Species,Comments,
 158,1,"Pacific Lamprey","Chordata","Cephalaspidomorphi","Petromyzontiformes","Petromyzontidae","Lampetra","tridentata",,158
 160,0,"Asian Clam","Mollusca","Bivalvia","Myodia","Sphaeriidae","Potamocorbula","amurenis",,160
 166,0,"Speckled Sanddab","Chordata","Osteichthyes","Pleuronectiformes","Bothidae","Citharichthys","stigmaeus",,166
-168,0,"Shiner perch","Chordata","Osteichthyes","Perciformes","Embiotocidae","Cymatogaster","aggregata",,168
+168,0,"Shiner Perch","Chordata","Osteichthyes","Perciformes","Embiotocidae","Cymatogaster","aggregata",,168
 176,0,"Topsmelt","Chordata","Osteichthyes","Atheriniformes","Atherinidae","Atherinops","affinis",,176
 181,0,"White Croaker","Chordata","Osteichthyes","Perciformes","Sciaenidae","Genyonemus","lineatus",,181
 192,0,"Bass Unknown","Chordata","Osteichthyes","Perciformes","Centrarchidae","Micropterus","NA",,192
@@ -138,7 +138,7 @@ OrganismCode,Active,CommonName,Phylum,Class,Order,Family,Genus,Species,Comments,
 250,0,"Spotfin Surfperch","Chordata","Osteichthyes","Percifomes","Embiotocidae","Hyperprosopon","anale",,250
 251,0,"White Perch","Chordata","Osteichthyes","Percifomes","Embiotocidae","Phanerodon","furactus",,251
 252,0,"Pacific Electric Ray","Chordata","Elasmobranchiomorphi","Rajiformes","Torpedinidae","Torpedo","californica",,252
-253,0,"Pacific sardine","Chordata","Osteichthyes","Clupeiformes","Clupeidae","Sardinops","sagax",,253
+253,0,"Pacific Sardine","Chordata","Osteichthyes","Clupeiformes","Clupeidae","Sardinops","sagax",,253
 254,0,"Dwarf Surfperch","Chordata","Osteichthyes","Perciformes","Embiotocidae","Micrometrus","minimus",,254
 255,0,"Butter Sole","Chordata","Osteichthyes","Pleuronectiformes","Pleuronectidae","Isopsetta","NA",,255
 256,0,"Redeye Bass","Chordata","Osteichthyes","Perciformes","Centrarchidae","Micropterus","coosae",,256
