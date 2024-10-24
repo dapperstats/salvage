@@ -1,0 +1,7 @@
+FacilityCode,StudyCode,SalvageExpFactor,LossMultFactor,EntrainMultFactor,ThresholdLength,ReleaseMultFactor
+1,"0000",,,4,100,0.98
+1,"8888",0,0,,,
+1,"9999",1,4.333,,,
+2,"0000",,,1.1765,100,0.98
+2,"8888",0,0,,,
+2,"9999",1,0.569,,,
