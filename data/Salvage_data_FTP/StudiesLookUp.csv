@@ -2,4 +2,5 @@ StudyRowID,Active,Description
 "0000",1,"Normal count"
 "7777",1,"traveling screen count"
 "8888",1,"Special study"
+"9998",1,"CVP flush"
 "9999",1,"Second flush"
