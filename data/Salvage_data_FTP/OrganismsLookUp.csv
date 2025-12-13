@@ -1,16 +1,4 @@
 OrganismCode,Active,CommonName,Phylum,Class,Order,Family,Genus,Species,Comments,NormalizedCode
-251,0,"White Perch","Chordata","Osteichthyes","Percifomes","Embiotocidae","Phanerodon","furactus",,251
-252,0,"Pacific Electric Ray","Chordata","Elasmobranchiomorphi","Rajiformes","Torpedinidae","Torpedo","californica",,252
-253,0,"Pacific Sardine","Chordata","Osteichthyes","Clupeiformes","Clupeidae","Sardinops","sagax",,253
-254,0,"Dwarf Surfperch","Chordata","Osteichthyes","Perciformes","Embiotocidae","Micrometrus","minimus",,254
-255,0,"Butter Sole","Chordata","Osteichthyes","Pleuronectiformes","Pleuronectidae","Isopsetta","NA",,255
-256,0,"Redeye Bass","Chordata","Osteichthyes","Perciformes","Centrarchidae","Micropterus","coosae",,256
-257,0,"Cheekspot Goby","Chordata","Osteichthyes","Perciformes","Gobiidae","Llypnus","gilberti",,257
-258,0,"Kokanee Salmon","Chordata","Osteichthyes","Salmoniformes","Salmonidae","Oncorhynchus","nerka",,258
-259,0,"Herring Unknown","Chordata","Osteichthyes","Clupeiformes","Clupeidae","NA","NA",,259
-260,0,"Catfish Unknown","Chordata","Osteichthyes","Siluriformes","Ictaluridae","NA","NA",,260
-261,0,"Tidewater Goby","Chordata","Osteichthyes","Perciformes","Gobiidae","Eucyclogobius","newberryi",,261
-262,0,"Silversides Unknown","Chordata","Osteichthyes","Atheriniformes","Atherinidae","NA","NA",,262
 1,1,"Chinook Salmon","Chordata","Osteichthyes","Salmoniformes","Salmonidae","Oncorhynchus","tshawytscha",,136
 2,1,"Rainbow / Steelhead Trout","Chordata","Osteichthyes","Salmoniformes","Salmonidae","Oncorhynchus","mykiss",,161
 3,1,"Striped Bass","Chordata","Osteichthyes","Perciformes","Percichthyidae","Morone","saxatilis",,172
@@ -148,3 +136,15 @@ OrganismCode,Active,CommonName,Phylum,Class,Order,Family,Genus,Species,Comments,
 248,0,"Lingcod","Chordata","Osteichthyes","Scorpaeniformes","Hexagrammidae","Ophiodon","elongatus",,248
 249,0,"Wolf-eel","Chordata","Osteichthyes","Percifomes","Anarhichadidae","Anarrhichthys","ocellantus",,249
 250,0,"Spotfin Surfperch","Chordata","Osteichthyes","Percifomes","Embiotocidae","Hyperprosopon","anale",,250
+251,0,"White Perch","Chordata","Osteichthyes","Percifomes","Embiotocidae","Phanerodon","furactus",,251
+252,0,"Pacific Electric Ray","Chordata","Elasmobranchiomorphi","Rajiformes","Torpedinidae","Torpedo","californica",,252
+253,0,"Pacific Sardine","Chordata","Osteichthyes","Clupeiformes","Clupeidae","Sardinops","sagax",,253
+254,0,"Dwarf Surfperch","Chordata","Osteichthyes","Perciformes","Embiotocidae","Micrometrus","minimus",,254
+255,0,"Butter Sole","Chordata","Osteichthyes","Pleuronectiformes","Pleuronectidae","Isopsetta","NA",,255
+256,0,"Redeye Bass","Chordata","Osteichthyes","Perciformes","Centrarchidae","Micropterus","coosae",,256
+257,0,"Cheekspot Goby","Chordata","Osteichthyes","Perciformes","Gobiidae","Llypnus","gilberti",,257
+258,0,"Kokanee Salmon","Chordata","Osteichthyes","Salmoniformes","Salmonidae","Oncorhynchus","nerka",,258
+259,0,"Herring Unknown","Chordata","Osteichthyes","Clupeiformes","Clupeidae","NA","NA",,259
+260,0,"Catfish Unknown","Chordata","Osteichthyes","Siluriformes","Ictaluridae","NA","NA",,260
+261,0,"Tidewater Goby","Chordata","Osteichthyes","Perciformes","Gobiidae","Eucyclogobius","newberryi",,261
+262,0,"Silversides Unknown","Chordata","Osteichthyes","Atheriniformes","Atherinidae","NA","NA",,262
